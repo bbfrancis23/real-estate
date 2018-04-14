@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
+import { AccountModule } from './account/module';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+
+import { AppComponent } from './app.component';
 
 
 @NgModule({
@@ -12,11 +13,9 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule
+    AccountModule,
+    BrowserModule, BrowserAnimationsModule,
+    MatButtonModule, MatIconModule, MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
