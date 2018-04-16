@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AccountModule } from './account/module';
-import { MatButtonModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule } from '@angular/material';
-
-import { AppComponent } from './app.component';
-import { AccountDialog } from './account/dialog/dialog';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatButtonModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { AccountModule } from './account/module';
+import { AccountDialog } from './account/dialog/dialog';
+import { AppComponent } from './app.component';
 import { AccountService } from './account/service';
+
+'use strict';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AccountDialog
+    AccountDialog,
+    AppComponent
   ],
   imports: [
     AccountModule,
-    BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
-    MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTooltipModule
+    BrowserModule,
+    FormsModule,
+    MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTooltipModule,
+    ReactiveFormsModule
   ],
   entryComponents: [AccountDialog],
   providers: [AccountService],

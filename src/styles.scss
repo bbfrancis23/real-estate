@@ -3,19 +3,11 @@
 
 // CHROM SCROLLBAR //
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-thumb {
-  background: #666666;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: black;
-}
-::-webkit-scrollbar-track {
-  border: 1px solid grey;
-}
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-thumb { background: #666666 }
+::-webkit-scrollbar-thumb:hover { background: black }
+::-webkit-scrollbar-track { border: 1px solid grey }
 
 * { box-sizing:border-box }
-body{ margin: 0px;}
-button:focus{ outline: none } // TODO Change outline for round buttons
+body{ margin: 0px }
+button:focus{ outline: none }
