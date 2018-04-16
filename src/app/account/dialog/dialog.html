@@ -1,0 +1,36 @@
+<div>
+  <span mat-dialog-title>Account {{login}}</span>
+  <form>
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" type="Email" [formControl]="email" required autocomplete="true"/>
+
+        <button mat-button *ngIf="email.value" matSuffix mat-icon-button aria-label="Clear" (click)="email.reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
+
+      </mat-form-field>
+      <br>
+
+      <mat-form-field hintLabel="4 - 16 characters N0 spaces">
+        <input matInput #input placeholder="Password" maxlength="16" type="password"  [formControl]="password" required autocomplete="false" [type]="hide ? 'password' : 'text'">
+
+        <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="hide = !hide" (mouseup)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+        <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear" (click)="password.reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
+        <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
+      </mat-form-field>
+    </mat-dialog-content>
+  </form>
+  <hr>
+  <mat-dialog-actions>
+  <button mat-raised-button color="accent">Create Account</button>
+  <button mat-button>Forgot Password</button>
+  </mat-dialog-actions>
+</div>

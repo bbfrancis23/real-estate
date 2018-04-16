@@ -3,21 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccountModule } from './account/module';
-import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { AccountDialog } from './account/dialog/dialog';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AccountService } from './account/service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AccountDialog
   ],
   imports: [
     AccountModule,
-    BrowserModule, BrowserAnimationsModule,
-    MatButtonModule, MatIconModule, MatTooltipModule
+    BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
+    MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTooltipModule
   ],
-  providers: [],
+  entryComponents: [AccountDialog],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

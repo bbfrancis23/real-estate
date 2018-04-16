@@ -16,6 +16,6 @@
   border: 1px solid grey;
 }
 
-  * { box-sizing:border-box }
-
-  body{ margin: 0px;}
+* { box-sizing:border-box }
+body{ margin: 0px;}
+button:focus{ outline: none } // TODO Change outline for round buttons
