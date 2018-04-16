@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, DialogPosition } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { AccountDialog } from './account/dialog/dialog';
 
 @Component({
@@ -9,9 +9,10 @@ import { AccountDialog } from './account/dialog/dialog';
 })
 export class AppComponent {
 
-  constructor(public dialog: MatDialog) { }
+  private readonly BUTTON_SPACING = '20px';
+  constructor(protected dialog: MatDialog) { }
 
   openAccountDialog() {
-    let dialogRef = this.dialog.open(AccountDialog, { position: { top: '20px', right: '20px' } });
+    let dialogRef = this.dialog.open(AccountDialog, { position: { top: this.BUTTON_SPACING, right: this.BUTTON_SPACING } });
   }
 }

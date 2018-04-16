@@ -1,6 +1,9 @@
+$button-spacing: 20px;
+$fixed-button-layer: 1;
+
 button#account{
   position:  fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
+  top: $button-spacing;
+  right: $button-spacing;
+  z-index: $fixed-button-layer;
 }
