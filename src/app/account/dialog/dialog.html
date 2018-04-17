@@ -14,9 +14,9 @@
       <br>
 
       <mat-form-field hintLabel="4 - 16 characters N0 spaces">
-        <input matInput #input placeholder="Password" maxlength="16" type="password" formControlName="password"  required autocomplete="false" [type]="hidePassword ? 'password' : 'text'">
+        <input matInput #input placeholder="Password" maxlength="16" formControlName="password"  required autocomplete="false" [type]="inputType">
 
-        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="hidePassword = !hidePassword" (mouseup)="hidePassword = !hidePassword">
+        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
           <mat-icon>{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
         </button>
         <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Clear" (click)="passwordFC.reset()">
@@ -34,6 +34,6 @@
   <mat-dialog-actions>
   <button mat-raised-button color="accent" (click)="tradeActions()">{{altAction}}</button>
   <button mat-button>FORGOT PASSWORD</button>
-  <button mat-button>CANCEL</button>
+  <button mat-button mat-dialog-close>CANCEL</button>
   </mat-dialog-actions>
 </div>

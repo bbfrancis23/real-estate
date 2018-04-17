@@ -15,10 +15,11 @@ export class AccountDialog {
 
   private readonly LOGIN = "SIGN IN";
   private readonly CREATE = "NEW ACCOUNT";
+  private readonly RESET_PASSWORD = "RESET PASSWORD";
 
   private action = this.LOGIN;
   private altAction: String = this.CREATE;
-  private hidePassword = true;
+  private _inputType = 'password';
 
   private readonly accountForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -63,4 +64,7 @@ export class AccountDialog {
       this.altAction = CREATE;
     }
   }
+
+  set inputType(s: string) { this._inputType = s }
+  get inputType() { return this._inputType }
 }
