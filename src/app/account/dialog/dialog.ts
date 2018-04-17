@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
 
 "use strict";
@@ -8,28 +8,59 @@ import { AccountService } from '../service';
   selector: 'account-dialog',
   templateUrl: 'dialog.html',
   styleUrls: ['dialog.scss']
-
 })
 export class AccountDialog {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.minLength(this.accountService.PASSWORD.min), Validators.maxLength(this.accountService.PASSWORD.max), Validators.pattern(this.accountService.PASSWORD.pattern)]);
-  hide = true;
 
-  getEmailError() {
-    return this.email.hasError('required') ? 'You must enter a value' : this.email.hasError('email') ? 'Not a valid email' : '';
+  private readonly PASSWORD = this.accountService.PASSWORD;
+
+  private readonly LOGIN = "SIGN IN";
+  private readonly CREATE = "NEW ACCOUNT";
+
+  private action = this.LOGIN;
+  private altAction: String = this.CREATE;
+  private hidePassword = true;
+
+  private readonly accountForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
+  });
+
+  private readonly emailFC = this.accountForm.controls.email;
+  private readonly passwordFC = this.accountForm.controls.password;
+
+
+
+  constructor(protected accountService: AccountService) { }
+
+  clicky() {
+    console.log(this.accountForm.valid);
   }
 
-  constructor(public accountService: AccountService) {
-
+  private getEmailError() {
+    return this.emailFC.hasError('required') ? 'You must enter a value'
+      : this.emailFC.hasError('email') ? 'Not a valid email' : '';
   }
 
+  private getPasswordError() {
 
+    let password = this.passwordFC;
 
-  getPasswordError() {
+    return password.hasError('required') ? 'You must enter a value.'
+      : password.hasError('pattern') ? 'Not a valid password.'
+        : password.hasError('minlength') ? `You must enter at least ${this.PASSWORD.min} characters.`
+          : password.hasError('maxlength') ? 'Too long.' : '';
+  }
 
-    return this.password.hasError('required') ? 'You must enter a value.'
-      : this.password.hasError('pattern') ? 'Not a valid password.'
-        : this.password.hasError('minlength') ? `You must enter at least ${this.accountService.PASSWORD.min} characters.`
-          : this.password.hasError('maxlength') ? 'Too long.' : '';
+  private tradeActions() {
+    let LOGIN = this.LOGIN,
+      CREATE = this.CREATE;
+
+    if (this.action === LOGIN) {
+      this.action = CREATE;
+      this.altAction = LOGIN;
+    } else {
+      this.action = LOGIN;
+      this.altAction = CREATE;
+    }
   }
 }

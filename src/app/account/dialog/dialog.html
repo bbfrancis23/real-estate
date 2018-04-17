@@ -1,36 +1,39 @@
-<div>
-  <span mat-dialog-title>Account {{login}}</span>
-  <form>
+<div class="dialog-container">
+  <span mat-dialog-title (click)="clicky()">{{action}}</span>
+  <form [formGroup]="accountForm">
     <mat-dialog-content>
       <mat-form-field>
-        <input matInput type="text" placeholder="Email" type="Email" [formControl]="email" required autocomplete="true"/>
+        <input matInput type="text" placeholder="Email" type="Email"  formControlName="email" required autocomplete="true"/>
 
-        <button mat-button *ngIf="email.value" matSuffix mat-icon-button aria-label="Clear" (click)="email.reset()">
+        <button mat-button *ngIf="emailFC.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailFC.reset()">
           <mat-icon>close</mat-icon>
         </button>
 
-        <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
-
+        <mat-error *ngIf="emailFC.invalid">{{getEmailError()}}</mat-error>
       </mat-form-field>
       <br>
 
       <mat-form-field hintLabel="4 - 16 characters N0 spaces">
-        <input matInput #input placeholder="Password" maxlength="16" type="password"  [formControl]="password" required autocomplete="false" [type]="hide ? 'password' : 'text'">
+        <input matInput #input placeholder="Password" maxlength="16" type="password" formControlName="password"  required autocomplete="false" [type]="hidePassword ? 'password' : 'text'">
 
-        <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="hide = !hide" (mouseup)="hide = !hide">
-          <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="hidePassword = !hidePassword" (mouseup)="hidePassword = !hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
         </button>
-        <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear" (click)="password.reset()">
+        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Clear" (click)="passwordFC.reset()">
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
+        <mat-error *ngIf="passwordFC.invalid">{{getPasswordError()}}</mat-error>
         <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
       </mat-form-field>
+      <br><br>
     </mat-dialog-content>
+    <button class="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid">{{action}}</button>
+
   </form>
   <hr>
   <mat-dialog-actions>
-  <button mat-raised-button color="accent">Create Account</button>
-  <button mat-button>Forgot Password</button>
+  <button mat-raised-button color="accent" (click)="tradeActions()">{{altAction}}</button>
+  <button mat-button>FORGOT PASSWORD</button>
+  <button mat-button>CANCEL</button>
   </mat-dialog-actions>
 </div>
