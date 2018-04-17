@@ -1,5 +1,25 @@
+@import "cobra-kai-theme.scss";
+@import "corp-theme.scss";
+@import '~@angular/material/theming';
+@include mat-core();
+
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+@import "app/aeo/side-drawer/side-drawer-theme.scss";
+
+@mixin custom-components-theme($theme){
+  @include side-drawer-theme($theme);
+}
+
+.corp-theme{
+  @include angular-material-theme($corp-theme);
+  @include custom-components-theme($corp-theme);
+}
+
+.cobra-kai-theme{
+  @include angular-material-theme($cobra-kai-theme);
+  @include custom-components-theme($cobra-kai-theme);
+}
 
 // CHROM SCROLLBAR //
 
@@ -11,3 +31,7 @@
 * { box-sizing:border-box }
 body{ margin: 0px }
 button:focus{ outline: none }
+
+body.cobra-kai-theme{
+  background-color: #303030;
+}

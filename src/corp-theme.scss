@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$corp-theme-primary: mat-palette($mat-blue-grey);
+$corp-theme-accent: mat-palette($mat-grey);
+$corp-theme-warn: mat-palette($mat-red);
+
+$corp-theme: mat-light-theme( $corp-theme-primary, $corp-theme-accent, $corp-theme-warn);

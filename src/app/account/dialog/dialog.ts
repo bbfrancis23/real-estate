@@ -61,6 +61,8 @@ export class AccountDialog {
       this.action = LOGIN;
       this.altAction = CREATE;
     }
+
+    this.accountForm.reset();
   }
 
   private set inputType(s: string) { this._inputType = s }
@@ -69,5 +71,6 @@ export class AccountDialog {
   setActionResetPassword() {
     this.action = this.RESET_PASSWORD;
     this.accountForm.removeControl('password');
+    this.accountForm.reset();
   }
 }

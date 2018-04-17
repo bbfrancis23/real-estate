@@ -17,6 +17,7 @@ import { AccountService } from './account/service';
   ],
   imports: [
     AccountModule,
+    AeoModule,
     BrowserModule,
     FormsModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTooltipModule,

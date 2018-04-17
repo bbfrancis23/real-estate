@@ -3,7 +3,7 @@
   <form  [formGroup]="accountForm">
     <mat-dialog-content>
       <mat-form-field>
-        <input matInput type="text" placeholder="Email" type="Email"  formControlName="email" required autocomplete="true"/>
+        <input matInput type="text" placeholder="Email" type="Email"  formControlName="email" required autocomplete="true" />
 
         <button mat-button *ngIf="emailFC.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailFC.reset()">
           <mat-icon>close</mat-icon>
