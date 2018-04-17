@@ -7,14 +7,14 @@ div.dialog-container{
 
   .submit{
     width: 100%;
+    margin-top: 25px;
   }
 
-  mat-dialog-actions{
-    display: flex;
- align-items: center;
- justify-content: space-around;
+  div.alt-actions{
+    text-align: center;
+
    button{
-     width: 150px;
+     width: 155px;
      margin-bottom: 5px;
    }
   }

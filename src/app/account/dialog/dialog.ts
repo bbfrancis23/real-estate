@@ -29,8 +29,6 @@ export class AccountDialog {
   private readonly emailFC = this.accountForm.controls.email;
   private readonly passwordFC = this.accountForm.controls.password;
 
-
-
   constructor(protected accountService: AccountService) { }
 
   clicky() {
@@ -65,6 +63,11 @@ export class AccountDialog {
     }
   }
 
-  set inputType(s: string) { this._inputType = s }
-  get inputType() { return this._inputType }
+  private set inputType(s: string) { this._inputType = s }
+  private get inputType() { return this._inputType }
+
+  setActionResetPassword() {
+    this.action = this.RESET_PASSWORD;
+    this.accountForm.removeControl('password');
+  }
 }
