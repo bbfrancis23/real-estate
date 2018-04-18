@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
-import { CapitalizePipe } from './capitalize/capitalize.pipe';
+import { UrlDecodePipe } from './url-decode/pipe';
 import { AeoSideDrawer } from './side-drawer/side-drawer';
 
 @NgModule({
@@ -9,7 +9,7 @@ import { AeoSideDrawer } from './side-drawer/side-drawer';
     CommonModule,
     MatButtonModule, MatIconModule, MatTooltipModule
   ],
-  declarations: [AeoSideDrawer, CapitalizePipe],
-  exports: [AeoSideDrawer, CapitalizePipe]
+  declarations: [AeoSideDrawer, UrlDecodePipe],
+  exports: [AeoSideDrawer, UrlDecodePipe]
 })
 export class AeoModule { }

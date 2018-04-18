@@ -12,11 +12,10 @@ import { AppService } from '../app.service';
       <p>Choose a Theme</p>
       <ul>
         <span *ngFor="let theme of appService.themes; let i = index">
-          <li class="settings-item" [id]="theme+'-theme-select'" (click)="updateTheme(theme)" matTooltip="{{theme | capitalize}}"></li>
+          <li class="settings-item" [id]="theme+'-theme-select'" (click)="updateTheme(theme)" matTooltip="{{theme | urldecode:true}}"></li>
           <br *ngIf="i===3">
         </span>
       </ul>
-      <p>Choose a Photo</p>
     </mat-dialog-content>
     <button mat-mini-fab [mat-dialog-close]="true"><mat-icon aria-label="Okay">check</mat-icon></button>
   </div>`,
