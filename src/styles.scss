@@ -1,7 +1,7 @@
-@import "cobra-kai-theme.scss";
-@import "corp-theme.scss";
-@import "pink-lemonaid-theme.scss";
-@import "electric-blue-theme.scss";
+@import "/themes/cobra-kai.scss";
+@import "/themes/corporation.scss";
+@import "/themes/pink-lemonaid.scss";
+@import "/themes/electric-blue.scss";
 @import '~@angular/material/theming';
 @include mat-core();
 
@@ -34,7 +34,6 @@
   @include custom-components-theme($electric-blue-theme);
 }
 
-
 // CHROM SCROLLBAR //
 
 ::-webkit-scrollbar { width: 5px }
@@ -47,5 +46,5 @@ body{ margin: 0px }
 button:focus{ outline: none }
 
 body.cobra-kai-theme, body.electric-blue-theme{
-  background-color: #303030;
+  background-color: #212121;
 }
