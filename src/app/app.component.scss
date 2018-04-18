@@ -1,10 +1,17 @@
 $button-spacing: 20px;
 $fixed-button-layer: 1;
-$drawer-width: 225px;
+$button-size: 50px;
 
 button#account{
   position:  fixed;
   top: $button-spacing;
   right: $button-spacing;
+  z-index: $fixed-button-layer;
+}
+
+#settings{
+  position: fixed;
+  top: $button-spacing;
+  left: ($button-spacing + $button-size +$button-spacing);
   z-index: $fixed-button-layer;
 }

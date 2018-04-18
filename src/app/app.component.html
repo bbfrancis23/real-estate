@@ -1,5 +1,8 @@
-<aeo-side-drawer id="left-drawer">
-</aeo-side-drawer>
+<aeo-side-drawer id="left-drawer"></aeo-side-drawer>
+
+<button id="settings"  mat-fab (click)="openDialog()" matTooltipShowDelay="1000" matTooltip="App Settings">
+  <mat-icon>settings</mat-icon>
+</button>
 
 <button id="account" mat-fab matTooltipShowDelay="1000" matTooltip="Account" (click)="openAccountDialog()">
   <mat-icon>account_circle</mat-icon>
