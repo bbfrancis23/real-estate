@@ -15,3 +15,7 @@ button#account{
   left: ($button-spacing + $button-size +$button-spacing);
   z-index: $fixed-button-layer;
 }
+
+:export{
+  buttonSpacing: $button-spacing;
+}

@@ -8,12 +8,13 @@ import { SettingsDialog } from './settings-dialog/settings-dialog';
 @Component({
   selector: 'app-root',
   templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+  styleUrls: ['./styles.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  private readonly BUTTON_SPACING = '20px';
-  lastTheme = 'cobra-kai-theme';
+  private readonly BUTTON_SPACING = '20';
+  private readonly BUTTON_SIZE = '50';
+  private lastTheme = 'cobra-kai-theme';
 
   themeSub = this.appService.currentTheme.subscribe(theme => {
     this.overlayContainer.getContainerElement().classList.remove(this.lastTheme);
@@ -31,12 +32,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   openSettingsDialog() {
-    let dialogRef = this.dialog.open(SettingsDialog, { width: '250px', position: { top: '20px', left: '90px' } });
+    let dialogRef = this.dialog.open(SettingsDialog, { width: '250px', position: { top: this.BUTTON_SPACING, left: (this.BUTTON_SPACING + this.BUTTON_SIZE + this.BUTTON_SPACING) } });
   }
 
   ngOnInit() {
-    this.overlayContainer.getContainerElement().classList.add('cobra-kai-theme');
-    document.body.classList.add('mat-app-background', 'cobra-kai-theme');
+    this.overlayContainer.getContainerElement().classList.add(this.appService.defaultTheme);
+    document.body.classList.add('mat-app-background', this.appService.defaultTheme);
   }
 
   ngOnDestroy() {

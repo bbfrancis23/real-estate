@@ -7,7 +7,9 @@ export class AppService {
 
   themes = ['cobra-kai', 'corporation', 'electric-blue', 'pink-lemonaid'];
 
-  private readonly themeSource = new BehaviorSubject<string>('cobra-kai-theme');
+  defaultTheme = 'electric-blue-theme';
+
+  private readonly themeSource = new BehaviorSubject<string>(this.defaultTheme);
   readonly currentTheme = this.themeSource.asObservable();
   public changeTheme(theme: string) { this.themeSource.next(theme) }
 
