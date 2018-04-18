@@ -13,7 +13,7 @@
   @include side-drawer-theme($theme);
 }
 
-.corp-theme{
+.corporation-theme{
   @include angular-material-theme($corp-theme);
   @include custom-components-theme($corp-theme);
 }
@@ -48,3 +48,8 @@ button:focus{ outline: none }
 body.cobra-kai-theme, body.electric-blue-theme{
   background-color: #212121;
 }
+
+#cobra-kai-theme-select{ background-color: #FFFF00 }
+#corporation-theme-select{ background-color: #607D8B }
+#electric-blue-theme-select{ background-color: #18FFFF }
+#pink-lemonaid-theme-select{ background-color: #F06292 }

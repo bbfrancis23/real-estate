@@ -12,16 +12,7 @@ div{
       display: inline-block;
       cursor: pointer;
       border-radius: 50%;
-      transition: .5s;
-
-      &#beach-theme-select{ background: #BCAAA4}
-      &#tropical-theme-select{ background:#03A9F4}
-      &#midnight-theme-select{ background:#512DA8 }
-      &#arizona-theme-select{background: #8D6E63 }
-      &#pirate-theme-select{background: #212121}
-      &#corp-theme-select{background: #607D8B}
-      &#tech-theme-select{background: #1DE9B6}
-      &#lush-theme-select{background: #2E7D32}
+      transition: .5s;      
 
       &:hover{ transform: scale(1.2) }
 
