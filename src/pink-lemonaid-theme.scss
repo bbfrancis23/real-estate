@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$pink-lemonaid-theme-primary: mat-palette($mat-pink, 300, 200, 600);
+$pink-lemonaid-theme-accent: mat-palette($mat-grey, 700, 600, 800 );
+$pink-lemonaid-theme-warn: mat-palette($mat-red);
+
+$pink-lemonaid-theme: mat-light-theme( $pink-lemonaid-theme-primary, $pink-lemonaid-theme-accent, $pink-lemonaid-theme-warn);

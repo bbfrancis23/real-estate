@@ -1,5 +1,7 @@
 @import "cobra-kai-theme.scss";
 @import "corp-theme.scss";
+@import "pink-lemonaid-theme.scss";
+@import "electric-blue-theme.scss";
 @import '~@angular/material/theming';
 @include mat-core();
 
@@ -21,6 +23,17 @@
   @include custom-components-theme($cobra-kai-theme);
 }
 
+
+.pink-lemonaid-theme{
+  @include angular-material-theme($pink-lemonaid-theme);
+  @include custom-components-theme($pink-lemonaid-theme);
+}
+
+.electric-blue-theme{
+  @include angular-material-theme($electric-blue-theme);
+  @include custom-components-theme($electric-blue-theme);
+}
+
 // CHROM SCROLLBAR //
 
 ::-webkit-scrollbar { width: 5px }
@@ -32,6 +45,6 @@
 body{ margin: 0px }
 button:focus{ outline: none }
 
-body.cobra-kai-theme{
+body.cobra-kai-theme, body.electric-blue-theme{
   background-color: #303030;
 }

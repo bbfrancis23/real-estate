@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$electric-blue-theme-primary: mat-palette($mat-cyan, A200, A100, A400);
+$electric-blue-theme-accent: mat-palette($mat-blue, A700, A400, 900);
+$electric-blue-theme-warn: mat-palette($mat-red);
+
+$electric-blue-theme: mat-dark-theme( $electric-blue-theme-primary, $electric-blue-theme-accent, $electric-blue-theme-warn);
