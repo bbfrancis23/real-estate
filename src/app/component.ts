@@ -2,13 +2,13 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AccountDialog } from './account/dialog/dialog';
-import { AppService } from './app.service';
+import { AppService } from './service';
 import { SettingsDialog } from './settings-dialog/settings-dialog';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
 
