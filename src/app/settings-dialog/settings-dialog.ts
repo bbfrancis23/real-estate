@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from '../../app.service';
+import { AppService } from '../app.service';
 
 "use strict";
 
@@ -17,10 +17,6 @@ import { AppService } from '../../app.service';
         </span>
       </ul>
       <p>Choose a Photo</p>
-      <ul>
-        <li class="settings-item" *ngFor="let img of appService.profileImg; let i = index" (click)="updateProfileImage(i)"><img [src]="img"></li>
-      </ul>
-      <br>
     </mat-dialog-content>
     <button mat-mini-fab [mat-dialog-close]="true"><mat-icon aria-label="Okay">check</mat-icon></button>
   </div>`,
@@ -31,11 +27,5 @@ export class SettingsDialog {
 
   updateTheme(theme: string) {
     this.appService.changeTheme(theme + '-theme');
-    this.appService.hero = `${this.appService.imgDir}theme/background/${theme}.jpg`;
-  }
-
-  updateProfileImage(i: number) {
-    this.appService.profileImgIndex = i;
-    this.appService.changeprofileImg();
   }
 }
