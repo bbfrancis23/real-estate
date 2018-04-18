@@ -1,7 +1,8 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AccountDialog } from './account/dialog/dialog';
+import { AppService } from './app.service';
 import { SettingsDialog } from './settings-dialog/settings-dialog';
 
 @Component({
@@ -9,10 +10,21 @@ import { SettingsDialog } from './settings-dialog/settings-dialog';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   private readonly BUTTON_SPACING = '20px';
-  constructor(protected dialog: MatDialog, private overlayContainer: OverlayContainer) { }
+  lastTheme = 'cobra-kai-theme';
+
+  themeSub = this.appService.currentTheme.subscribe(theme => {
+    this.overlayContainer.getContainerElement().classList.remove(this.lastTheme);
+    document.body.classList.remove(this.lastTheme);
+
+    this.lastTheme = theme;
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    document.body.classList.add(theme);
+  });
+
+  constructor(protected dialog: MatDialog, private overlayContainer: OverlayContainer, public appService: AppService) { }
 
   openAccountDialog() {
     let dialogRef = this.dialog.open(AccountDialog, { position: { top: this.BUTTON_SPACING, right: this.BUTTON_SPACING } });
@@ -25,5 +37,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.overlayContainer.getContainerElement().classList.add('cobra-kai-theme');
     document.body.classList.add('mat-app-background', 'cobra-kai-theme');
+  }
+
+  ngOnDestroy() {
+    this.themeSub.unsubscribe();
   }
 }

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class AppService {
 
-  themes = ['cobra-kai', 'corp', 'elecric-blue', 'pink-lemonaid'];
+  themes = ['cobra-kai', 'corp', 'electric-blue', 'pink-lemonaid'];
 
   private readonly themeSource = new BehaviorSubject<string>('cobra-kai-theme');
   readonly currentTheme = this.themeSource.asObservable();
