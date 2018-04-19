@@ -6,28 +6,28 @@ import { AccountService } from '../service';
 
 @Component({
   selector: 'account-dialog',
-  templateUrl: 'dialog.html',
-  styleUrls: ['dialog.scss']
+  templateUrl: 'component.html',
+  styleUrls: ['styles.scss']
 })
 export class AccountDialog {
 
-  private readonly PASSWORD = this.accountService.PASSWORD;
+  readonly PASSWORD = this.accountService.PASSWORD;
 
-  private readonly LOGIN = "SIGN IN";
-  private readonly CREATE = "NEW ACCOUNT";
-  private readonly RESET_PASSWORD = "RESET PASSWORD";
+  readonly LOGIN = "SIGN IN";
+  readonly CREATE = "NEW ACCOUNT";
+  readonly RESET_PASSWORD = "RESET PASSWORD";
 
-  private action = this.LOGIN;
-  private altAction: String = this.CREATE;
+  action = this.LOGIN;
+  altAction: String = this.CREATE;
   private _inputType = 'password';
 
-  private readonly accountForm = new FormGroup({
+  readonly accountForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
   });
 
-  private readonly emailFC = this.accountForm.controls.email;
-  private readonly passwordFC = this.accountForm.controls.password;
+  readonly emailFC = this.accountForm.controls.email;
+  readonly passwordFC = this.accountForm.controls.password;
 
   constructor(protected accountService: AccountService) { }
 
@@ -35,12 +35,12 @@ export class AccountDialog {
     console.log(this.accountForm.valid);
   }
 
-  private getEmailError() {
+  getEmailError() {
     return this.emailFC.hasError('required') ? 'You must enter a value'
       : this.emailFC.hasError('email') ? 'Not a valid email' : '';
   }
 
-  private getPasswordError() {
+  getPasswordError() {
 
     let password = this.passwordFC;
 
@@ -50,7 +50,7 @@ export class AccountDialog {
           : password.hasError('maxlength') ? 'Too long.' : '';
   }
 
-  private tradeActions() {
+  tradeActions() {
     let LOGIN = this.LOGIN,
       CREATE = this.CREATE;
 
@@ -65,8 +65,8 @@ export class AccountDialog {
     this.accountForm.reset();
   }
 
-  private set inputType(s: string) { this._inputType = s }
-  private get inputType() { return this._inputType }
+  set inputType(s: string) { this._inputType = s }
+  get inputType() { return this._inputType }
 
   setActionResetPassword() {
     this.action = this.RESET_PASSWORD;
