@@ -5,6 +5,8 @@ import { AccountDialog } from './account/dialog/dialog';
 import { AppService } from './service';
 import { SettingsDialog } from './settings-dialog/settings-dialog';
 
+'use strict';
+
 @Component({
   selector: 'app-root',
   templateUrl: './component.html',
@@ -12,8 +14,9 @@ import { SettingsDialog } from './settings-dialog/settings-dialog';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  private readonly BUTTON_SPACING = '20';
-  private readonly BUTTON_SIZE = '50';
+  private readonly BUTTON_SPACING = 20;
+  private readonly BUTTON_SIZE = 50;
+  private readonly ACCOUNT_DIALOG_SIZE = '250px'
   private lastTheme = 'cobra-kai-theme';
 
   themeSub = this.appService.currentTheme.subscribe(theme => {
@@ -28,11 +31,12 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(protected dialog: MatDialog, private overlayContainer: OverlayContainer, public appService: AppService) { }
 
   openAccountDialog() {
-    let dialogRef = this.dialog.open(AccountDialog, { position: { top: this.BUTTON_SPACING, right: this.BUTTON_SPACING } });
+    let dialogRef = this.dialog.open(AccountDialog, { position: { top: `${this.BUTTON_SPACING}px`, right: `${this.BUTTON_SPACING}px` } });
   }
 
   openSettingsDialog() {
-    let dialogRef = this.dialog.open(SettingsDialog, { width: '250px', position: { top: this.BUTTON_SPACING, left: (this.BUTTON_SPACING + this.BUTTON_SIZE + this.BUTTON_SPACING) } });
+    let left = (this.BUTTON_SPACING + this.BUTTON_SIZE + this.BUTTON_SPACING);
+    let dialogRef = this.dialog.open(SettingsDialog, { width: '250px', position: { top: `${this.BUTTON_SPACING}px`, left: '90px' } });
   }
 
   ngOnInit() {

@@ -7,12 +7,8 @@ export class UrlDecodePipe implements PipeTransform {
 
   transform(value: any, words: boolean) {
 
-
-
     if (value) {
       value = value.replace(/\-/g, ' ');
-
-      console.log(value);
       if (words) {
         return value.replace(/\b\w/g, first => first.toLocaleUpperCase());
       } else {

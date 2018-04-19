@@ -9,7 +9,7 @@ export class AppService {
 
   defaultTheme = 'electric-blue-theme';
 
-  private readonly themeSource = new BehaviorSubject<string>(this.defaultTheme);
+  readonly themeSource = new BehaviorSubject<string>(this.defaultTheme);
   readonly currentTheme = this.themeSource.asObservable();
   public changeTheme(theme: string) { this.themeSource.next(theme) }
 
