@@ -8,7 +8,7 @@ import { AccountDialog } from './account/dialog/dialog';
 import { AppComponent } from './component';
 import { AppService } from './service';
 import { AccountService } from './account/service';
-import { SettingsDialog } from './settings-dialog/settings-dialog';
+import { SettingsDialog } from './settings-dialog/component';
 
 'use strict';
 

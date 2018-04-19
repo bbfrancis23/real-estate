@@ -1,10 +1,10 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
-import { SettingsDialog } from './settings-dialog';
-import { AeoModule } from '../aeo/aeo.module';
-import { MatTooltipModule, MatDialogModule, MatIconModule } from '@angular/material';
-import { AppService } from '../app.service';
+import { SettingsDialog } from './component';
+import { AppService } from '../service';
+import { AppModule } from '../module';
+
 
 describe('SettingsDialog', () => {
   let component: SettingsDialog;
@@ -12,8 +12,7 @@ describe('SettingsDialog', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AeoModule, MatTooltipModule, MatDialogModule, MatIconModule],
-      declarations: [SettingsDialog],
+      imports: [AppModule],
       providers: [AppService],
     })
       .compileComponents();
@@ -29,4 +28,6 @@ describe('SettingsDialog', () => {
     expect(component).toBeTruthy();
   });
 
-});*/
+
+
+});

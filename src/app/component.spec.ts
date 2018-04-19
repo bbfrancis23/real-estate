@@ -5,7 +5,7 @@ import { MatButtonModule, MatDialogModule, MatTooltipModule, MatIconModule } fro
 import { AeoModule } from './aeo/module';
 import { AppService } from './service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SettingsDialog } from './settings-dialog/settings-dialog';
+import { SettingsDialog } from './settings-dialog/component';
 import { AppModule } from './module';
 describe('AppComponent', () => {
   beforeEach(async(() => {

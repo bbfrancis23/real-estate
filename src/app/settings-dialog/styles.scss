@@ -12,11 +12,9 @@ div{
       display: inline-block;
       cursor: pointer;
       border-radius: 50%;
-      transition: .5s;      
+      transition: .5s;
 
       &:hover{ transform: scale(1.2) }
-
-      img{ height: 50px }
     }
   }
 }
