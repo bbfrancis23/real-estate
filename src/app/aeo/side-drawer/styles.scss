@@ -1,0 +1,23 @@
+$drawer-width: 225px;
+$drawer-layer: 2;
+$button-spacing: 20px;
+
+div.aeo-sidedrawer-container{
+
+  position:fixed;
+  top: 0;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+  border-right: 1px solid grey;
+  z-index: $drawer-layer;
+  width: $drawer-width;
+  left: 0px;
+
+  &.closed{ left: -$drawer-width }
+
+  button.aeo-sidedrawer-control{
+    position: absolute;
+    top: $button-spacing;
+    left: ($drawer-width + $button-spacing);
+  }
+}

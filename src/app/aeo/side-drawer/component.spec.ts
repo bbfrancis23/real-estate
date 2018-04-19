@@ -1,9 +1,9 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { AeoSideDrawer } from './side-drawer';
+import { AeoSideDrawer } from './component';
 import { MatIconModule } from '@angular/material';
 
 export const ButtonClickEvents = {
@@ -57,10 +57,6 @@ describe('SideDrawerComponent', () => {
 
     const div = drawer.querySelector('div');
 
-    //control.triggerEventHandler('click', false);
-
-    console.log(div);
-
   });
 
-});*/
+});
