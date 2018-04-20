@@ -1,12 +1,19 @@
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
 
+mongoose.connect('mongodb://localhost/re')
+  .then(()=>console.log('connected to MongoDB...'))
+  .catch(err => console.error('Counld not connect to MongoDB...'));
+
 // Parsers
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+//app.use(bodyParser.urlencoded({ extended: false}));
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));

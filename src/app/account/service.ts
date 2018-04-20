@@ -5,4 +5,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AccountService {
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
+
+  // todo add length max for email
 }

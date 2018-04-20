@@ -6,5 +6,5 @@ export class Account {
   password: string;
   authenticateed: false;
   admin: false;
-  level: 0;
+  rank: 0;
 }
