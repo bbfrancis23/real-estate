@@ -1,12 +1,27 @@
-const Joi = require('joi');
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const http = require('http');
 const app = express();
 
-app.use(express.json());
+// Parsers
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 
-app.get('/', (req, res) => res.send('Hello World again'));
-app.get('/api/courses', (req, res)=>  res.send([1,2,3,4]));
-app.get('/api/courses/:id', (req, res) => res.send(req.params.id));
+// Angular DIST output folder
+app.use(express.static(path.join(__dirname, 'dist')));
 
+// API location
+//app.use('/api', api);
+
+// Send all other requests to the Angular app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+//Set Port
 const port = process.env.PORT || 3000;
-app.listen(3000, ()=> console.log(`Listening on port ...${port}`));
+app.set('port', port);
+const server = http.createServer(app);
+
+server.listen(port, () => console.log(`Running on localhost:${port}`));
