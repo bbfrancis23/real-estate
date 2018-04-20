@@ -2,6 +2,9 @@ const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const express = require('express');
 const mongoose = require('mongoose');
+
+const accounts = require('./server/routes/accounts');
+
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
@@ -19,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
-//app.use('/api', api);
+app.use('/api/accouts',accounts);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

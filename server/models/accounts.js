@@ -34,4 +34,4 @@ function validateAccount(account){
 }
 
 exports.Account = Account;
-export.validate = validateAccount;
+exports.validate = validateAccount;
