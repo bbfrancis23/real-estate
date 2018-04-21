@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const accounts = require('./server/routes/accounts');
+const auth = require('./server/routes/auth');
 
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
 app.use('/api/accounts',accounts);
+app.use('/api/auth',auth);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
