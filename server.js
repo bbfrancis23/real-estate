@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
-app.use('/api/accouts',accounts);
+app.use('/api/accounts',accounts);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

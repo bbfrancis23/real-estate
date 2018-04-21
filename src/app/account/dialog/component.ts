@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
 
+
+
+import { Observable } from 'rxjs';
+
+
 "use strict";
 
 @Component({
@@ -28,6 +33,8 @@ export class AccountDialog {
 
   readonly emailFC = this.accountForm.controls.email;
   readonly passwordFC = this.accountForm.controls.password;
+
+  formPending = false;
 
   constructor(protected accountService: AccountService) { }
 
@@ -72,5 +79,18 @@ export class AccountDialog {
     this.action = this.RESET_PASSWORD;
     this.accountForm.removeControl('password');
     this.accountForm.reset();
+  }
+
+  onSubmit() {
+    this.formPending = true;
+    setTimeout(() => {
+
+      this.accountService.createAccount(this.accountForm.value).then((response) => {
+        console.log(response);
+        this.formPending = false;
+      });
+
+    }, 10000);
+
   }
 }

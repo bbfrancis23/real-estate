@@ -1,6 +1,6 @@
 <div class="dialog-container">
   <span mat-dialog-title (click)="clicky()">{{action}}</span>
-  <form  [formGroup]="accountForm">
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
       <mat-form-field>
         <input matInput type="text" placeholder="Email" type="Email"  formControlName="email" required autocomplete="true" />
@@ -26,7 +26,7 @@
         <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
       </mat-form-field>
     </mat-dialog-content>
-    <button class="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid">{{action}}</button>
+    <button class="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid || formPending">{{action}}</button>
 
   </form>
   <hr>
