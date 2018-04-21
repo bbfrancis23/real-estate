@@ -19,5 +19,14 @@ export class AccountService {
       .catch(err => err);
 
   }
+
+  authAccount(account) {
+
+    return this.http.post('/api/auth', JSON.stringify(account), { headers: this.headers })
+      .toPromise()
+      .then(res => res.json())
+      .catch(err => err);
+
+  }
   // */
 }
