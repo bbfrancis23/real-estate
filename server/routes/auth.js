@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const {Account } = require('../models/accounts');
 const mongoose = require('mongoose');
@@ -12,13 +13,15 @@ router.post('/', async (req, res) =>{
 
   let account = await Account.findOne({ email: req.body.email });
   if(!account) return res.status(400).send('Invalid email or password');
-  
+
   const validPassword = await bcrypt.compare(req.body.password, account.password);
 
-  console.log(req.body.password, account.password);
+
   if (!validPassword) return res.status(400).send('Invalid email or password.');
 
-  res.send({email: account.email, _id: account._id});
+  const token = jwt.sign({_id: account._id}, 'meaglin');
+
+  res.send({token: token});
 });
 
 function validate(req){

@@ -15,7 +15,10 @@ export class AccountService {
 
     return this.http.post('/api/accounts', JSON.stringify(account), { headers: this.headers })
       .toPromise()
-      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res.json()
+      })
       .catch(err => err);
 
   }

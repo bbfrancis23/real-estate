@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const {Account, validate } = require('../models/accounts');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -18,7 +19,10 @@ router.post('/', async (req, res) =>{
 
   account = await account.save();
 
-  res.send({email: account.email, _id: account._id});
+  const token = jwt.sign({_id: account._id}, 'meaglin');
+
+  res.header('x-auth-token', token).send({email: account.email, _id: account._id});
+  //res.send({email: account.email, _id: account._id});
 });
 
 

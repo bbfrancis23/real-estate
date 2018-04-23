@@ -84,12 +84,19 @@ export class AccountDialog {
   onSubmit() {
     this.formPending = true;
 
-    if (this.action === 'this.LOGIN') {
+
+
+
+    if (this.action === this.LOGIN) {
+
       this.accountService.authAccount(this.accountForm.value).then((response) => {
+        console.log(response);
         this.formPending = false;
       });
     } else if (this.action === this.CREATE) {
+
       this.accountService.createAccount(this.accountForm.value).then((response) => {
+        console.log(response);
         this.formPending = false;
       });
     }
