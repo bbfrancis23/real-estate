@@ -21,7 +21,7 @@ router.post('/', async (req, res) =>{
 
   const token = jwt.sign({_id: account._id}, 'meaglin');
 
-  res.send({token: token});
+  res.send({token: token, _id: account._id});
 });
 
 function validate(req){

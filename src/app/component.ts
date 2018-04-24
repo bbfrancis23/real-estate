@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { AccountDialog } from './account/dialog/component';
 import { AppService } from './service';
 import { SettingsDialog } from './settings-dialog/component';
+import { AccountService } from './account/service';
 
 'use strict';
 
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     document.body.classList.add(theme);
   });
 
-  constructor(protected dialog: MatDialog, private overlayContainer: OverlayContainer, public appService: AppService) { }
+  constructor(protected dialog: MatDialog, private overlayContainer: OverlayContainer, public appService: AppService, public accountService: AccountService) { }
 
   openAccountDialog() {
     let dialogRef = this.dialog.open(AccountDialog, { position: { top: `${this.BUTTON_SPACING}px`, right: `${this.BUTTON_SPACING}px` } });

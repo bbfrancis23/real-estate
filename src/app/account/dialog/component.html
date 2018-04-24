@@ -1,4 +1,4 @@
-<div class="dialog-container">
+<div class="dialog-container" *ngIf="accountService.account.authenticated === false">
   <span mat-dialog-title (click)="clicky()">{{action}}</span>
   <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
@@ -27,12 +27,27 @@
       </mat-form-field>
     </mat-dialog-content>
     <button class="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid || formPending">{{action}}</button>
+    <div class="alert alert-danger" *ngIf="message">{{message}}</div>
 
   </form>
   <hr>
   <div class='alt-actions'>
-  <button mat-raised-button color="accent" (click)="tradeActions()" *ngIf="action !== RESET_PASSWORD">{{altAction}}</button>
-  <button mat-button *ngIf="action !== RESET_PASSWORD" (click)="setActionResetPassword()">FORGOT PASSWORD</button>
-  <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-raised-button color="accent" (click)="tradeActions()" *ngIf="action !== RESET_PASSWORD">{{altAction}}</button>
+    <button mat-button *ngIf="action !== RESET_PASSWORD" (click)="setActionResetPassword()">FORGOT PASSWORD</button>
+    <button mat-button mat-dialog-close>CANCEL</button>
+  </div>
 </div>
+
+<div class="dialog-container" *ngIf="accountService.account.authenticated === true">
+  <span mat-dialog-title>ACCOUNT INFORMATION</span>
+  <mat-dialog-content class="text-center">
+    <strong>bbfrancis23@gmail.com</strong><br><br>
+    <img class="img-circle" src="/assets/img/blank-profile.png" height="150px">
+  </mat-dialog-content>
+  <BR>
+  <div class='alt-actions'>
+    <button mat-raised-button color="accent" >COMPLETE PROFILE</button>
+    <button mat-button>LOG OUT</button>
+    <button mat-button mat-dialog-close>OK</button>
+  </div>
 </div>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 
 
 import { Observable } from 'rxjs';
@@ -23,6 +25,7 @@ export class AccountDialog {
   readonly RESET_PASSWORD = "RESET PASSWORD";
 
   action = this.LOGIN;
+  message = '';
   altAction: String = this.CREATE;
   private _inputType = 'password';
 
@@ -36,7 +39,8 @@ export class AccountDialog {
 
   formPending = false;
 
-  constructor(protected accountService: AccountService) { }
+  constructor(protected accountService: AccountService,
+    public dialogRef: MatDialogRef<AccountDialog>) { }
 
   clicky() {
     console.log(this.accountForm.valid);
@@ -84,14 +88,15 @@ export class AccountDialog {
   onSubmit() {
     this.formPending = true;
 
-
-
-
     if (this.action === this.LOGIN) {
 
       this.accountService.authAccount(this.accountForm.value).then((response) => {
-        console.log(response);
         this.formPending = false;
+        if (response === true) {
+        } else {
+          this.message = "Invalid Name or Password";
+        }
+
       });
     } else if (this.action === this.CREATE) {
 

@@ -1,10 +1,10 @@
 'use strict';
 
 export class Account {
-  id: number;
+  _id: string;
   email: string;
-  password: string;
-  authenticateed: false;
-  admin: false;
-  rank: 0;
+  authenticated: boolean = false;
+  admin: boolean = false;
+  rank: number = 0;
+  token: string;
 }

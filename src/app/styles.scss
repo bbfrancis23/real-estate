@@ -7,6 +7,11 @@ button#account{
   top: $button-spacing;
   right: $button-spacing;
   z-index: $fixed-button-layer;
+
+  &.empty{
+
+    opacity: .5;
+  }
 }
 
 #settings{
