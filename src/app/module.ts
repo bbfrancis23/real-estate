@@ -12,14 +12,15 @@ import { SettingsDialog } from './settings-dialog/component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './routing.module';
-
+import { DefaultComponet } from './default';
 'use strict';
 
 @NgModule({
   declarations: [
     AccountDialog,
     AppComponent,
-    SettingsDialog
+    SettingsDialog,
+    DefaultComponet,
   ],
   imports: [
     AccountModule,
