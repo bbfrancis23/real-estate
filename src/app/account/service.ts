@@ -12,7 +12,14 @@ export class AccountService {
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
 
-  constructor(readonly http: Http) { }
+  constructor(readonly http: Http) {
+    this.http.get('/api/accounts/me')
+      .toPromise()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err))
+  }
 
   account = new Account();
 

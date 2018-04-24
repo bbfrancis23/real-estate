@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const cookieParser = require( 'cookie-parser' );
 
+router.use( cookieParser() );
 
 router.post('/', async (req, res) =>{
   const { error } = validate(req.body);
@@ -19,9 +21,11 @@ router.post('/', async (req, res) =>{
 
   if (!validPassword) return res.status(400).send('Invalid email or password.');
 
-  const token = jwt.sign({_id: account._id}, 'meaglin');
+  const token = jwt.sign({_id: account._id}, 'maeglin');
 
-  res.send({token: token, _id: account._id});
+  res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 24 * 7 }).send({_id: account._id});
+
+  //res.send({token: token, _id: account._id});
 });
 
 function validate(req){
