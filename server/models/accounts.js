@@ -1,7 +1,8 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
-const Account = mongoose.model('Account', mongoose.Schema({
+const accountSchema = mongoose.Schema({
   email:{
     type: String,
     require: true,
@@ -22,12 +23,16 @@ const Account = mongoose.model('Account', mongoose.Schema({
     type: Number,
     default: 0
   }
-}));
+});
+
+accountSchema.methods.generateAuthToken = function() {
+  const token = jwt.sign({_id: this._id, admin: this.admin}, 'meaglin');
+  return token;
+}
+
+const Account = mongoose.model('Account', accountSchema);
 
 function validateAccount(account){
-
-  
-
   const schema = {
     email: Joi.string().max(255).required(),
     password: Joi.string().min(4).max(1024).required()
