@@ -6,5 +6,4 @@ export class Account {
   authenticated: boolean = false;
   admin: boolean = false;
   rank: number = 0;
-  token: string;
 }

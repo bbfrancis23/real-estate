@@ -7,3 +7,4 @@
 <button id="account" [ngClass]="{'empty': !accountService.account.authenticated}" mat-fab matTooltipShowDelay="1000" matTooltip="Account" (click)="openAccountDialog()">
   <mat-icon>account_circle</mat-icon>
 </button>
+<router-outlet ></router-outlet>

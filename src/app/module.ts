@@ -9,6 +9,9 @@ import { AppComponent } from './component';
 import { AppService } from './service';
 import { AccountService } from './account/service';
 import { SettingsDialog } from './settings-dialog/component';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppRoutingModule } from './routing.module';
 
 'use strict';
 
@@ -21,10 +24,13 @@ import { SettingsDialog } from './settings-dialog/component';
   imports: [
     AccountModule,
     AeoModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
+
   ],
   entryComponents: [AccountDialog, SettingsDialog],
   providers: [AccountService, AppService],

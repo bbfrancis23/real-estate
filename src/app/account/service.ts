@@ -10,18 +10,22 @@ import { Account } from './account'
 export class AccountService {
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
+  account = new Account();
 
 
   constructor(readonly http: Http) {
     this.http.get('/api/accounts/me')
       .toPromise()
       .then(res => {
-        console.log(res);
+        this.account.authenticated = true;
+        this.account.email = res.json().email;
+        this.account._id = res.json()._id;
+        console.log(this.account);
       })
       .catch(err => console.log(err))
   }
 
-  account = new Account();
+
 
   createAccount(account) {
 
@@ -43,7 +47,6 @@ export class AccountService {
         this.account.authenticated = true;
         this.account.email = account.email;
         this.account._id = res.json()._id;
-        this.account.token = res.json().token;
         console.log(this.account);
         return true;
 

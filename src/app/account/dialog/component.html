@@ -41,7 +41,7 @@
 <div class="dialog-container" *ngIf="accountService.account.authenticated === true">
   <span mat-dialog-title>ACCOUNT INFORMATION</span>
   <mat-dialog-content class="text-center">
-    <strong>bbfrancis23@gmail.com</strong><br><br>
+    <strong>{{accountService.account.email}}</strong><br><br>
     <img class="img-circle" src="/assets/img/blank-profile.png" height="150px">
   </mat-dialog-content>
   <BR>

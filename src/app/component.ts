@@ -5,6 +5,8 @@ import { AccountDialog } from './account/dialog/component';
 import { AppService } from './service';
 import { SettingsDialog } from './settings-dialog/component';
 import { AccountService } from './account/service';
+import { Router } from "@angular/router";
+
 
 'use strict';
 
