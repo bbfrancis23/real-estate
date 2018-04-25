@@ -6,10 +6,13 @@ import { HttpModule } from '@angular/http';
 
 import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
+import { MediaViewPort } from '../aeo/media-view-port/component';
+import { AeoModule } from '../aeo/module';
+
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule, HttpModule, AccountRoutingModule
+    BrowserAnimationsModule, HttpModule, AccountRoutingModule, AeoModule
   ],
   declarations: [AccountComponent],
   exports: [AccountComponent]
