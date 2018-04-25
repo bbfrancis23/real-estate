@@ -5,4 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class MediaViewPort { }
+export class MediaViewPort {
+
+
+}

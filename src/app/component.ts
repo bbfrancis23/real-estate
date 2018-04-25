@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.overlayContainer.getContainerElement().classList.add(this.appService.defaultTheme);
-    document.body.classList.add('mat-app-background', this.appService.defaultTheme);
+    document.body.classList.add(this.appService.defaultTheme);
   }
 
   ngOnDestroy() {
