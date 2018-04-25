@@ -22,6 +22,11 @@ const accountSchema = mongoose.Schema({
   rank: {
     type: Number,
     default: 0
+  },
+  name:{
+    type: String,
+    required: false,
+    maxlength: 255
   }
 });
 
