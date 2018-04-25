@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { UrlDecodePipe } from './pipes/url-decode/pipe';
 import { AeoSideDrawer } from './side-drawer/component';
-import { AeoViewPort } from './view-port';
-
+import { MediaViewPort } from './media-view-port/component';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule, MatIconModule, MatTooltipModule
+
   ],
-  declarations: [AeoViewPort, AeoSideDrawer, UrlDecodePipe],
-  exports: [AeoViewPort, AeoSideDrawer, UrlDecodePipe]
+  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe],
+  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe]
 })
 export class AeoModule { }

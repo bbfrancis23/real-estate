@@ -4,15 +4,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'default',
   template: `
-  <div class="view-port-container">
-        <div class="media-wrapper">
-          <media><video src="assets/img/re.mp4" autoplay="true" loop="true" ></video></media>
-        </div>
-        <div class="view-port-content">
+    <media-view-port>
+      <media><video src="assets/img/re.mp4" autoplay="true" loop="true" ></video></media>
+      <content></content>
+    </media-view-port>
 
-        </div>
-        <div class="view-port-overlay"></div>
-      </div>
 
 
   `,
