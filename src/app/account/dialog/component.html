@@ -46,7 +46,7 @@
   </mat-dialog-content>
   <BR>
   <div class='alt-actions'>
-    <button mat-raised-button color="accent" >COMPLETE PROFILE</button>
+    <a mat-raised-button color="accent" routerLink="account" (mousedown)="dialogRef.close()" >COMPLETE PROFILE</a>
     <button mat-button>LOG OUT</button>
     <button mat-button mat-dialog-close>OK</button>
   </div>

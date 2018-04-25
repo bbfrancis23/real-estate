@@ -13,9 +13,10 @@ div.dialog-container{
   div.alt-actions{
     text-align: center;
 
-   button{
+   button, a{
      width: 155px;
      margin-bottom: 5px;
+     text-decoration: none
    }
   }
   .alert{
