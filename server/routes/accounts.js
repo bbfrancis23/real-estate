@@ -1,4 +1,4 @@
-const cookieParser = require( 'cookie-parser' );
+
 const {Account, validate } = require('../models/accounts');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -6,11 +6,16 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const auth = require('../middleware/auth');
 
-router.use( cookieParser() );
+
 
 router.get('/me', auth, async (req, res)=>{
-  const accout = await Account.findById(req.account._id).select('-password');
-  res.send(accout);
+  const account = await Account.findById(req.account._id).select('-password');
+  res.send(account);
+});
+
+router.post('/name', auth, async (req, res)=>{
+  const account = await Account.findById(req.account._id).select('-password');
+  res.send(account);
 });
 
 router.post('/', async (req, res) =>{

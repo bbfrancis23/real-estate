@@ -14,6 +14,9 @@ export class AccountService {
 
 
   constructor(readonly http: Http) {
+
+    console.log('loggin in');
+
     this.http.get('/api/accounts/me')
       .toPromise()
       .then(res => {
@@ -25,14 +28,18 @@ export class AccountService {
       .catch(err => console.log(err))
   }
 
+
   updateName(name) {
-    return this.http.post('/api/accounts/name', JSON.stringify(name), { headers: this.headers })
+
+    return this.http.post('/api/accounts/name', { name: name }, { headers: this.headers })
       .toPromise()
       .then(res => {
+        console.log(res);
         return true;
       })
       .catch(err => err);
   }
+
 
   createAccount(account) {
 

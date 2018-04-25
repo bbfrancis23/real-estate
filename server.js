@@ -5,19 +5,26 @@ const mongoose = require('mongoose');
 
 const accounts = require('./server/routes/accounts');
 const auth = require('./server/routes/auth');
-
 const bodyParser = require('body-parser');
+
 const path = require('path');
 const http = require('http');
 const app = express();
+
+const cookieParser = require( 'cookie-parser' );
 
 mongoose.connect('mongodb://localhost/re')
   .then(()=>console.log('connected to MongoDB...'))
   .catch(err => console.error('Counld not connect to MongoDB...'));
 
 // Parsers
+
+
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use( cookieParser() );
+
+
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
