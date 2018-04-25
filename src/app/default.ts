@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
   <div class="view-port-container">
         <div class="media-wrapper">
-          <media><video src="assets/img/re-short.mp4" autoplay="true" loop="true" ></video></media>
+          <media><video src="assets/img/re.mp4" autoplay="true" loop="true" ></video></media>
         </div>
         <div class="view-port-content">
 
@@ -33,13 +33,18 @@ import { Component } from '@angular/core';
           width: 100vw;
       }
       .view-port-overlay{
+
         height: 100vh;
         width: 100vw;
         position: absolute;
+        color: red;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
+        //background: #000;
+        //z-index: 2;
+        //opacity: 0.75;
       }
     `]
 })
