@@ -25,7 +25,14 @@ export class AccountService {
       .catch(err => console.log(err))
   }
 
-
+  updateName(name) {
+    return this.http.post('/api/accounts/name', JSON.stringify(name), { headers: this.headers })
+      .toPromise()
+      .then(res => {
+        return true;
+      })
+      .catch(err => err);
+  }
 
   createAccount(account) {
 
