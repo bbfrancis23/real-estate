@@ -43,11 +43,10 @@ export class AccountComponent {
   }
 
   updateName() {
-    //console.log(this.nameFG.value.nameFC);
     this.accountService.updateName(this.nameFG.value.nameFC);
   }
 
-  getAddressError() {
-    console.log(this.addressForm);
-  }
+
+
+
 }

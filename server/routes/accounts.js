@@ -20,7 +20,17 @@ router.post('/name', auth, async (req, res)=>{
     updated: Date.now()
   }).select('-password');
 
+  res.send({stataus: true});
+});
 
+router.post('/phone', auth, async (req, res)=>{
+
+  const account = await Account.findByIdAndUpdate(req.account._id,{
+    phone: req.body.phone,
+    updated: Date.now()
+  }).select('-password');
+
+  res.send({stataus: true});
 });
 
 router.post('/', async (req, res) =>{

@@ -9,6 +9,12 @@ const accountSchema = mongoose.Schema({
     maxlength: 255,
     unique: true
   },
+  phone:{
+    type: Number,
+    require: false,
+    maxlength: 10,
+    minlength: 10
+  },
   password:{
     type: String,
     required: true,

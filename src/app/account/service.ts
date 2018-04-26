@@ -43,6 +43,15 @@ export class AccountService {
       .catch(err => err);
   }
 
+  updatePhone(phone) {
+    return this.http.post('/api/accounts/phone', { phone: phone }, { headers: this.headers })
+      .toPromise()
+      .then(res => {
+        console.log(res);
+        return true;
+      })
+      .catch(err => err);
+  }
 
   createAccount(account) {
 

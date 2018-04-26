@@ -15,7 +15,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="phoneFG">
-      <form [formGroup]="phoneFG">
+      <form [formGroup]="phoneFG" (ngSubmit)="accountService.updatePhone(phoneFG.controls.phoneAreaCodeCtrl.value+phoneFG.controls.phonePreCtrl.value+phoneFG.controls.phonePostCtrl.value)">
         <ng-template matStepLabel>Enter your cell phone</ng-template>
 
           ( <mat-form-field style="width: 30px">
@@ -52,7 +52,7 @@
         <mat-form-field style="width: 20%">
           <input matInput placeholder="Zip" formControlName="zipCtrl" required>
         </mat-form-field><br>
-      
+
         <button mat-mini-fab color="primary" type="submit" matSuffix mat-icon-button [disabled]="!addressForm.valid" matStepperNext>
           <mat-icon>navigate_next</mat-icon>
         </button>
