@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AccountService } from './service';
 
@@ -13,16 +13,18 @@ import { AccountService } from './service';
 export class AccountComponent {
   isLinear = false;
   nameFG: FormGroup;
-  secondFormGroup: FormGroup;
+  phoneFG: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, public accountService: AccountService) { }
 
   ngOnInit() {
     this.nameFG = this._formBuilder.group({
-      nameFC: ['', Validators.required]
+      nameFC: ['', [Validators.required, Validators.maxLength(this.accountService.NAME.max)]]
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+    this.phoneFG = this._formBuilder.group({
+      phoneAreaCodeCtrl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
+      phonePreCtrl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
+      phonePostCtrl: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern(/^[0-9]+$/)]],
     });
   }
 

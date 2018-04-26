@@ -9,6 +9,9 @@ import { Account } from './account'
 @Injectable()
 export class AccountService {
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
+  readonly NAME = { max: 64 };
+  readonly ADDRESS = { max: 256 };
+
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
   account = new Account();
 

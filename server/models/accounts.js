@@ -27,7 +27,37 @@ const accountSchema = mongoose.Schema({
     type: String,
     required: false,
     maxlength: 255
+  },
+  updated:{
+    type: Date,
+    required: false
+  },
+  address:{
+    type: String,
+    maxlength: 1024,
+    required: false,
+  },
+  city:{
+    type: String,
+    required: false,
+    maxlength: 255,
+  },
+  state:{
+    type: String,
+    required: false,
+    maxlength: 4
+  },
+  zip:{
+    type: String,
+    required: false,
+    maxlength: 16
+  },
+  type:{
+    type: String,
+    required: true,
+    default: 'Agent'
   }
+
 });
 
 accountSchema.methods.generateAuthToken = function() {

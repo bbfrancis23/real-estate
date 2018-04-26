@@ -5,25 +5,53 @@
     <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper">
     <mat-step [stepControl]="nameFG">
       <form [formGroup]="nameFG"  (ngSubmit)="updateName()">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Enter your name</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Name" formControlName="nameFC" required>
+          <input matInput placeholder="Name" formControlName="nameFC" maxlength="accountService.NAME.max" required>
         </mat-form-field>
-        <div><button mat-raised-button matStepperNext color="primary" [disabled]="!nameFG.valid" >Next</button></div>
+        <button mat-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!nameFG.valid" matStepperNext *ngIf="nameFG.controls.nameFC.value">
+          <mat-icon>navigate_next</mat-icon>
+        </button>
       </form>
     </mat-step>
-<mat-step [stepControl]="secondFormGroup">
-  <form [formGroup]="secondFormGroup">
-    <ng-template matStepLabel>Fill out your address</ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Address" formControlName="secondCtrl" required>
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </form>
-</mat-step>
+    <mat-step [stepControl]="phoneFG">
+      <form [formGroup]="phoneFG">
+        <ng-template matStepLabel>Enter your cell phone</ng-template>
+
+          ( <mat-form-field style="width: 30px">
+            <input matInput type=tel formControlName="phoneAreaCodeCtrl" required maxlength="3" >
+          </mat-form-field> )
+
+          <mat-form-field style="width: 30px">
+            <input matInput type=tel formControlName="phonePreCtrl" required maxlength="3" >
+          </mat-form-field> -
+
+          <mat-form-field style="width: 40px">
+            <input matInput formControlName="phonePostCtrl"  type=tel required maxlength="4">
+          </mat-form-field>
+          <button mat-icon-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!phoneFG.valid" matStepperNext *ngIf="phoneFG.controls.phonePostCtrl.value">
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="addressForm">
+      <form [formGroup]="addressForm">
+        <ng-template matStepLabel>Enter your address</ng-template>
+        <mat-form-field style="width: 60%">
+          <input matInput placeholder="Address" formControlName="addressCtrl" required maxlength="accountService.ADDRESS.max" >
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 20%">
+          <input matInput placeholder="City" formControlName="cityCtrl" required>
+        </mat-form-field>
+        <mat-form-field style="width: 20%">
+          <input matInput placeholder="State" formControlName="stateCtrl" required>
+        </mat-form-field>
+        <mat-form-field style="width: 20%">
+          <input matInput placeholder="Zip" formControlName="zipCtrl" required>
+        </mat-form-field>
+      </form>
+    </mat-step>
 <mat-step>
   <ng-template matStepLabel>Done</ng-template>
   You are now done.

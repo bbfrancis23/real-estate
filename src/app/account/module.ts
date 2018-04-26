@@ -8,13 +8,19 @@ import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
 import { MediaViewPort } from '../aeo/media-view-port/component';
 import { AeoModule } from '../aeo/module';
-import { MatStepperModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatStepperModule, MatIconModule, MatInputModule, MatButtonModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule, HttpModule, AccountRoutingModule, AeoModule, MatButtonModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatInputModule
+    AccountRoutingModule,
+    AeoModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    MatButtonModule, MatInputModule, MatIconModule, MatStepperModule,
+    ReactiveFormsModule,
   ],
   declarations: [AccountComponent],
   exports: [AccountComponent]

@@ -16,7 +16,8 @@ router.get('/me', auth, async (req, res)=>{
 router.post('/name', auth, async (req, res)=>{
 
   const account = await Account.findByIdAndUpdate(req.account._id,{
-    name: req.body.name
+    name: req.body.name,
+    updated: Date.now()
   }).select('-password');
 
 
