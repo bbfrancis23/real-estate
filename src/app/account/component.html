@@ -45,14 +45,17 @@
           <input matInput placeholder="City" formControlName="cityCtrl" required>
         </mat-form-field>
         <mat-form-field style="width: 20%">
-          <mat-select placeholder="state" required>
-            <mat-option value="AZ">Arizona</mat-option>
-            <mat-option value="Ut">Utah</mat-option>
+          <mat-select placeholder="state" required formControlName="stateCtrl">
+            <mat-option *ngFor="let state of appService.states" value="{{state.abbr}}">{{state.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field style="width: 20%">
           <input matInput placeholder="Zip" formControlName="zipCtrl" required>
-        </mat-form-field>
+        </mat-form-field><br>
+      
+        <button mat-mini-fab color="primary" type="submit" matSuffix mat-icon-button [disabled]="!addressForm.valid" matStepperNext>
+          <mat-icon>navigate_next</mat-icon>
+        </button>
       </form>
     </mat-step>
     <mat-step>

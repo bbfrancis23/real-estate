@@ -33,10 +33,10 @@ export class AccountComponent {
     });
 
     this.addressForm = this._formBuilder.group({
-      addressCtrl: ['', [Validators.required]],
-      cityCtrl: ['', [Validators.required]],
+      addressCtrl: ['', [Validators.required, Validators.maxLength(this.accountService.ADDRESS.max)]],
+      cityCtrl: ['', [Validators.required, Validators.maxLength(this.accountService.CITY.max)]],
       stateCtrl: ['', [Validators.required]],
-      zipCtrl: ['', [Validators.required]],
+      zipCtrl: ['', [Validators.required, Validators.minLength(this.accountService.ZIP.min), Validators.maxLength(this.accountService.ZIP.max), Validators.pattern(this.accountService.ZIP.pattern)]],
     });
 
 
@@ -45,5 +45,9 @@ export class AccountComponent {
   updateName() {
     //console.log(this.nameFG.value.nameFC);
     this.accountService.updateName(this.nameFG.value.nameFC);
+  }
+
+  getAddressError() {
+    console.log(this.addressForm);
   }
 }
