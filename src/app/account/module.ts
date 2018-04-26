@@ -8,7 +8,7 @@ import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
 import { MediaViewPort } from '../aeo/media-view-port/component';
 import { AeoModule } from '../aeo/module';
-import { MatStepperModule, MatIconModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MatButtonModule, MatInputModule, MatIconModule, MatStepperModule,
+    MatButtonModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],
   declarations: [AccountComponent],

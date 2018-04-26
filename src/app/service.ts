@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { State } from './state';
 'use strict';
 
 @Injectable()
@@ -13,7 +15,17 @@ export class AppService {
   readonly currentTheme = this.themeSource.asObservable();
   public changeTheme(theme: string) { this.themeSource.next(theme) }
 
+  states: Array<State>;
+
   constructor() { }
+
+  getStates() {
+    if (this.states) {
+
+    } else {
+
+    }
+  }
 
   ngOnDestroy() {
   }
