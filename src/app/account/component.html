@@ -2,6 +2,10 @@
 <media-view-port>
   <media><img src="assets/img/home-for-sale.jpg"  ></media>
   <content>
+
+    <mat-card>
+      <mat-card-title>Complete Profile</mat-card-title>
+      <mat-card-content>
     <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper">
     <mat-step [stepControl]="nameFG">
       <form [formGroup]="nameFG"  (ngSubmit)="updateName()">
@@ -58,6 +62,15 @@
         </button>
       </form>
     </mat-step>
+    <mat-step optional [stepControl]="photoForm">
+      <form [formGroup]="photoForm">
+        <ng-template matStepLabel>Upload a photo</ng-template>
+        <input type="file" (change)="onFileSelected($event)">
+        <button mat-raised-button color="primary" (click)="accountService.uploadImg(selectedFile)">
+          Upload
+        </button>
+      </form>
+    </mat-step>
     <mat-step>
   <ng-template matStepLabel>Done</ng-template>
   You are now done.
@@ -67,5 +80,7 @@
   </div>
 </mat-step>
 </mat-horizontal-stepper>
+</mat-card-content>
+</mat-card>
   </content>
 </media-view-port>

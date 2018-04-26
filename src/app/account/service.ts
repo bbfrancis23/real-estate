@@ -32,6 +32,23 @@ export class AccountService {
   }
 
 
+  uploadImg(img) {
+
+    let fd = new FormData();
+    console.log(img);
+    console.log(img.name)
+    console.log(fd);
+    fd.append('image', img, img.name);
+
+    console.log(fd);
+
+    this.http.post('/api/accounts/img', fd).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
+  }
+
   updateName(name) {
 
     return this.http.post('/api/accounts/name', { name: name }, { headers: this.headers })

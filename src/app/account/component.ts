@@ -16,6 +16,9 @@ export class AccountComponent {
   nameFG: FormGroup;
   phoneFG: FormGroup;
   addressForm: FormGroup;
+  photoForm: FormGroup;
+
+  selectedFile = null;
 
   constructor(private _formBuilder: FormBuilder, public accountService: AccountService, public appService: AppService) {
     this.appService.getStates();
@@ -39,14 +42,18 @@ export class AccountComponent {
       zipCtrl: ['', [Validators.required, Validators.minLength(this.accountService.ZIP.min), Validators.maxLength(this.accountService.ZIP.max), Validators.pattern(this.accountService.ZIP.pattern)]],
     });
 
-
+    this.photoForm = this._formBuilder.group({
+      photoCtrl: ['', []]
+    });
   }
 
   updateName() {
     this.accountService.updateName(this.nameFG.value.nameFC);
   }
 
-
+  onFileSelected(e) {
+    this.selectedFile = e.target.files[0];
+  }
 
 
 }
