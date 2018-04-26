@@ -53,6 +53,26 @@ export class AccountService {
       .catch(err => err);
   }
 
+  updateAddress(address) {
+
+
+    return this.http.post('/api/accounts/address', {
+      address: {
+        address: address.addressCtrl,
+        city: address.cityCtrl,
+        state: address.stateCtrl,
+        zip: address.zipCtrl
+      }
+    }, { headers: this.headers })
+      .toPromise()
+      .then(res => {
+
+        console.log(res);
+        return true;
+      })
+      .catch(err => err);
+  }
+
   createAccount(account) {
 
     return this.http.post('/api/accounts', JSON.stringify(account), { headers: this.headers })

@@ -13,6 +13,16 @@ router.get('/me', auth, async (req, res)=>{
   res.send(account);
 });
 
+router.post('/address', auth, async (req, res) =>{
+
+  const account = await Account.findByIdAndUpdate(req.account._id,{
+    address: req.body.address,
+    updated: Date.now()
+  }).select('-password');
+
+  res.send({status: true});
+});
+
 router.post('/name', auth, async (req, res)=>{
 
   const account = await Account.findByIdAndUpdate(req.account._id,{

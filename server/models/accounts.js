@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const address = require('./address');
 
 const accountSchema = mongoose.Schema({
   email:{
@@ -38,32 +39,12 @@ const accountSchema = mongoose.Schema({
     type: Date,
     required: false
   },
-  address:{
-    type: String,
-    maxlength: 1024,
-    required: false,
-  },
-  city:{
-    type: String,
-    required: false,
-    maxlength: 255,
-  },
-  state:{
-    type: String,
-    required: false,
-    maxlength: 4
-  },
-  zip:{
-    type: String,
-    required: false,
-    maxlength: 16
-  },
   type:{
     type: String,
     required: true,
     default: 'Agent'
-  }
-
+  },
+  address: address.addressSchema
 });
 
 accountSchema.methods.generateAuthToken = function() {

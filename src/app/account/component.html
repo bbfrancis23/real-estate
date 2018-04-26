@@ -35,7 +35,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="addressForm">
-      <form [formGroup]="addressForm">
+      <form [formGroup]="addressForm" (ngSubmit)=accountService.updateAddress(addressForm.value)>
         <ng-template matStepLabel>Enter your address</ng-template>
         <mat-form-field style="width: 60%">
           <input matInput placeholder="Address" formControlName="addressCtrl" required maxlength="accountService.ADDRESS.max" >
