@@ -44,6 +44,7 @@ const accountSchema = mongoose.Schema({
     required: true,
     default: 'Agent'
   },
+  
   address: address.addressSchema
 });
 

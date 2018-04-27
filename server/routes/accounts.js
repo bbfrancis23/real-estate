@@ -6,7 +6,29 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const auth = require('../middleware/auth');
 
+const fs = require('fs');
+const multer = require('multer');
 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+
+      cb(null, './uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now()+'.jpg')
+    }
+});
+var upload = multer({storage: storage});
+
+
+
+
+router.post('/img', auth, upload.single('image'), async (req,res) =>{
+
+  console.log(req.file.filename);
+
+  res.send({status: true});
+});
 
 router.get('/me', auth, async (req, res)=>{
   const account = await Account.findById(req.account._id).select('-password');
