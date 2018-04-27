@@ -44,7 +44,11 @@ const accountSchema = mongoose.Schema({
     required: true,
     default: 'Agent'
   },
-  
+  img:{
+    type: String,
+    required: true,
+    default: '/assets/img/blank-profile.png'
+  },
   address: address.addressSchema
 });
 

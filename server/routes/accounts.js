@@ -27,6 +27,11 @@ router.post('/img', auth, upload.single('image'), async (req,res) =>{
 
   console.log(req.file.filename);
 
+  const account = await Account.findByIdAndUpdate(req.account._id,{
+    img: `/uploads/${req.file.filename}`, 
+    updated: Date.now()
+  }).select('-password');
+
   res.send({status: true});
 });
 
