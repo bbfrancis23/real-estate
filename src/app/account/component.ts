@@ -45,6 +45,18 @@ export class AccountComponent {
     this.photoForm = this._formBuilder.group({
       photoCtrl: ['', []]
     });
+
+
+
+    if (this.accountService.account.name) {
+      this.nameFG.controls.nameFC.setValue(this.accountService.account.name.toString());
+    }
+
+    if (this.accountService.account.phone) {
+      this.phoneFG.controls.phoneAreaCodeCtrl.setValue(this.accountService.account.phone.toString().substr(0, 3));
+      this.phoneFG.controls.phonePreCtrl.setValue(this.accountService.account.phone.toString().substr(3, 3));
+      this.phoneFG.controls.phonePostCtrl.setValue(this.accountService.account.phone.toString().substr(6, 4));
+    }
   }
 
   updateName() {
