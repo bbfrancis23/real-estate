@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { AppService } from '../service';
   styleUrls: ['styles.scss']
 
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit, AfterContentChecked {
   isLinear = false;
   nameFG: FormGroup;
   phoneFG: FormGroup;
@@ -48,14 +48,25 @@ export class AccountComponent {
 
 
 
+
+  }
+
+  ngAfterContentChecked() {
     if (this.accountService.account.name) {
-      this.nameFG.controls.nameFC.setValue(this.accountService.account.name.toString());
+      this.nameFG.controls.nameFC.setValue(this.accountService.account.name);
     }
 
     if (this.accountService.account.phone) {
       this.phoneFG.controls.phoneAreaCodeCtrl.setValue(this.accountService.account.phone.toString().substr(0, 3));
       this.phoneFG.controls.phonePreCtrl.setValue(this.accountService.account.phone.toString().substr(3, 3));
       this.phoneFG.controls.phonePostCtrl.setValue(this.accountService.account.phone.toString().substr(6, 4));
+    }
+
+    if (this.accountService.account.address) {
+      this.addressForm.controls.addressCtrl.setValue(this.accountService.account.address.address);
+      this.addressForm.controls.cityCtrl.setValue(this.accountService.account.address.city);
+      this.addressForm.controls.stateCtrl.setValue(this.accountService.account.address.state);
+      this.addressForm.controls.zipCtrl.setValue(this.accountService.account.address.zip);
     }
   }
 

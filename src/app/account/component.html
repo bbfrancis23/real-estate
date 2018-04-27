@@ -6,7 +6,7 @@
     <mat-card>
       <mat-card-title>Complete Profile</mat-card-title>
       <mat-card-content>
-    <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper">
+    <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper" [selectedIndex]="accountService.account.name ? accountService.account.phone ? accountService.account.address ? accountService.account.img ? 4 : 3 : 2 : 1 : 0">
     <mat-step [stepControl]="nameFG" [completed]="accountService.account.name ? true : nameFG.valid ? true : false">
       <form [formGroup]="nameFG"  (ngSubmit)="updateName()">
         <ng-template matStepLabel>Enter your name</ng-template>
@@ -18,7 +18,7 @@
         </button>
       </form>
     </mat-step>
-    <mat-step [stepControl]="phoneFG">
+    <mat-step [stepControl]="phoneFG" [completed]="accountService.account.phone ? true : phoneFG.valid ? true : false">
       <form [formGroup]="phoneFG" (ngSubmit)="accountService.updatePhone(phoneFG.controls.phoneAreaCodeCtrl.value+phoneFG.controls.phonePreCtrl.value+phoneFG.controls.phonePostCtrl.value)">
         <ng-template matStepLabel>Enter your cell phone</ng-template>
 
@@ -38,7 +38,7 @@
           </button>
       </form>
     </mat-step>
-    <mat-step [stepControl]="addressForm">
+    <mat-step [stepControl]="addressForm" [completed]="accountService.account.address ? true : addressForm.valid ? true : false">
       <form [formGroup]="addressForm" (ngSubmit)=accountService.updateAddress(addressForm.value)>
         <ng-template matStepLabel>Enter your address</ng-template>
         <mat-form-field style="width: 60%">
@@ -62,7 +62,7 @@
         </button>
       </form>
     </mat-step>
-    <mat-step optional [stepControl]="photoForm">
+    <mat-step optional [stepControl]="photoForm" [completed]="accountService.account.img ? true : false">
       <form [formGroup]="photoForm">
         <ng-template matStepLabel>Upload a photo</ng-template>
         <input type="file" (change)="onFileSelected($event)">

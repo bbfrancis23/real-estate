@@ -11,5 +11,11 @@ export class Account {
   phone: string;
   type: string;
   yourmom: string;
+  address: {
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
+  }
 
 }
