@@ -24,9 +24,10 @@ export class AccountService {
     this.http.get('/api/accounts/me')
       .toPromise()
       .then(res => {
+
+        this.account = res.json();
         this.account.authenticated = true;
-        this.account.email = res.json().email;
-        this.account._id = res.json()._id;
+        console.log(this.account);
       })
       .catch(err => console.log(err))
   }

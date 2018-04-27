@@ -6,4 +6,10 @@ export class Account {
   authenticated: boolean = false;
   admin: boolean = false;
   rank: number = 0;
+  img: string;
+  name: string;
+  phone: string;
+  type: string;
+  yourmom: string;
+
 }
