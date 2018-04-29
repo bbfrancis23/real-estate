@@ -62,7 +62,9 @@ export class AccountService {
     return this.http.post('/api/accounts/name', { name: name }, { headers: this.headers })
       .toPromise()
       .then(res => {
-        console.log(res);
+
+
+
         return true;
       })
       .catch(err => err);
@@ -83,10 +85,10 @@ export class AccountService {
 
     return this.http.post('/api/accounts/address', {
       address: {
-        address: address.addressCtrl,
-        city: address.cityCtrl,
-        state: address.stateCtrl,
-        zip: address.zipCtrl
+        address: address.address,
+        city: address.city,
+        state: address.state,
+        zip: address.zip
       }
     }, { headers: this.headers })
       .toPromise()

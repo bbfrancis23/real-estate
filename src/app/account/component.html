@@ -7,34 +7,33 @@
       <mat-card-title>Complete Profile</mat-card-title>
       <mat-card-content>
     <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper" [selectedIndex]="accountService.account.name ? accountService.account.phone ? accountService.account.address ? accountService.account.img ? 4 : 3 : 2 : 1 : 0">
-    <mat-step [stepControl]="nameFG" [completed]="accountService.account.name ? true : nameFG.valid ? true : false" editable="true">
-      <form [formGroup]="nameFG"  (ngSubmit)="updateName()">
+    <mat-step [stepControl]="nameForm" [completed]="accountService.account.name ? true : nameForm.valid ? true : false" >
+      <form [formGroup]="nameForm"  (ngSubmit)="updateName()">
         <ng-template matStepLabel>Enter your name</ng-template>
         <mat-form-field>
-          <input matInput #name type="text"  placeholder="Name" formControlName="nameFC" maxlength="accountService.NAME.max" required>
+          <input matInput #name type="text"  placeholder="Name" formControlName="name" maxlength="accountService.NAME.max" required>
         </mat-form-field>
-        <button mat-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!nameFG.valid" matStepperNext *ngIf="nameFG.controls.nameFC.value">
+        <button mat-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!nameForm.valid" matStepperNext *ngIf="nameForm.controls.name.value">
           <mat-icon>navigate_next</mat-icon>
         </button>
-        {{nameFG.controls.nameFC.hasError('required')}}
       </form>
     </mat-step>
-    <mat-step [stepControl]="phoneFG" [completed]="accountService.account.phone ? true : phoneFG.valid ? true : false">
-      <form [formGroup]="phoneFG" (ngSubmit)="accountService.updatePhone(phoneFG.controls.phoneAreaCodeCtrl.value+phoneFG.controls.phonePreCtrl.value+phoneFG.controls.phonePostCtrl.value)">
+    <mat-step [stepControl]="phoneForm" [completed]="accountService.account.phone ? true : phoneForm.valid ? true : false">
+      <form [formGroup]="phoneForm" (ngSubmit)="accountService.updatePhone(phoneForm.controls.phoneAreaCode.value+phoneForm.controls.phonePre.value+phoneForm.controls.phonePost.value)">
         <ng-template matStepLabel>Enter your cell phone</ng-template>
 
           ( <mat-form-field style="width: 30px">
-            <input matInput type=tel formControlName="phoneAreaCodeCtrl" required maxlength="3" >
+            <input matInput type=tel formControlName="phoneAreaCode" required maxlength="3" >
           </mat-form-field> )
 
           <mat-form-field style="width: 30px">
-            <input matInput type=tel formControlName="phonePreCtrl"  required maxlength="3" >
+            <input matInput type=tel formControlName="phonePre"  required maxlength="3" >
           </mat-form-field> -
 
           <mat-form-field style="width: 40px">
-            <input matInput formControlName="phonePostCtrl"  type=tel required maxlength="4" >
+            <input matInput formControlName="phonePost"  type=tel required maxlength="4" >
           </mat-form-field>
-          <button mat-icon-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!phoneFG.valid" matStepperNext *ngIf="phoneFG.controls.phonePostCtrl.value">
+          <button mat-icon-button color="primary" type="submit" matSuffix mat-icon-button [disabled]="!phoneForm.valid" matStepperNext *ngIf="phoneForm.controls.phonePost.value">
             <mat-icon>navigate_next</mat-icon>
           </button>
       </form>
@@ -43,19 +42,19 @@
       <form [formGroup]="addressForm" (ngSubmit)=accountService.updateAddress(addressForm.value)>
         <ng-template matStepLabel>Enter your address</ng-template>
         <mat-form-field style="width: 60%">
-          <input matInput placeholder="Address" formControlName="addressCtrl" required maxlength="accountService.ADDRESS.max" value="{{accountService?.account?.address?.address}}">
+          <input matInput placeholder="Address" formControlName="address" required maxlength="accountService.ADDRESS.max" >
         </mat-form-field>
         <br>
         <mat-form-field style="width: 20%">
-          <input matInput placeholder="City" formControlName="cityCtrl" required value="{{accountService?.account?.address?.city}}">
+          <input matInput placeholder="City" formControlName="city" required >
         </mat-form-field>
         <mat-form-field style="width: 20%">
-          <mat-select placeholder="state" required formControlName="stateCtrl">
-            <mat-option *ngFor="let state of appService.states" value="{{state.abbr}}"  value="{{accountService.account.address.state}}">{{state.name}}</mat-option>
+          <mat-select placeholder="state" required formControlName="state">
+            <mat-option *ngFor="let state of appService.states" value="{{state.abbr}}"  >{{state.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field style="width: 20%">
-          <input matInput placeholder="Zip" formControlName="zipCtrl" required value="{{accountService?.account?.address?.zip}}">
+          <input matInput placeholder="Zip" formControlName="zip" required >
         </mat-form-field><br>
 
         <button mat-mini-fab color="primary" type="submit" matSuffix mat-icon-button [disabled]="!addressForm.valid" matStepperNext>

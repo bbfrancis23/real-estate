@@ -1,14 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-
-
 import { Observable } from 'rxjs';
-
-
+import { Account } from '../account';
 "use strict";
 
 @Component({
@@ -16,13 +13,20 @@ import { Observable } from 'rxjs';
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AccountDialog {
+export class AccountDialog implements OnDestroy {
 
   readonly PASSWORD = this.accountService.PASSWORD;
 
   readonly LOGIN = "SIGN IN";
   readonly CREATE = "NEW ACCOUNT";
   readonly RESET_PASSWORD = "RESET PASSWORD";
+
+  account: Account;
+
+  accountSub = this.accountService.currentAccount.subscribe(account => {
+    this.account = account;
+  });
+
 
   action = this.LOGIN;
   message = '';
@@ -105,8 +109,9 @@ export class AccountDialog {
         this.formPending = false;
       });
     }
+  }
 
-
-
+  ngOnDestroy() {
+    this.accountSub.unsubscribe();
   }
 }
