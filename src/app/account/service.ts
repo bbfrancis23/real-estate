@@ -63,8 +63,10 @@ export class AccountService {
       .toPromise()
       .then(res => {
 
-
-
+        this.account = res.json();
+        this.account.authenticated = true;
+        this.account.name = name;
+        this.changeAccount(this.account);
         return true;
       })
       .catch(err => err);
@@ -74,7 +76,11 @@ export class AccountService {
     return this.http.post('/api/accounts/phone', { phone: phone }, { headers: this.headers })
       .toPromise()
       .then(res => {
-        console.log(res);
+
+        this.account = res.json();
+        this.account.authenticated = true;
+        this.account.phone = phone;
+        this.changeAccount(this.account);
         return true;
       })
       .catch(err => err);
@@ -84,17 +90,15 @@ export class AccountService {
 
 
     return this.http.post('/api/accounts/address', {
-      address: {
-        address: address.address,
-        city: address.city,
-        state: address.state,
-        zip: address.zip
-      }
+      address
     }, { headers: this.headers })
       .toPromise()
       .then(res => {
+        this.account = res.json();
+        this.account.authenticated = true;
+        this.account.address = address;
+        this.changeAccount(this.account);
 
-        console.log(res);
         return true;
       })
       .catch(err => err);
