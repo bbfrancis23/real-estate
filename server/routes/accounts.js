@@ -21,14 +21,20 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage});
 
 
-
+router.get('/logout', async(req,res)=>{
+  console.log('McFly');
+  console.log(`before ${req.cookies.token}`);
+  res.clearCookie("token");
+  console.log(`before ${req.cookies.token}`);
+  res.send({status: true});
+});
 
 router.post('/img', auth, upload.single('image'), async (req,res) =>{
 
-  console.log(req.file.filename);
+
 
   const account = await Account.findByIdAndUpdate(req.account._id,{
-    img: `/uploads/${req.file.filename}`, 
+    img: `/uploads/${req.file.filename}`,
     updated: Date.now()
   }).select('-password');
 

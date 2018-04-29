@@ -37,7 +37,7 @@ app.use('/api/auth',auth);
 
 app.get('/uploads/:img', (req, res) =>{
 
-  console.log(req.params.img);
+  //console.log(req.params.img);
   //res.send('you made it McFly');
 
   res.sendFile(path.join(__dirname, `uploads/${req.params.img}`));

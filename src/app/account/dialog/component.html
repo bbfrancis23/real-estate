@@ -16,7 +16,7 @@
       <mat-form-field hintLabel="4 - 16 characters N0 spaces" *ngIf="action !== RESET_PASSWORD">
         <input matInput #input placeholder="Password" maxlength="16" formControlName="password"  required autocomplete="false" [type]="inputType">
 
-        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Visability" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
+        <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Visability" type="button" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
           <mat-icon>{{inputType === 'text' ? 'visibility' : 'visibility_off'}}</mat-icon>
         </button>
         <button mat-button *ngIf="passwordFC.value" matSuffix mat-icon-button aria-label="Clear" (click)="passwordFC.reset()">
@@ -47,7 +47,7 @@
   <BR>
   <div class='alt-actions'>
     <a mat-raised-button color="primary" routerLink="account" (mouseup)="dialogRef.close()" >COMPLETE PROFILE</a>
-    <button mat-button>LOG OUT</button>
+    <button mat-button (click)="accountService.logout()">LOG OUT</button>
     <button mat-button mat-dialog-close>OK</button>
   </div>
 </div>

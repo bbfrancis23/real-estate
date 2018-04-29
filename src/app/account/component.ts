@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { AppService } from '../service';
   styleUrls: ['styles.scss']
 
 })
-export class AccountComponent implements OnInit, AfterContentChecked {
+export class AccountComponent implements OnInit {
   isLinear = false;
   nameFG: FormGroup;
   phoneFG: FormGroup;
@@ -20,18 +20,32 @@ export class AccountComponent implements OnInit, AfterContentChecked {
 
   selectedFile = null;
 
+
+  account: Account;
+
+  accountSub = this.accountService.currentAccount.subscribe(account => {
+    this.account = account;
+
+    if (this.nameFG) {
+      this.nameFG.controls.nameFC.setValue(this.account.name);
+    }
+
+  });
+
+
   constructor(private _formBuilder: FormBuilder, public accountService: AccountService, public appService: AppService) {
     this.appService.getStates();
   }
 
   ngOnInit() {
+
     this.nameFG = this._formBuilder.group({
-      nameFC: ['', [Validators.required, Validators.maxLength(this.accountService.NAME.max)]]
+      nameFC: [this.account.name, [Validators.required, Validators.maxLength(this.accountService.NAME.max)]]
     });
 
     this.phoneFG = this._formBuilder.group({
-      phoneAreaCodeCtrl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
-      phonePreCtrl: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
+      phoneAreaCodeCtrl: [this.accountService.account.phone ? this.accountService.account.phone.toString().substr(0, 3) : '', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
+      phonePreCtrl: [this.accountService.account.phone ? this.accountService.account.phone.toString().substr(3, 3) : '', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]],
       phonePostCtrl: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern(/^[0-9]+$/)]],
     });
 
@@ -51,24 +65,7 @@ export class AccountComponent implements OnInit, AfterContentChecked {
 
   }
 
-  ngAfterContentChecked() {
-    if (this.accountService.account.name) {
-      this.nameFG.controls.nameFC.setValue(this.accountService.account.name);
-    }
 
-    if (this.accountService.account.phone) {
-      this.phoneFG.controls.phoneAreaCodeCtrl.setValue(this.accountService.account.phone.toString().substr(0, 3));
-      this.phoneFG.controls.phonePreCtrl.setValue(this.accountService.account.phone.toString().substr(3, 3));
-      this.phoneFG.controls.phonePostCtrl.setValue(this.accountService.account.phone.toString().substr(6, 4));
-    }
-
-    if (this.accountService.account.address) {
-      this.addressForm.controls.addressCtrl.setValue(this.accountService.account.address.address);
-      this.addressForm.controls.cityCtrl.setValue(this.accountService.account.address.city);
-      this.addressForm.controls.stateCtrl.setValue(this.accountService.account.address.state);
-      this.addressForm.controls.zipCtrl.setValue(this.accountService.account.address.zip);
-    }
-  }
 
   updateName() {
     this.accountService.updateName(this.nameFG.value.nameFC);
@@ -78,5 +75,7 @@ export class AccountComponent implements OnInit, AfterContentChecked {
     this.selectedFile = e.target.files[0];
   }
 
-
+  ngOnDestroy() {
+    this.accountSub.unsubscribe();
+  }
 }

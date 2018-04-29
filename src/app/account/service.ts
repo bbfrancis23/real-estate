@@ -16,7 +16,13 @@ export class AccountService {
 
 
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
+
+
   account = new Account();
+
+  readonly accountSource = new BehaviorSubject<Account>(this.account);
+  readonly currentAccount = this.accountSource.asObservable();
+  public changeAccount(account: Account) { this.accountSource.next(account) }
 
 
   constructor(readonly http: Http) {
@@ -27,7 +33,8 @@ export class AccountService {
 
         this.account = res.json();
         this.account.authenticated = true;
-        console.log(this.account);
+
+        this.changeAccount(this.account);
       })
       .catch(err => console.log(err))
   }
@@ -103,6 +110,12 @@ export class AccountService {
 
   }
 
+  logout() {
+    this.http.get('/api/accounts/logout').toPromise().then(res => {
+      window.location.reload();
+    }).catch(err => err);
+  }
+
   authAccount(account) {
 
     return this.http.post('/api/auth', JSON.stringify(account), { headers: this.headers })
@@ -112,6 +125,7 @@ export class AccountService {
         this.account.email = account.email;
         this.account._id = res.json()._id;
         console.log(this.account);
+        window.location.reload();
         return true;
 
       }
