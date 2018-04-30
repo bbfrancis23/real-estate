@@ -65,11 +65,12 @@
     <mat-step optional [stepControl]="photoForm" [completed]="accountService.account.img ? true : false">
       <form [formGroup]="photoForm">
         <ng-template matStepLabel>Upload a photo</ng-template>
-        <input type="file" (change)="onFileSelected($event)">
-        <button mat-raised-button color="primary" (click)="accountService.uploadImg(selectedFile)">
+        <input type="file" (change)="onFileSelected($event)" #file>
+        <button mat-raised-button color="primary" (click)="accountService.uploadImg(selectedFile)" [disabled]="!selectedFile">
           Upload
         </button>
       </form>
+      <br><div class="alert alert-danger" *ngIf="imgError">{{imgError}}</div>
     </mat-step>
     <mat-step>
   <ng-template matStepLabel>Done</ng-template>

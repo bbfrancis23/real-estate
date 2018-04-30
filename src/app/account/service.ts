@@ -52,7 +52,9 @@ export class AccountService {
 
     this.http.post('/api/accounts/img', fd).subscribe(
       res => {
-        console.log(res);
+        this.account = res.json();
+        this.account.authenticated = true;
+        this.changeAccount(this.account);
       }
     );
   }

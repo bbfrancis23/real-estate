@@ -25,6 +25,8 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   account: Account;
 
+  imgError: string;
+
   accountSub = this.accountService.currentAccount.subscribe(account => {
     this.account = account;
 
@@ -83,7 +85,17 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   onFileSelected(e) {
-    this.selectedFile = e.target.files[0];
+    console.log(e.target.files[0].type);
+
+    if (e.target.files[0].type === 'image/jpeg' || e.target.files[0].type === 'image/png') {
+      this.selectedFile = e.target.files[0];
+      this.imgError = null;
+    } else {
+      this.selectedFile = null;
+      this.imgError = "Invalid File. Only use JPG or PNG";
+    }
+
+
   }
 
   ngOnDestroy() {

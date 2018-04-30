@@ -24,6 +24,8 @@ router.post('/img', auth, upload.single('image'), async (req,res) =>{
     .select('-password')
     .catch((err) =>  res.status(400).send({message: err}));
 
+
+  account.img = `/uploads/${req.file.filename}`;
   res.send(account);
 });
 
