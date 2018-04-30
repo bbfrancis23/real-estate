@@ -66,4 +66,9 @@ router.post('/', async (req, res) =>{
   res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 24 * 7 }).send({_id: account._id});
 });
 
+router.post('/promote', auth, async(req, res) =>{
+  const account = await Account.findByIdAndUpdate(req.account._id,{ rank: req.body.rank, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+  res.send(account);
+})
+
 module.exports = router;

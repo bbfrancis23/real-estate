@@ -35,6 +35,8 @@ export class AccountService {
         this.account.authenticated = true;
 
         this.changeAccount(this.account);
+
+        console.log(this.account);
       })
       .catch(err => console.log(err))
   }
@@ -139,9 +141,12 @@ export class AccountService {
       }
       )
       .catch(err => err);
+  }
 
-
-
+  promote(rank: number) {
+    this.http.post('/api/accounts/promote', { rank: rank }, { headers: this.headers }).toPromise().then(res => {
+      window.location.reload();
+    }).catch(err => console.log(err));
   }
   // */
 }

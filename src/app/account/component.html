@@ -71,14 +71,20 @@
         </button>
       </form>
       <br><div class="alert alert-danger" *ngIf="imgError">{{imgError}}</div>
+      <img [src]="account.img" height="150px"><br><br>
+      <button mat-mini-fab color="primary" type="button" matSuffix mat-icon-button [disabled]=" !account.img" matStepperNext>
+        <mat-icon>navigate_next</mat-icon>
+      </button>
     </mat-step>
     <mat-step>
   <ng-template matStepLabel>Done</ng-template>
-  You are now done.
-  <div>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="stepper.reset()">Reset</button>
-  </div>
+
+    You are now done.
+    <button mat-raised-button color="primary" type="button" [disabled]="!account.name || !account.phone || !account.address" (click)="this.accountService.promote((account.rank + 1))">
+      FINISH
+    </button>
+
+
 </mat-step>
 </mat-horizontal-stepper>
 </mat-card-content>
