@@ -4,6 +4,7 @@ import { MatButtonModule, MatDialogModule, MatIconModule, MatTooltipModule, MatI
 import { BrowserModule } from '@angular/platform-browser';
 import { AeoModule } from './aeo/module';
 import { AccountModule } from './account/module';
+import { AgentModule } from './agent/module'
 import { AccountDialog } from './account/dialog/component';
 import { AppComponent } from './component';
 import { AppService } from './service';
@@ -25,6 +26,7 @@ import { DefaultComponet } from './default';
   imports: [
     AccountModule,
     AeoModule,
+    AgentModule,
     AppRoutingModule,
     BrowserModule,
     FormsModule,

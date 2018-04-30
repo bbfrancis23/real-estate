@@ -9,7 +9,7 @@ import { State } from './state';
 export class AppService {
 
   themes = ['cobra-kai', 'corporation', 'electric-blue', 'pink-lemonaid'];
-  defaultTheme = 'cobra-kai-theme';
+  defaultTheme = 'corporation-theme';
 
   readonly themeSource = new BehaviorSubject<string>(this.defaultTheme);
   readonly currentTheme = this.themeSource.asObservable();

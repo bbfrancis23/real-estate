@@ -6,7 +6,7 @@ import { AppService } from './service';
 import { SettingsDialog } from './settings-dialog/component';
 import { AccountService } from './account/service';
 import { Router } from "@angular/router";
-
+import { Account } from './account/account';
 
 'use strict';
 
@@ -21,6 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly BUTTON_SIZE = 50;
   private readonly ACCOUNT_DIALOG_SIZE = '250px'
   private lastTheme = 'cobra-kai-theme';
+
+
 
   themeSub = this.appService.currentTheme.subscribe(theme => {
     this.overlayContainer.getContainerElement().classList.remove(this.lastTheme);
