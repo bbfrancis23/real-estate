@@ -8,9 +8,11 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @import "app/aeo/side-drawer/theme-styles.scss";
+@import "app/theme-styles.scss";
 
 @mixin custom-components-theme($theme){
   @include side-drawer-theme($theme);
+  @include app-theme($theme);
 }
 
 .corporation-theme{

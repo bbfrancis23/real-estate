@@ -10,7 +10,6 @@ export class Account {
   name: string;
   phone: string;
   type: string;
-  yourmom: string;
   address: {
     address: string;
     city: string;

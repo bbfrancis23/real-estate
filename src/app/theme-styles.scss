@@ -1,0 +1,28 @@
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+@mixin app-theme($theme){
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+
+
+    .monogram{
+      background-color: mat-color($primary);
+      color: white;
+      outline: 10px solid white;
+      font-family: 'Montserrat', sans-serif;
+      height: 225px;
+      line-height: 225px;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 75px;
+      outline-offset: -40px;
+      text-shadow: 0px 5px 3px #4d4d4d
+    }
+
+}

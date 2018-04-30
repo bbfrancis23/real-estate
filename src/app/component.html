@@ -1,4 +1,11 @@
-<aeo-side-drawer id="left-drawer"></aeo-side-drawer>
+<aeo-side-drawer #drawer id="left-drawer">
+  <div class="monogram">BF</div>
+  <mat-nav-list>
+    <mat-list-item>
+      <a (mouseup)="drawer.closed = true;"><button mat-icon-button><mat-icon>add</mat-icon></button>ADD CLIENT</a>
+    </mat-list-item>
+  </mat-nav-list>
+</aeo-side-drawer>
 
 <button id="settings"  mat-fab (click)="openSettingsDialog()" matTooltipShowDelay="1000" matTooltip="App Settings">
   <mat-icon>settings</mat-icon>
