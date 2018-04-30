@@ -5,17 +5,100 @@
     <mat-card *ngIf="account.rank >= 1">
       <mat-card-title>Profile Info</mat-card-title>
       <mat-card-content>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
         <table align="center">
           <tr>
-          <td>
-            <button mat-icon-button>
-             <mat-icon aria-label="Edit name">edit</mat-icon>
-           </button>
-          </td>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit name">edit</mat-icon>
+             </button>
+            </td>
             <td>Name:</td>
-            <td>{{account.name}}</td>
+            <td >{{account.name}}</td>
           </tr>
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit Email">edit</mat-icon>
+             </button>
+            </td>
+            <td>Email:</td>
+            <td >{{account.email}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit Phone">edit</mat-icon>
+             </button>
+            </td>
+            <td>Phone:</td>
+            <td >{{account.phone}}</td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit Address">edit</mat-icon>
+             </button>
+            </td>
+            <td>Address:</td>
+            <td >{{account.address.address}}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit City">edit</mat-icon>
+             </button>
+            </td>
+            <td>City:</td>
+            <td >{{account.address.city}}</td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit State">edit</mat-icon>
+             </button>
+            </td>
+            <td>Address:</td>
+            <td >{{account.address.state}}</td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit Zip">edit</mat-icon>
+             </button>
+            </td>
+            <td>Zip:</td>
+            <td >{{account.address.zip}}</td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-icon-button>
+               <mat-icon aria-label="Edit Password">edit</mat-icon>
+             </button>
+            </td>
+            <td>Password:</td>
+            <td ></td>
+          </tr>
+          <tr>
+            <td>
+
+            </td>
+            <td>Rank:</td>
+            <td >{{account.rank}}</td>
+          </tr>
+
         </table>
+      </div>
+      <div class="col-md-6 middle">
+        <br>
+        <img class="grot" [src]="account.img" height="300px">
+      </div>
+      </div>
+      </div>
       </mat-card-content>
     </mat-card>
     <mat-card *ngIf="account.rank < 1">
