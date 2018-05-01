@@ -14,9 +14,7 @@ export class AccountService {
   readonly CITY = { max: 32 };
   readonly ZIP = { min: 5, max: 10, pattern: /^[0-9\-]+$/ }
 
-
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
-
 
   account = new Account();
 
