@@ -25,7 +25,7 @@ import { DefaultComponet } from './default';
     AccountEntry,
     AppComponent,
     SettingsDialog,
-    DefaultComponet,
+    DefaultComponet
   ],
   imports: [
     AccountModule,

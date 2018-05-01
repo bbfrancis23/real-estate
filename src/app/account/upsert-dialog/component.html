@@ -1,8 +1,8 @@
 <div>
   <span mat-dialog-title>{{data.action}} CLIENT</span>
   <mat-dialog-content>
-    <form (ngSubmit)="submit()">
-
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    
     </form>
   </mat-dialog-content>
 </div>

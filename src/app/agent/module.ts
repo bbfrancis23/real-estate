@@ -4,15 +4,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgentComponent } from './component';
 import { AgentRoutingModule } from './routing.module';
 
-import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatFormFieldModule, MatListModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     AgentRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule
+    FormsModule,
+    MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule,
+    ReactiveFormsModule
   ],
   declarations: [AgentComponent, UpsertAccountDialog],
   entryComponents: [UpsertAccountDialog],
