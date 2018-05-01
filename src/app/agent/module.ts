@@ -6,7 +6,7 @@ import { AgentRoutingModule } from './routing.module';
 
 import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 
-import { ClientDialog } from './client-dialog/component';
+import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { ClientDialog } from './client-dialog/component';
     BrowserAnimationsModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule
   ],
-  declarations: [AgentComponent, ClientDialog],
-  entryComponents: [ClientDialog],
+  declarations: [AgentComponent, UpsertAccountDialog],
+  entryComponents: [UpsertAccountDialog],
   exports: [AgentComponent]
 
 })

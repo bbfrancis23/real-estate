@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { ClientDialog } from './client-dialog/component';
+import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
 @Component({
   selector: 'agent',
@@ -31,7 +31,7 @@ export class AgentComponent {
   }
 
   openClientDialog(action = 'NEW') {
-    let dialogRef = this.dialog.open(ClientDialog, { data: { 'action': action } });
+    let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action } });
   }
 
   ngOnDestroy(): void {

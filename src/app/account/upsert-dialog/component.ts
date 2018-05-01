@@ -7,8 +7,9 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   selector: 'client-dialog',
   templateUrl: 'component.html',
 })
-export class ClientDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log(this.data.action);
-  }
+export class UpsertAccountDialog {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
 }
