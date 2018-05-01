@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Account } from './account'
+import { FormControl, Validators } from '@angular/forms';
 
 'use strict';
 
@@ -14,6 +15,20 @@ export class AccountService {
   readonly EMAIL = { max: 256 };
   readonly CITY = { max: 32 };
   readonly ZIP = { min: 5, max: 10, pattern: /^[0-9\-]+$/ }
+
+  emailCtrl = new FormControl('', [Validators.required, Validators.email, Validators.max(this.EMAIL.max)]);
+  passwordCtrl = new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
+  nameCtrl = new FormControl('', [Validators.required, Validators.maxLength(this.NAME.max)]);
+  phoneAreaCodeCtrl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]);
+  phonePreCtrl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]);
+  phonePostCtrl = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern(/^[0-9]+$/)]);
+  addressCtrl = new FormControl('', [Validators.required, Validators.maxLength(this.ADDRESS.max)]);
+  cityCtrl = new FormControl('', [Validators.required, Validators.maxLength(this.CITY.max)]);
+  stateCtrl = new FormControl('', [Validators.required]);
+  zipCtrl = new FormControl('', [Validators.required, Validators.minLength(this.ZIP.min), Validators.maxLength(this.ZIP.max), Validators.pattern(this.ZIP.pattern)]);
+  photoCtrl = new FormControl('', []);
+
+
 
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
