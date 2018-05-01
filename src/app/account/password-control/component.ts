@@ -14,9 +14,6 @@ export class PasswordControl {
 
     let password = this.passwordCtrl;
 
-
-    console.log(password);
-
     return password.hasError('required') ? 'You must enter a value.'
       : password.hasError('pattern') ? 'Not a valid password.'
         : password.hasError('minlength') ? `Too Short.`

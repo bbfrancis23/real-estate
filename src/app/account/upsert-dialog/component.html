@@ -3,8 +3,38 @@
   <mat-dialog-content>
     <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
       <email-ctrl [emailCtrl]="accountForm.controls.email"></email-ctrl>
-      <password-ctrl [passwordCtrl]="accountForm.controls.password"></password-ctrl>
+      <password-ctrl [passwordCtrl]="accountForm.controls.password"></password-ctrl>      <mat-divider></mat-divider>
+      Optional<br>
+      <mat-form-field>
+        <input matInput #name type="text"  placeholder="Name" formControlName="name" maxlength="accountService.NAME.max">
+      </mat-form-field>
+      ( <mat-form-field style="width: 30px">
+        <input matInput type=tel formControlName="phoneAreaCode" maxlength="3" >
+      </mat-form-field> )
+
+      <mat-form-field style="width: 30px">
+        <input matInput type=tel formControlName="phonePre" maxlength="3" >
+      </mat-form-field> -
+
+      <mat-form-field style="width: 40px">
+        <input matInput formControlName="phonePost"  type=tel maxlength="4" >
+      </mat-form-field>
+
+      <mat-form-field style="width: 60%">
+        <input matInput placeholder="Address" formControlName="address" maxlength="accountService.ADDRESS.max" >
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 20%">
+        <input matInput placeholder="City" formControlName="city" >
+      </mat-form-field>
+      <mat-form-field style="width: 20%">
+        <mat-select placeholder="state"  formControlName="state">
+          <mat-option *ngFor="let state of appService.states" value="{{state.abbr}}"  >{{state.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 20%">
+        <input matInput placeholder="Zip" formControlName="zip" >
+      </mat-form-field><br>
     </form>
-    <br>
   </mat-dialog-content>
 </div>

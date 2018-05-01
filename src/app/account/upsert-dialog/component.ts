@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
-
+import { AppService } from '../../service';
 "use strict";
 
 @Component({
@@ -13,7 +13,9 @@ export class UpsertAccountDialog implements OnInit {
 
   accountForm = new FormGroup({});
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
+    appService.getStates();
+  }
 
   ngOnInit() {
     this.accountForm.addControl('email', this.accountService.emailCtrl);
