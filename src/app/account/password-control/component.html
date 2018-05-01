@@ -1,0 +1,8 @@
+<mat-form-field hintLabel="4 - 16 characters N0 spaces" >
+  <input matInput #input placeholder="Password" maxlength="16" [formControl]="passwordCtrl" required autocomplete="false" [type]="inputType">
+  <button mat-button *ngIf="passwordCtrl.value" matSuffix mat-icon-button aria-label="Visability" type="button" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
+    <mat-icon>{{inputType === 'text' ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </button>
+  <mat-error *ngIf="passwordCtrl.invalid">{{getPasswordError()}}</mat-error>
+  <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
+</mat-form-field>

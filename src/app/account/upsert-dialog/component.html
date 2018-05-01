@@ -3,6 +3,8 @@
   <mat-dialog-content>
     <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
       <email-ctrl [emailCtrl]="accountForm.controls.email"></email-ctrl>
+      <password-ctrl [passwordCtrl]="accountForm.controls.password"></password-ctrl>
     </form>
+    <br>
   </mat-dialog-content>
 </div>

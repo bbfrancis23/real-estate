@@ -13,6 +13,7 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelec
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EmailControl } from './email-control/component';
+import { PasswordControl } from './password-control/component';
 
 @NgModule({
   imports: [
@@ -24,8 +25,8 @@ import { EmailControl } from './email-control/component';
     MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],
-  declarations: [AccountComponent],
-  exports: [AccountComponent]
+  declarations: [AccountComponent, PasswordControl],
+  exports: [AccountComponent, PasswordControl]
 
 })
 export class AccountModule { }

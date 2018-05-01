@@ -11,13 +11,16 @@ import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmailControl } from '../account/email-control/component';
 
+import { AccountModule } from '../account/module';
+
 @NgModule({
   imports: [
     AgentRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AccountModule
   ],
   declarations: [AgentComponent, UpsertAccountDialog, EmailControl],
   entryComponents: [UpsertAccountDialog],
