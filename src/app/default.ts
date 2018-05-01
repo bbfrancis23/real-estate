@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
   <media-view-port>
     <media><video src="/assets/img/re.mp4" autoplay="true" loop="false" ></video></media>
-    <content></content>
+    <content> <entry></entry> </content>
   </media-view-port>
 
   `

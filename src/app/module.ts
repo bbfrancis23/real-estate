@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { AeoModule } from './aeo/module';
 import { AccountModule } from './account/module';
@@ -12,6 +12,9 @@ import { AccountService } from './account/service';
 import { SettingsDialog } from './settings-dialog/component';
 import { RouterModule, Routes } from '@angular/router';
 
+
+import { AccountEntry } from './account/entry/component';
+
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
 'use strict';
@@ -19,6 +22,7 @@ import { DefaultComponet } from './default';
 @NgModule({
   declarations: [
     AccountDialog,
+    AccountEntry,
     AppComponent,
     SettingsDialog,
     DefaultComponet,
@@ -30,7 +34,7 @@ import { DefaultComponet } from './default';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
+    MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
     ReactiveFormsModule,
     RouterModule
 
