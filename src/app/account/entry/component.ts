@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['styles.scss']
 })
 export class AccountEntry {
-  action = 'LOGIN';
 
+  readonly LOGIN = "SIGN IN";
+  readonly CREATE = "NEW ACCOUNT";
+  readonly FORGOT = "FORGOT PASSWORD"
+
+  action = this.LOGIN;
 
 }
