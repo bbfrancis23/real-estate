@@ -11,6 +11,7 @@ export class AccountService {
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
   readonly NAME = { max: 64 };
   readonly ADDRESS = { max: 256 };
+  readonly EMAIL = { max: 256 };
   readonly CITY = { max: 32 };
   readonly ZIP = { min: 5, max: 10, pattern: /^[0-9\-]+$/ }
 
