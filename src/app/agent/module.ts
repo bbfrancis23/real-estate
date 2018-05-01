@@ -9,6 +9,7 @@ import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatFor
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmailControl } from '../account/email-control/component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule,
     ReactiveFormsModule
   ],
-  declarations: [AgentComponent, UpsertAccountDialog],
+  declarations: [AgentComponent, UpsertAccountDialog, EmailControl],
   entryComponents: [UpsertAccountDialog],
   exports: [AgentComponent]
 

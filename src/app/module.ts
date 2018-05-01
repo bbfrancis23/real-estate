@@ -14,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { AccountEntry } from './account/entry/component';
-
+import { EmailControl } from './account/email-control/component';
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
 'use strict';
@@ -25,7 +25,7 @@ import { DefaultComponet } from './default';
     AccountEntry,
     AppComponent,
     SettingsDialog,
-    DefaultComponet
+    DefaultComponet,
   ],
   imports: [
     AccountModule,
