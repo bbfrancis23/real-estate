@@ -50,7 +50,7 @@ export class AccountService {
 
         this.changeAccount(this.account);
 
-        console.log(this.account);
+        //console.log(this.account);
       })
       .catch(err => console.log(err))
   }
@@ -124,13 +124,24 @@ export class AccountService {
 
   createAccount(account) {
 
-    return this.http.post('/api/accounts', JSON.stringify(account), { headers: this.headers })
+    let a: any = {};
+
+    a.email = account.email;
+    a.password = account.password;
+
+    console.log(a);
+
+    if (account.name) {
+      a.name = account.name;
+    }
+
+    return this.http.post('/api/accounts', JSON.stringify(a), { headers: this.headers })
       .toPromise()
       .then(res => {
-
+        console.log(res);
         return true;
       })
-      .catch(err => err);
+      .catch(err => console.log(err));
 
   }
 

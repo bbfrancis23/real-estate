@@ -62,7 +62,8 @@ const Account = mongoose.model('Account', accountSchema);
 function validateAccount(account){
   const schema = {
     email: Joi.string().max(255).required(),
-    password: Joi.string().min(4).max(1024).required()
+    password: Joi.string().min(4).max(1024).required(),
+    name: Joi.string()
   };
 
   return Joi.validate(account, schema);

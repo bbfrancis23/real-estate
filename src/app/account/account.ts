@@ -5,6 +5,7 @@ export class Account {
   email: string;
   authenticated: boolean = false;
   admin: boolean = false;
+  password: string;
   rank: number = 0;
   img: string;
   name: string;
