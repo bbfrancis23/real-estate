@@ -9,6 +9,8 @@ import { AccountService } from '../service';
 })
 export class AccountEntry {
 
+  inputType = 'password';
+
   readonly PASSWORD = this.accountService.PASSWORD;
 
   readonly LOGIN = "SIGN IN";

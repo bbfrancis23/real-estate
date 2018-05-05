@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Account } from './account'
 import { FormControl, Validators } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 'use strict';
 
 @Injectable()
@@ -39,18 +41,20 @@ export class AccountService {
   public changeAccount(account: Account) { this.accountSource.next(account) }
 
 
-  constructor(readonly http: Http) {
+  constructor(readonly http: Http, router: Router) {
 
     this.http.get('/api/accounts/me')
       .toPromise()
       .then(res => {
-
         this.account = res.json();
         this.account.authenticated = true;
-
         this.changeAccount(this.account);
 
-        console.log(this.account);
+        console.log(this.account.type);
+        if (this.account.type === 'Agent') {
+          router.navigate(['agent'])
+        }
+
       })
       .catch(err => console.log(err))
   }
