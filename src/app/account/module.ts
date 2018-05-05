@@ -12,8 +12,8 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelec
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { EmailControl } from './email-control/component';
-import { PasswordControl } from './password-control/component';
+import { EmailControl } from './ctrls/email/component';
+import { PasswordControl } from './ctrls/password/component';
 
 @NgModule({
   imports: [

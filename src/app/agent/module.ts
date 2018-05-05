@@ -9,7 +9,7 @@ import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatFor
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmailControl } from '../account/email-control/component';
+import { EmailControl } from '../account/ctrls/email/component';
 
 import { AccountModule } from '../account/module';
 
