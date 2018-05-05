@@ -39,9 +39,8 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   }
 
   submit() {
-    this.accountForm.value.type = 'Client'
-    console.log(this.account);
-    console.log(this.accountForm.value);
+    this.accountForm.value.type = 'Client';
+    this.accountService.createAccount(this.accountForm.value);
   }
 
   ngOnDestroy() {

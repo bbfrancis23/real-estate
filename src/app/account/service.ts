@@ -133,11 +133,15 @@ export class AccountService {
     a.email = account.email;
     a.password = account.password;
 
-    console.log(a);
-
     if (account.name) {
       a.name = account.name;
     }
+
+    if (account.type) {
+      a.type = account.type;
+    }
+
+
 
     return this.http.post('/api/accounts', JSON.stringify(a), { headers: this.headers })
       .toPromise()
