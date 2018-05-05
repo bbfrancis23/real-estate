@@ -1,17 +1,25 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../service';
 import { AppService } from '../../service';
+import { Account } from '../account';
 "use strict";
 
 @Component({
   selector: 'client-dialog',
   templateUrl: 'component.html',
 })
-export class UpsertAccountDialog implements OnInit {
+export class UpsertAccountDialog implements OnInit, OnDestroy {
 
   accountForm = new FormGroup({});
+
+  account: Account;
+
+  accountSub = this.accountService.currentAccount.subscribe(account => {
+    this.account = account;
+  });
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
     appService.getStates();
@@ -28,5 +36,15 @@ export class UpsertAccountDialog implements OnInit {
     this.accountForm.addControl('city', this.accountService.cityCtrl);
     this.accountForm.addControl('state', this.accountService.stateCtrl);
     this.accountForm.addControl('zip', this.accountService.photoCtrl);
+  }
+
+  submit() {
+    this.accountForm.value.type = 'Client'
+    console.log(this.account);
+    console.log(this.accountForm.value);
+  }
+
+  ngOnDestroy() {
+    this.accountSub.unsubscribe();
   }
 }

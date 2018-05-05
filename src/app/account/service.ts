@@ -50,7 +50,7 @@ export class AccountService {
 
         this.changeAccount(this.account);
 
-        //console.log(this.account);
+        console.log(this.account);
       })
       .catch(err => console.log(err))
   }
