@@ -1,0 +1,15 @@
+<div>
+  ( <mat-form-field >
+    <input matInput  (keyup)="areaCodeKeyUp()" [formControl]="areaCode" autocomplete="tel-area-code">
+  </mat-form-field> )
+
+  <mat-form-field >
+    <input  matInput  #prefixEl (keyup)="preKeyUp()" [formControl]="prefix" autocomplete="tel-local-prefix">
+  </mat-form-field> -
+
+  <mat-form-field >
+    <input  matInput #phonePostEl  [formControl]="suffix" autocomplete="tel-local-suffix">
+  </mat-form-field>
+
+  <mat-error class="faux">{{getErrorMessage()}}</mat-error>
+</div>

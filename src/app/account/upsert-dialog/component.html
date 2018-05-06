@@ -8,17 +8,7 @@
       <mat-form-field>
         <input matInput #name type="text"  placeholder="Name" formControlName="name" maxlength="accountService.NAME.max">
       </mat-form-field>
-      ( <mat-form-field style="width: 30px">
-        <input matInput type=tel formControlName="phoneAreaCode" maxlength="3" >
-      </mat-form-field> )
-
-      <mat-form-field style="width: 30px">
-        <input matInput type=tel formControlName="phonePre" maxlength="3" >
-      </mat-form-field> -
-
-      <mat-form-field style="width: 40px">
-        <input matInput formControlName="phonePost"  type=tel maxlength="4" >
-      </mat-form-field>
+      <phone-ctrl></phone-ctrl>
 
       <mat-form-field style="width: 60%">
         <input matInput placeholder="Address" formControlName="address" maxlength="accountService.ADDRESS.max" >
@@ -37,5 +27,11 @@
       </mat-form-field><br>
       <button type="submit">submit</button>
     </form>
+
+    <mat-form-field>
+        <input matInput placeholder="Amount" type="number" class="example-right-align">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
   </mat-dialog-content>
 </div>

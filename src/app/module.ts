@@ -14,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { AccountEntry } from './account/entry/component';
-import { EmailControl } from './account/email-control/component';
+import { EmailControl } from './account/ctrls/email/component';
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
 'use strict';
