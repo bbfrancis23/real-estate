@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { AeoModule } from './aeo/module';
 import { AccountModule } from './account/module';
@@ -34,7 +34,7 @@ import { DefaultComponet } from './default';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
+    MatAutocompleteModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
     ReactiveFormsModule,
     RouterModule
 

@@ -8,13 +8,14 @@ import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
 import { MediaViewPort } from '../aeo/media-view-port/component';
 import { AeoModule } from '../aeo/module';
-import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EmailControl } from './ctrls/email/component';
 import { PasswordControl } from './ctrls/password/component';
 import { PhoneControl } from './ctrls/phone/component';
+import { AddressControl } from './ctrls/address/component';
 
 @NgModule({
   imports: [
@@ -23,11 +24,11 @@ import { PhoneControl } from './ctrls/phone/component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
+    MatAutocompleteModule, MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],
-  declarations: [AccountComponent, PasswordControl, PhoneControl],
-  exports: [AccountComponent, PasswordControl, PhoneControl]
+  declarations: [AccountComponent, PasswordControl, PhoneControl, AddressControl],
+  exports: [AccountComponent, PasswordControl, PhoneControl, AddressControl]
 
 })
 export class AccountModule { }
