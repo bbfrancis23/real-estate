@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'password-ctrl',
-  templateUrl: 'component.html'
+  templateUrl: 'component.html',
+  styleUrls: ['styles.scss']
 
 })
-export class PasswordControl implements OnInit {
+export class PasswordControl {
 
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
-  password: FormControl;
+  password = new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
   inputType = 'password';
 
-  ngOnInit() {
-    this.password = new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
-
-  }
 
   getPasswordError() {
 

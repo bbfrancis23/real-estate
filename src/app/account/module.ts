@@ -16,7 +16,7 @@ import { EmailControl } from './ctrls/email/component';
 import { PasswordControl } from './ctrls/password/component';
 import { PhoneControl } from './ctrls/phone/component';
 import { AddressControl } from './ctrls/address/component';
-import { AccountNameCtrl } from './ctrls/account-name/component';
+import { AccountNameControl } from './ctrls/account-name/component';
 
 @NgModule({
   imports: [
@@ -28,8 +28,8 @@ import { AccountNameCtrl } from './ctrls/account-name/component';
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],
-  declarations: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameCtrl],
-  exports: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameCtrl]
+  declarations: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameControl],
+  exports: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameControl]
 
 })
 export class AccountModule { }

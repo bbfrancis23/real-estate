@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['styles.scss']
 
 })
-export class PhoneControl implements OnInit {
+export class PhoneControl {
 
   @ViewChild('prefixEl') prefixEl: ElementRef;
   @ViewChild('phonePostEl') phonePostEl: ElementRef;
@@ -17,7 +17,9 @@ export class PhoneControl implements OnInit {
   prefix: FormControl;
   suffix: FormControl;
 
-  ngOnInit() {
+  validPhoneNumber = true;
+
+  constructor() {
 
     const patternValidator = Validators.pattern(/^[0-9]+$/);
     const threeDigitValidators = [Validators.minLength(3), Validators.maxLength(3)];
@@ -29,7 +31,7 @@ export class PhoneControl implements OnInit {
     } else {
       this.areaCode = new FormControl('', [patternValidator].concat(threeDigitValidators));
       this.prefix = new FormControl('', [patternValidator].concat(threeDigitValidators));
-      this.suffix = new FormControl('', [patternValidator, Validators.minLength(4), Validators.max(4)]);
+      this.suffix = new FormControl('', [patternValidator, Validators.minLength(4), Validators.maxLength(4)]);
     }
   }
 
@@ -43,5 +45,17 @@ export class PhoneControl implements OnInit {
 
   preKeyUp() {
     if (this.prefix.value && this.prefix.value.toString().length === 3) this.phonePostEl.nativeElement.focus()
+  }
+
+  checkValid() {
+    if (this.areaCode.value || this.prefix.value || this.suffix.value) {
+      if (this.areaCode.value && this.areaCode.valid && this.prefix.value && this.prefix.valid && this.suffix.value && this.suffix.valid) {
+        this.validPhoneNumber = false;
+      } else {
+        this.validPhoneNumber = true;
+      }
+    } else {
+      this.validPhoneNumber = true;
+    }
   }
 }

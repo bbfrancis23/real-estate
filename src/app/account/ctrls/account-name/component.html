@@ -1,4 +1,4 @@
 <mat-form-field>
-  <input matInput #name type="text"  [formControl]=title placeholder="Account Name" [maxlength]="ACCOUNT_NAME.max">
+  <input matInput #name type="text"  [formControl]=accountName placeholder="Account Name" [maxlength]="ACCOUNT_NAME.max">
   <mat-hint align="end">{{name.value?.length || 0}}/{{ACCOUNT_NAME.max}}</mat-hint>
 </mat-form-field>

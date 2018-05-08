@@ -1,16 +1,26 @@
 <div>
-  <span mat-dialog-title>{{data.action}} CLIENT</span>
+  <span mat-dialog-title (click)=clicky()>{{data.action}} CLIENT</span>
   <mat-dialog-content>
     <form [formGroup]="accountForm" (ngSubmit)="submit()">
-      <email-ctrl ></email-ctrl>
-      <password-ctrl></password-ctrl>
-      <br><br>
-      <mat-divider></mat-divider>
-      <br><h5>OPIONAL</h5><br>
-      <account-name-ctrl></account-name-ctrl>
-      <phone-ctrl></phone-ctrl>
+      <div class="fluid-container">
+        <div class="row">
+          <email-ctrl  class="col-md-6" width="50%"></email-ctrl>
+          <password-ctrl  class="col-md-6" ></password-ctrl>
+        </div>
+        <mat-divider></mat-divider>
+        <strong>OPIONAL</strong><br>
+        <div class="row">
+          <account-name-ctrl class="col-md-6"></account-name-ctrl>
+          <phone-ctrl class="col-md-6"></phone-ctrl>
+        </div>
+      </div>
       <address-ctrl [states]="appService.states"></address-ctrl>
-      <button type="submit">submit</button>
+      <div class="container">
+        <div class="row">
+          <div class="col"><button class="submit" type="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid || phoneCtrl.validPhoneNumber">Create New Client</button></div>
+        </div>
+
+      </div>
     </form>
   </mat-dialog-content>
 </div>
