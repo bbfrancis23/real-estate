@@ -2,15 +2,17 @@
   <span mat-dialog-title>{{data.action}} CLIENT</span>
   <mat-dialog-content>
     <form [formGroup]="accountForm" (ngSubmit)="submit()">
-      <email-ctrl [emailCtrl]="accountForm.controls.email"></email-ctrl>
-      <password-ctrl [passwordCtrl]="accountForm.controls.password"></password-ctrl>      <mat-divider></mat-divider>
+      <email-ctrl ></email-ctrl>
+      <password-ctrl></password-ctrl>
+      <br>
+      <mat-divider></mat-divider>
       Optional<br>
-      <mat-form-field>
+      <!-- <mat-form-field>
         <input matInput #name type="text"  placeholder="Name" formControlName="name" maxlength="accountService.NAME.max">
-      </mat-form-field>
+      </mat-form-field> -->
       <phone-ctrl></phone-ctrl>
       <address-ctrl [states]="appService.states"></address-ctrl>
       <button type="submit">submit</button>
-    </form>  
+    </form>
   </mat-dialog-content>
 </div>
