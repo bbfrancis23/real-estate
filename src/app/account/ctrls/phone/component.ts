@@ -29,7 +29,7 @@ export class PhoneControl implements OnInit {
     } else {
       this.areaCode = new FormControl('', [patternValidator].concat(threeDigitValidators));
       this.prefix = new FormControl('', [patternValidator].concat(threeDigitValidators));
-      this.suffix = new FormControl('', [patternValidator, Validators.minLength(4), Validators.maxLength(4)]);
+      this.suffix = new FormControl('', [patternValidator, Validators.minLength(4), Validators.max(4)]);
     }
   }
 

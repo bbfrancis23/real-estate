@@ -13,21 +13,16 @@ import { Router } from '@angular/router';
 export class AccountService {
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
   readonly NAME = { max: 64 };
-  readonly ADDRESS = { max: 256 };
   readonly EMAIL = { max: 256 };
+  readonly ADDRESS = { max: 256 };
   readonly CITY = { max: 32 };
   readonly ZIP = { min: 5, max: 10, pattern: /^[0-9\-]+$/ }
 
   emailCtrl = new FormControl('', [Validators.required, Validators.email, Validators.max(this.EMAIL.max)]);
   passwordCtrl = new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
   nameCtrl = new FormControl('', [Validators.maxLength(this.NAME.max)]);
-  phoneAreaCodeCtrl = new FormControl('', [Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]);
-  phonePreCtrl = new FormControl('', [Validators.minLength(3), Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]);
-  phonePostCtrl = new FormControl('', [Validators.minLength(4), Validators.maxLength(4), Validators.pattern(/^[0-9]+$/)]);
-  addressCtrl = new FormControl('', [Validators.maxLength(this.ADDRESS.max)]);
-  cityCtrl = new FormControl('', [Validators.maxLength(this.CITY.max)]);
-  stateCtrl = new FormControl('', []);
-  zipCtrl = new FormControl('', [Validators.minLength(this.ZIP.min), Validators.maxLength(this.ZIP.max), Validators.pattern(this.ZIP.pattern)]);
+
+
   photoCtrl = new FormControl('', []);
 
 

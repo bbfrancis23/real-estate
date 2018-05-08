@@ -1,25 +1,19 @@
 <mat-form-field >
-  <input matInput placeholder="Address" autocomplete="address-line1">
+  <input matInput placeholder=Address [formControl]="address" autocomplete=address-line1>
 </mat-form-field>
 <br>
 <mat-form-field >
-  <input matInput placeholder="City" autocomplete="address-level2">
+  <input matInput placeholder=City [formControl]="city" autocomplete=address-level2>
 </mat-form-field>
+
 <mat-form-field >
-  <input type="text" matInput placeholder="State" [matAutocomplete]="autoGroup"/>
-  <mat-autocomplete #autoGroup="matAutocomplete">
 
-          <mat-option *ngFor="let state of states" [value]="state.abbr">
-            {{ state.name }}
-          </mat-option>
-
-  <!-- <mat-select placeholder="state">
-    <mat-option *ngFor="let state of states" value="{{state.abbr}}"  autocomplete="address-level1">{{state.name}}</mat-option>
-  </mat-select> -->
-    </mat-autocomplete>
+  <mat-select placeholder="State" [formControl]="stateCtrl">
+    <mat-option *ngFor="let state of states"  value="{{state.abbr}}"  autocomplete="address-level1">{{state.name}}</mat-option>
+  </mat-select>
 </mat-form-field>
 
 
 <mat-form-field >
-  <input matInput placeholder="Zip" autocomplete="postal-code">
+  <input matInput placeholder=Zip [formControl]="zip" maxlength="10" autocomplete=postal-code>
 </mat-form-field><br>
