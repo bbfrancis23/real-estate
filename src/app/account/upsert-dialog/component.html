@@ -4,12 +4,10 @@
     <form [formGroup]="accountForm" (ngSubmit)="submit()">
       <email-ctrl ></email-ctrl>
       <password-ctrl></password-ctrl>
-      <br>
+      <br><br>
       <mat-divider></mat-divider>
-      Optional<br>
-      <!-- <mat-form-field>
-        <input matInput #name type="text"  placeholder="Name" formControlName="name" maxlength="accountService.NAME.max">
-      </mat-form-field> -->
+      <br><h5>OPIONAL</h5><br>
+      <account-name-ctrl></account-name-ctrl>
       <phone-ctrl></phone-ctrl>
       <address-ctrl [states]="appService.states"></address-ctrl>
       <button type="submit">submit</button>
