@@ -49,7 +49,11 @@ const accountSchema = mongoose.Schema({
     required: true,
     default: '/assets/img/blank-profile.png'
   },
-  address: address.addressSchema
+  address: address.addressSchema,
+  agent: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false
+  }
 });
 
 accountSchema.methods.generateAuthToken = function() {
@@ -68,7 +72,8 @@ function validateAccount(account){
     name: Joi.string(),
     phone: Joi.string().min(10).max(10),
     type: Joi.string(),
-    address: address.joiSchema
+    address: address.joiSchema,
+    agent: Joi.objectId()
   };
 
   return Joi.validate(account, schema);

@@ -151,6 +151,9 @@ export class AccountService {
       a.phone = `${account.areaCode}${account.prefix}${account.suffix}`;
     }
 
+    if (account.agent) {
+      a.agent = account.agent;
+    }
 
     return this.http.post('/api/accounts', JSON.stringify(a), { headers: this.headers })
       .toPromise()

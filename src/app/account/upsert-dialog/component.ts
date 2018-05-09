@@ -36,6 +36,9 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
     appService.getStates();
+
+    console.log(this.account);
+
   }
 
   clicky() {
@@ -58,6 +61,9 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
 
   submit() {
     this.accountForm.value.type = 'Client';
+    this.accountForm.value.agent = this.account._id;
+
+
     this.accountService.createAccount(this.accountForm.value);
   }
 

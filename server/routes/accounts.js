@@ -60,7 +60,7 @@ router.post('/', async (req, res) =>{
   let account = await Account.findOne({ email: req.body.email });
   if(account) return res.status(400).send('Account already registered.');
 
-  account = new Account({ email: req.body.email, password: req.body.password, name: req.body.name, type: req.body.type, phone: req.body.phone, address: req.body.address});
+  account = new Account({ email: req.body.email, password: req.body.password, name: req.body.name, type: req.body.type, phone: req.body.phone, address: req.body.address, agent: req.body.agent});
   const salt = await bcrypt.genSalt(10).catch((err) =>  res.status(400).send({message: err}));
   account.password = await bcrypt.hash(account.password, salt).catch((err) =>  res.status(400).send({message: err}));
 
