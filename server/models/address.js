@@ -34,13 +34,15 @@ const addressSchema = mongoose.Schema({
 
 const Address = mongoose.model('Address', addressSchema);
 
+const schema = {
+  address: Joi.string().max(1024).required(),
+  city: Joi.string().max(255).required(),
+  state: Joi.string().min(2).max(4).required(),
+  zip: Joi.string().min(5).max(10).required()
+};
+
 function validateAddress(account){
-  const schema = {
-    address: Joi.string().max(1024).required(),
-    city: Joi.string().max(255).required(),
-    state: Joi.string().min(2).max(4).required(),
-    zip: Joi.string().min(5).max(10).require()
-  };
+
 
   return Joi.validate(address, schema);
 }
@@ -48,3 +50,4 @@ function validateAddress(account){
 exports.Address = Address;
 exports.addressSchema = addressSchema;
 exports.validate = validateAddress;
+exports.joiSchema = schema;

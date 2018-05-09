@@ -123,6 +123,9 @@ export class AccountService {
 
   createAccount(account) {
 
+    console.log(account);
+
+
     let a: any = {};
 
     a.email = account.email;
@@ -136,6 +139,17 @@ export class AccountService {
       a.type = account.type;
     }
 
+    if (account.address && account.city && account.state && account.zip) {
+      a.address = {};
+      a.address.address = account.address;
+      a.address.city = account.city;
+      a.address.state = account.state;
+      a.address.zip = account.zip;
+    }
+
+    if (account.areaCode && account.prefix && account.suffix) {
+      a.phone = `${account.areaCode}${account.prefix}${account.suffix}`;
+    }
 
 
     return this.http.post('/api/accounts', JSON.stringify(a), { headers: this.headers })

@@ -46,7 +46,7 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
 
     this.accountForm.addControl('email', this.emailCtrl.email);
     this.accountForm.addControl('password', this.passwordCtrl.password);
-    this.accountForm.addControl('accountName', this.accountNameCtrl.accountName);
+    this.accountForm.addControl('name', this.accountNameCtrl.accountName);
     this.accountForm.addControl('areaCode', this.phoneCtrl.areaCode);
     this.accountForm.addControl('prefix', this.phoneCtrl.prefix);
     this.accountForm.addControl('suffix', this.phoneCtrl.suffix);

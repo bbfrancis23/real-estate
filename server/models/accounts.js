@@ -66,8 +66,9 @@ function validateAccount(account){
     email: Joi.string().max(255).required(),
     password: Joi.string().min(4).max(1024).required(),
     name: Joi.string(),
-    phone: Joi.number().min(10).max(10),
-    type: Joi.string()
+    phone: Joi.string().min(10).max(10),
+    type: Joi.string(),
+    address: address.joiSchema
   };
 
   return Joi.validate(account, schema);
