@@ -5,6 +5,7 @@ import { AccountService } from '../service';
 import { AppService } from '../../service';
 import { Account } from '../account';
 import { AccountNameControl } from '../ctrls/account-name/component';
+import { AddressControl } from '../ctrls/address/component'
 import { EmailControl } from '../ctrls/email/component';
 import { PasswordControl } from '../ctrls/password/component';
 import { PhoneControl } from '../ctrls/phone/component';
@@ -19,6 +20,7 @@ import { PhoneControl } from '../ctrls/phone/component';
 export class UpsertAccountDialog implements OnInit, OnDestroy {
 
   @ViewChild(AccountNameControl) accountNameCtrl;
+  @ViewChild(AddressControl) addressCtrl;
   @ViewChild(EmailControl) emailCtrl;
   @ViewChild(PasswordControl) passwordCtrl;
   @ViewChild(PhoneControl) phoneCtrl;
@@ -48,6 +50,10 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
     this.accountForm.addControl('areaCode', this.phoneCtrl.areaCode);
     this.accountForm.addControl('prefix', this.phoneCtrl.prefix);
     this.accountForm.addControl('suffix', this.phoneCtrl.suffix);
+    this.accountForm.addControl('address', this.addressCtrl.address);
+    this.accountForm.addControl('city', this.addressCtrl.city);
+    this.accountForm.addControl('state', this.addressCtrl.stateCtrl);
+    this.accountForm.addControl('zip', this.addressCtrl.zip);
   }
 
   submit() {

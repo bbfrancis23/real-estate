@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -6,26 +6,31 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AddressControl implements OnInit {
+export class AddressControl {
   readonly ADDRESS = { max: 256 };
   readonly EMAIL = { max: 256 };
   readonly CITY = { max: 32 };
   readonly ZIP = { min: 5, max: 10, pattern: /^[0-9\-]+$/ };
 
   @Input() states;
+  validAddress = true;
 
 
+  address = new FormControl('', [Validators.maxLength(this.ADDRESS.max)]);
+  city = new FormControl('', [Validators.maxLength(this.CITY.max)]);
+  stateCtrl = new FormControl('', []);
+  zip = new FormControl('', [Validators.minLength(this.ZIP.min), Validators.maxLength(this.ZIP.max), Validators.pattern(this.ZIP.pattern)]);
 
-  address: FormControl;
-  city: FormControl;
-  stateCtrl: FormControl;
-  zip: FormControl
+  checkValid() {
+    if (this.address.value || this.city.value || this.stateCtrl.value || this.zip.value) {
+      if (this.address.value && this.address.valid && this.city.value && this.city.valid && this.stateCtrl.value && this.stateCtrl.valid && this.zip.value && this.zip.valid) {
+        this.validAddress = true;
+      } else {
+        this.validAddress = false;
+      }
 
-  ngOnInit() {
-    this.address = new FormControl('', [Validators.maxLength(this.ADDRESS.max)]);
-    this.city = new FormControl('', [Validators.maxLength(this.CITY.max)]);
-    this.stateCtrl = new FormControl('', []);
-    this.zip = new FormControl('', [Validators.minLength(this.ZIP.min), Validators.maxLength(this.ZIP.max), Validators.pattern(this.ZIP.pattern)]);
+    } else {
+      this.validAddress = true;
+    }
   }
-
 }

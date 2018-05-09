@@ -48,11 +48,13 @@ export class PhoneControl {
   }
 
   checkValid() {
+
+    console.log('check');
     if (this.areaCode.value || this.prefix.value || this.suffix.value) {
       if (this.areaCode.value && this.areaCode.valid && this.prefix.value && this.prefix.valid && this.suffix.value && this.suffix.valid) {
-        this.validPhoneNumber = false;
-      } else {
         this.validPhoneNumber = true;
+      } else {
+        this.validPhoneNumber = false;
       }
     } else {
       this.validPhoneNumber = true;

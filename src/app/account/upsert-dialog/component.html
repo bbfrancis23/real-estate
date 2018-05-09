@@ -17,7 +17,8 @@
       <address-ctrl [states]="appService.states"></address-ctrl>
       <div class="container">
         <div class="row">
-          <div class="col"><button class="submit" type="submit" mat-raised-button color="primary" [disabled]="!accountForm.valid || phoneCtrl.validPhoneNumber">Create New Client</button></div>
+          <div class="col">
+            <button class="submit" type="submit" mat-raised-button color="primary" [disabled]="accountForm.invalid || !phoneCtrl.validPhoneNumber || !addressCtrl.validAddress">Create New Client</button></div>
         </div>
 
       </div>
