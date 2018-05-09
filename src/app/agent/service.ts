@@ -16,8 +16,24 @@ export class AgentService {
   readonly currentClients = this.clientsSource.asObservable();
   private changeCurrentClients(clinets: [Account]) { this.clientsSource.next(clinets) }
 
+  constructor(readonly http: Http) {
+
+  }
+
+
 
   getClients() {
+    if (this.clients) {
 
+    } else {
+      this.http.get('/api/accounts/clients')
+        .toPromise()
+        .then(res => {
+          this.clients = res.json();
+          this.changeCurrentClients(this.clients);
+
+        })
+        .catch(err => console.log(err))
+    }
   }
 }

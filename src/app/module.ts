@@ -11,8 +11,6 @@ import { AppService } from './service';
 import { AccountService } from './account/service';
 import { SettingsDialog } from './settings-dialog/component';
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { AccountEntry } from './account/entry/component';
 import { EmailControl } from './account/ctrls/email/component';
 import { AppRoutingModule } from './routing.module';

@@ -23,6 +23,32 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <mat-table #table [dataSource]="dataSource">
+
+        e
+
+   <!-- Name Column -->
+   <ng-container matColumnDef="name">
+     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+     <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+   </ng-container>
+
+   <!-- Weight Column -->
+   <ng-container matColumnDef="email">
+     <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+     <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+   </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="phone">
+     <mat-header-cell *matHeaderCellDef> phone </mat-header-cell>
+     <mat-cell *matCellDef="let element"> ({{element.phone.toString().substr(0,3)}}){{element.phone.toString().substr(3,3)}}-{{element.phone.toString().substr(6,4)}}  </mat-cell>
+   </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
