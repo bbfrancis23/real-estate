@@ -34,6 +34,14 @@ router.get('/me', auth, async (req, res)=>{
   res.send(account);
 });
 
+router.get('/clients', auth, async (req, res) =>{
+  const account = await Account.findById(req.account._id).select('-password').catch((err) =>  res.status(400).send({message: err}));
+
+  const clients = await  Account.find({ agent: account._id}).select('-password').catch((err) => res.status(400).send({message: err}));
+
+  res.send(clients);
+});
+
 router.post('/address', auth, async (req, res) =>{
   const account = await Account.findByIdAndUpdate(req.account._id,{ address: req.body.address, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
   res.send(account);
