@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef, MatTableDataSource, MatSort, MatPaginator, } f
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 import { AgentService } from './service';
 
+import { SelectionModel } from '@angular/cdk/collections';
+
 @Component({
   selector: 'agent',
   templateUrl: 'component.html',
@@ -12,14 +14,17 @@ import { AgentService } from './service';
 })
 export class AgentComponent implements OnInit {
 
+
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
-  displayedColumns = [, 'img', 'name', 'email', 'phone', 'actions'];
+  displayedColumns = [, 'img', 'name', 'email', 'phone', 'select'];
   dataSource = new MatTableDataSource();
+  selection = new SelectionModel<Account>(true, []);
 
   clients: any;
   clientsSub: any;
@@ -28,6 +33,11 @@ export class AgentComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+
+  clicky() {
+    console.log(this.selection);
   }
 
   ngOnInit() {
@@ -58,6 +68,20 @@ export class AgentComponent implements OnInit {
         });
       });
     }
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   ngOnDestroy(): void {

@@ -6,6 +6,7 @@ import { AgentRoutingModule } from './routing.module';
 
 import {
   MatButtonModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatExpansionModule,
   MatIconModule, MatInputModule,
@@ -30,6 +31,7 @@ import { AgentService } from './service';
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
     MatFormFieldModule,
