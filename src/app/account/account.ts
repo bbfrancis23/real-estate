@@ -11,6 +11,7 @@ export class Account {
   name: string;
   phone: string;
   type: string;
+  theme: string;
   address: {
     address: string;
     city: string;

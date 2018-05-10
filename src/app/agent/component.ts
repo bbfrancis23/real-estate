@@ -26,6 +26,15 @@ export class AgentComponent implements OnInit {
 
   showClientDataTable = false;
 
+  account: Account;
+  accountSub = this.accountService.currentAccount.subscribe(account => {
+    this.account = account;
+
+    if (account.theme) {
+      this.appService.changeTheme(account.theme + '-theme');
+    }
+  });
+
 
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog, public agentService: AgentService, public appService: AppService, public accountService: AccountService) {
@@ -66,7 +75,7 @@ export class AgentComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-
+    this.accountSub.unsubscribe();
 
   }
 }
