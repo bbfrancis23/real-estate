@@ -14,9 +14,18 @@
         </mat-expansion-panel-header>
         <mat-nav-list>
           <a mat-list-item (click)="openClientDialog()" ><mat-icon>add</mat-icon>Add Client</a>
-        </mat-nav-list>
-        <mat-nav-list>
           <a mat-list-item (click)="listClients()" ><mat-icon>view_list</mat-icon>List Clients</a>
+
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>SETTINGS</mat-panel-title>
+        </mat-expansion-panel-header>
+        Choose a Theme
+        <mat-nav-list >
+          <a (click)="updateTheme(theme)" mat-list-item *ngFor="let theme of appService.themes" [id]="theme+'-theme-select'" >{{theme | urldecode:true}}</a>
         </mat-nav-list>
       </mat-expansion-panel>
 

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { AeoModule } from '../aeo/module';
 import { AgentComponent } from './component';
 import { AgentRoutingModule } from './routing.module';
 
@@ -28,6 +30,7 @@ import { ClientDataTable } from './data-tables/clients/component';
 
 @NgModule({
   imports: [
+    AeoModule,
     AgentRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
