@@ -49,6 +49,10 @@ const accountSchema = mongoose.Schema({
     required: true,
     default: '/assets/img/blank-profile.png'
   },
+  theme:{
+    type: String,
+    required: false
+  },
   address: address.addressSchema,
   agent: {
     type: mongoose.Schema.Types.ObjectId,
@@ -62,8 +66,6 @@ accountSchema.methods.generateAuthToken = function() {
 }
 
 const Account = mongoose.model('Account', accountSchema);
-
-
 
 function validateAccount(account){
   const schema = {
@@ -79,5 +81,14 @@ function validateAccount(account){
   return Joi.validate(account, schema);
 }
 
+function validateTheme(theme){
+  const schema = {
+    theme: Joi.string().max(32).required()
+  };
+
+  return Joi.validate(account,schema);
+}
+
 exports.Account = Account;
 exports.validate = validateAccount;
+exports.validateTheme = validateTheme;
