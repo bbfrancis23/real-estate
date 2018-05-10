@@ -23,6 +23,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
       <mat-table #table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="img">

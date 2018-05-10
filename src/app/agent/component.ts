@@ -38,6 +38,12 @@ export class AgentComponent implements OnInit {
     let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action } });
   }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   listClients() {
     if (this.agentService.clients) {
 
