@@ -1,0 +1,49 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="img">
+    <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <img class="profile-img" [src]="element.img"> </mat-cell>
+  </ng-container>
+
+ <ng-container matColumnDef="name">
+   <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+   <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+ </ng-container>
+
+ <ng-container matColumnDef="email">
+   <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+   <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+ </ng-container>
+
+ <ng-container matColumnDef="phone">
+   <mat-header-cell *matHeaderCellDef> phone </mat-header-cell>
+   <mat-cell *matCellDef="let element"> ({{element.phone.toString().substr(0,3)}}){{element.phone.toString().substr(3,3)}}-{{element.phone.toString().substr(6,4)}}  </mat-cell>
+ </ng-container>
+
+ <!-- <ng-container matColumnDef="actions">
+   <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+   <mat-cell *matCellDef="let element">
+     <button mat-icon-button matTooltip="Edit" matTooltipShowDelay="500" ><mat-icon>edit</mat-icon></button>
+     <button mat-icon-button matTooltip="Message" matTooltipShowDelay="500" ><mat-icon>message</mat-icon></button>
+     <button mat-icon-button matTooltip="Send Text Message" matTooltipShowDelay="500"><mat-icon>textsms</mat-icon></button>
+     <button mat-icon-button matTooltip="Call" matTooltipShowDelay="500" ><mat-icon>phone_iphone</mat-icon></button>
+     <button mat-icon-button matTooltip="Email" matTooltipShowDelay="500"><mat-icon>email</mat-icon></button>
+   </mat-cell>
+ </ng-container> -->
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"></mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>

@@ -24,6 +24,7 @@ import { EmailControl } from '../account/ctrls/email/component';
 
 import { AccountModule } from '../account/module';
 import { AgentService } from './service';
+import { ClientDataTable } from './data-tables/clients/component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,7 @@ import { AgentService } from './service';
     ReactiveFormsModule,
     AccountModule
   ],
-  declarations: [AgentComponent, UpsertAccountDialog, EmailControl],
+  declarations: [AgentComponent, ClientDataTable, UpsertAccountDialog, EmailControl],
   entryComponents: [UpsertAccountDialog],
   providers: [AgentService],
   exports: [AgentComponent]
