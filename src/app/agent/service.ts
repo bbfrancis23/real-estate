@@ -10,6 +10,8 @@ import { Account } from '../account/account';
 @Injectable()
 export class AgentService {
 
+  readonly headers = new Headers({ 'Content-Type': 'application/json' });
+
   clients: [Account];
 
   private readonly clientsSource = new BehaviorSubject<[Account]>(this.clients);
@@ -32,6 +34,18 @@ export class AgentService {
 
       })
       .catch(err => console.log(err))
+  }
+
+  updateTheme(theme) {
+
+    console.log('attepting to update theme');
+    return this.http.post('/api/accounts/theme', { theme: theme }, { headers: this.headers })
+      .toPromise()
+      .then(res => {
+
+        console.log('theme updated');
+      })
+      .catch(err => console.log(err));
   }
 
 }

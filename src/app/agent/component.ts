@@ -6,7 +6,9 @@ import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 import { AgentService } from './service';
 
 import { SelectionModel } from '@angular/cdk/collections';
+
 import { AppService } from '../service';
+import { AccountService } from '../account/service';
 
 @Component({
   selector: 'agent',
@@ -26,7 +28,7 @@ export class AgentComponent implements OnInit {
 
 
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog, public agentService: AgentService, public appService: AppService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog, public agentService: AgentService, public appService: AppService, public accountService: AccountService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -45,6 +47,7 @@ export class AgentComponent implements OnInit {
 
   updateTheme(theme: string) {
     this.appService.changeTheme(theme + '-theme');
+    this.agentService.updateTheme(theme);
   }
 
   listClients() {

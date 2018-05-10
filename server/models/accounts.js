@@ -86,7 +86,7 @@ function validateTheme(theme){
     theme: Joi.string().max(32).required()
   };
 
-  return Joi.validate(account,schema);
+  return Joi.validate(theme,schema);
 }
 
 exports.Account = Account;

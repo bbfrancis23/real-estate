@@ -44,8 +44,6 @@ export class AccountService {
         this.account = res.json();
         this.account.authenticated = true;
         this.changeAccount(this.account);
-
-        console.log(this.account.type);
         if (this.account.type === 'Agent') {
           router.navigate(['agent'])
         }
