@@ -4,7 +4,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgentComponent } from './component';
 import { AgentRoutingModule } from './routing.module';
 
-import { MatButtonModule, MatDialogModule, MatExpansionModule, MatIconModule, MatInputModule, MatFormFieldModule, MatListModule, MatSelectModule, MatTableModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatIconModule, MatInputModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSelectModule, MatSidenavModule, MatSortModule,
+  MatTableModule, MatToolbarModule, MatTooltipModule
+} from '@angular/material';
 
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
@@ -19,7 +29,15 @@ import { AgentService } from './service';
     AgentRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatButtonModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSelectModule, MatSidenavModule, MatTableModule, MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule, MatInputModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatSelectModule, MatSidenavModule,
+    MatSortModule, MatTableModule, MatToolbarModule, MatTooltipModule,
     ReactiveFormsModule,
     AccountModule
   ],

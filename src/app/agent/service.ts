@@ -23,17 +23,15 @@ export class AgentService {
 
 
   getClients() {
-    if (this.clients) {
 
-    } else {
-      this.http.get('/api/accounts/clients')
-        .toPromise()
-        .then(res => {
-          this.clients = res.json();
-          this.changeCurrentClients(this.clients);
+    return this.http.get('/api/accounts/clients')
+      .toPromise()
+      .then(res => {
+        this.clients = res.json();
+        this.changeCurrentClients(this.clients);
 
-        })
-        .catch(err => console.log(err))
-    }
+      })
+      .catch(err => console.log(err))
   }
+
 }
