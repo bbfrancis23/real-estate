@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$tech-theme-accent: mat-palette($mat-teal, A400, A200, A700);
+$tech-theme-primary: mat-palette($mat-grey, 900, 700, 800);
+$tech-theme-warn: mat-palette($mat-red);
+
+$tech-theme: mat-dark-theme( $tech-theme-primary, $tech-theme-accent, $tech-theme-warn);

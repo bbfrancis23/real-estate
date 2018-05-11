@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, ViewChild, OnInit } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+
 
 import { MatDialog, MatDialogRef, MatTableDataSource, MatSort, MatPaginator, } from '@angular/material';
 import { UpsertAccountDialog } from '../account/upsert-dialog/component';
@@ -15,14 +15,13 @@ import { AccountService } from '../account/service';
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AgentComponent implements OnInit {
+export class AgentComponent implements OnDestroy {
 
 
 
 
+  display = false;
 
-  mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
 
   showClientDataTable = false;
 
@@ -37,18 +36,14 @@ export class AgentComponent implements OnInit {
 
 
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog, public agentService: AgentService, public appService: AppService, public accountService: AccountService) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-
-
-
-
-  ngOnInit() {
+  constructor(public dialog: MatDialog, public agentService: AgentService, public appService: AppService, public accountService: AccountService) {
 
   }
+
+
+
+
+
 
   openClientDialog(action = 'NEW') {
     let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action } });
@@ -70,11 +65,10 @@ export class AgentComponent implements OnInit {
     }
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
 
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+
     this.accountSub.unsubscribe();
 
   }

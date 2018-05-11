@@ -38,12 +38,10 @@ export class AgentService {
 
   updateTheme(theme) {
 
-    console.log('attepting to update theme');
+
     return this.http.post('/api/accounts/theme', { theme: theme }, { headers: this.headers })
       .toPromise()
       .then(res => {
-
-        console.log('theme updated');
       })
       .catch(err => console.log(err));
   }

@@ -1,0 +1,19 @@
+<div class="agent-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" >
+    <button mat-icon-button (click)="snav.toggle()" color="accent" ><mat-icon>menu</mat-icon></button>
+    <h1>yOUR MOPM</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="agent-sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened="true">
+      <ng-content select=".sidenav">
+      
+    </ng-content>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- <client-data-table *ngIf="showClientDataTable"></client-data-table> -->
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

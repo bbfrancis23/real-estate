@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+@mixin agent-theme($theme){
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+
+  mat-expansion-panel-header.mat-expanded.aeo{
+    background-color: mat-color($accent, darker);
+    mat-panel-title{
+
+      color: white;
+
+    }
+  }
+
+
+}

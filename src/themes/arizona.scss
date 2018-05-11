@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$arizona-theme-primary: mat-palette($mat-brown, 400, 300, 500);
+$arizona-theme-accent: mat-palette($mat-deep-orange, 400, 300, 500);
+$arizona-theme-warn: mat-palette($mat-red);
+
+$arizona-theme: mat-light-theme( $arizona-theme-primary, $arizona-theme-accent, $arizona-theme-warn);

@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+$lush-theme-primary: mat-palette($mat-green, 800, 500, 900);
+$lush-theme-accent: mat-palette($mat-light-green, 300, 100, 500 );
+$lush-theme-warn: mat-palette($mat-red);
+
+$lush-theme: mat-dark-theme( $lush-theme-primary, $lush-theme-accent, $lush-theme-warn);

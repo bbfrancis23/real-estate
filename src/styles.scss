@@ -2,6 +2,14 @@
 @import "/themes/corporation.scss";
 @import "/themes/pink-lemonaid.scss";
 @import "/themes/electric-blue.scss";
+@import "/themes/arizona.scss";
+@import "/themes/beach.scss";
+@import "/themes/lush.scss";
+@import "/themes/midnight.scss";
+@import "/themes/pirate.scss";
+@import "/themes/tech.scss";
+@import "/themes/utah.scss";
+@import "/themes/tropical.scss";
 @import '~@angular/material/theming';
 @include mat-core();
 
@@ -9,10 +17,12 @@
 
 @import "app/aeo/side-drawer/theme-styles.scss";
 @import "app/theme-styles.scss";
+@import "app/agent/theme-styles.scss";
 
 @mixin custom-components-theme($theme){
   @include side-drawer-theme($theme);
   @include app-theme($theme);
+  @include agent-theme($theme);
 }
 
 .corporation-theme{
@@ -36,6 +46,45 @@
   @include custom-components-theme($electric-blue-theme);
 }
 
+.arizona-theme{
+  @include angular-material-theme($arizona-theme);
+  @include custom-components-theme($arizona-theme);
+}
+
+.beach-theme{
+  @include angular-material-theme($beach-theme);
+  @include custom-components-theme($beach-theme);
+}
+
+.lush-theme{
+  @include angular-material-theme($lush-theme);
+  @include custom-components-theme($lush-theme);
+}
+
+.midnight-theme{
+  @include angular-material-theme($midnight-theme);
+  @include custom-components-theme($midnight-theme);
+}
+
+.pirate-theme{
+  @include angular-material-theme($pirate-theme);
+  @include custom-components-theme($pirate-theme);
+}
+
+.tech-theme{
+  @include angular-material-theme($tech-theme);
+  @include custom-components-theme($tech-theme);
+}
+
+.tropical-theme{
+  @include angular-material-theme($tropical-theme);
+  @include custom-components-theme($tropical-theme);
+}
+
+.utah-theme{
+  @include angular-material-theme($utah-theme);
+  @include custom-components-theme($utah-theme);
+}
 // CHROM SCROLLBAR //
 
 ::-webkit-scrollbar { width: 5px }
@@ -49,7 +98,7 @@ button:focus{ outline: none }
 
 body.cobra-kai-theme, body.electric-blue-theme{
   background-color: #212121;
-  color: white;
+ background-color: white;
 }
 
 div.mat-expansion-panel-body{
@@ -60,15 +109,49 @@ div.mat-expansion-panel-body{
   border-top: 0px;
 }
 
-.mat-expansion-panel{
 
-  border-top: 1px #AAAAAA solid;
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #AAAAAA;
 }
 
 
+.theme-text{
+  margin-left: 5px;
+}
 
+#arizona-theme-select{ background-color: #8D6E63 }
+#arizona-theme-accent{background-color: #FF7043 }
 
-#cobra-kai-theme-select{ background-color: #FFFF00; color: black; }
-#corporation-theme-select{ background-color: #607D8B; color: white; }
-#electric-blue-theme-select{ background-color: #18FFFF; color: black; }
-#pink-lemonaid-theme-select{ background-color: #F06292; color: white; }
+#beach-theme-select{ background-color: #26C6DA }
+#beach-theme-accent{background-color: #BCAAA4 }
+
+#cobra-kai-theme-select{ background-color: #FFFF00  }
+#cobra-kai-theme-accent{background-color: #D50000 }
+
+#corporation-theme-select{ background-color: #607D8B  }
+#corporation-theme-accent{background-color: #BDBDBD }
+
+#electric-blue-theme-select{ background-color: #18FFFF }
+#electric-blue-theme-accent{background-color: #2962FF }
+
+#lush-theme-select{ background-color: #2E7D32 }
+#lush-theme-accent{background-color: #AED581 }
+
+#midnight-theme-select{ background-color: #512DA8 }
+#midnight-accent{background-color: #5C6BC0 }
+
+#pink-lemonaid-theme-select{ background-color: #F06292 }
+#pink-lemonaid-theme-accent{background-color: #BDBDBD }
+
+#pirate-theme-select{ background-color: #212121 }
+#pirate-theme-accent{background-color: #B71C1C }
+
+#tech-theme-select{ background-color: #26A69A }
+#tech-theme-accent{background-color: #212121 }
+
+#tropical-theme-select{ background-color:#5C6BC0 }
+#tropical-theme-accent{background-color: #29B6F6 }
+
+#utah-theme-select{ background-color: #2979FF }
+#utah-theme-accent{background-color: #7E57C2 }

@@ -8,7 +8,7 @@ import { State } from './state';
 @Injectable()
 export class AppService {
 
-  themes = ['cobra-kai', 'corporation', 'electric-blue', 'pink-lemonaid'];
+  themes = ['arizona', 'beach', 'cobra-kai', 'corporation', 'electric-blue', 'lush', 'midnight', 'pink-lemonaid', 'pirate', 'tech', 'tropical', 'utah'];
   defaultTheme = 'corporation-theme';
 
   readonly themeSource = new BehaviorSubject<string>(this.defaultTheme);
