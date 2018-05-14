@@ -1,6 +1,25 @@
 <div class="aeo-sidedrawer-container" [ngClass]="{'open': mode === 'OPEN', 'icon': mode === 'ICON'}">
-  <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode==='OPEN'">{{controlPanel.title}}</strong><button mat-icon-button (click)="toggleMode()"><mat-icon>menu</mat-icon></button></div>
+  <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode==='OPEN'">{{controlPanel.title}}</strong>
+
+    <button mat-icon-button (click)="toggleMode()" >
+      <mat-icon>menu</mat-icon></button>
+
+  </div>
+
   <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" >
-      <span  ><button mat-icon-button  style="postion: relative; bottom:3px;"><mat-icon>{{menuItem.icon}}</mat-icon></button></span><span *ngIf="mode==='OPEN'" >{{menuItem.title}}</span><span *ngIf="mode==='OPEN'" style="float:right" ><button mat-icon-button style="postion: relative; bottom:3px;" ><mat-icon>chevron_right</mat-icon></button></span>
+
+    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="menuItem.displayChildren = !menuItem.displayChildren" >
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span  *ngIf="mode==='OPEN'">{{menuItem.title}}</span>
+      <span *ngIf="mode==='OPEN'" style="float:right" ><mat-icon class="submenu-icon">expand_{{menuItem.displayChildren ? 'less' : 'more'}}</mat-icon></span>
+    </button>
+
+
+    <div *ngIf="menuItem.displayChildren">
+      <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit(childItem.title)" >{{childItem.title}}</button>
     </div>
+    <!--  <ul *ngIf="menuItem.displayChildren" class="children">
+      <li mat-button *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit(childItem.title)">{{childItem.title}}</li>
+    </ul> -->
+  </div>
 </div>

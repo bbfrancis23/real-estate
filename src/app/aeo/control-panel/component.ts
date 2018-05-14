@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ControlPanelService } from './service';
@@ -10,13 +10,16 @@ import { ControlPanel } from './control-panel';
   styleUrls: ['styles.scss']
 
 })
-export class ControlPanelComponent {
+export class ControlPanelComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
   mode = 'OPEN';
 
   controlPanel: ControlPanel;
+
+  @Output() menuItemSelected = new EventEmitter<string>();
+
 
   controlPanelSub = this.controlPanelService.currentControlPanel.subscribe(cp => {
     this.controlPanel = cp;
@@ -26,6 +29,10 @@ export class ControlPanelComponent {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit() {
+
   }
 
   toggleMode() {

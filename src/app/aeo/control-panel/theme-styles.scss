@@ -12,4 +12,10 @@
     color: white;
   }
 
+  div.aeo-sidedrawer-container.icon{
+    .children{
+      background-color: mat-color($primary, darker);
+      color: white;
+    }
+  }
 }

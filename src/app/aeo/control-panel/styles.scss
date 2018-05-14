@@ -23,13 +23,41 @@ div.aeo-sidedrawer-container{
   }
 }
 
+.menu-item.mat-button{
+  width: 100%;
+  text-align: left;
+}
+
+
+ul{
+  list-style-type: none;
+}
+
 
 div.aeo-sidedrawer-container.open{
   width: 225px;
+
+  .children{
+    width: 100%;
+    text-align: left;
+    margin-left: 25px;
+  }
 }
 
 div.aeo-sidedrawer-container.icon{
   width: 50px;
+
+  .children{
+    position:  relative;
+    left: 50px;
+
+    bottom: 40px;
+    width: 225px;
+
+    border-radius: 0px;
+    text-align: left;
+  }
+
 }
 
 ////////////////////////////////////////////////////
@@ -47,7 +75,7 @@ div.aeo-sidedrawer-container.icon{
     flex: 1;
 
     .is-mobil{
-    
+
       flex: 1 0 auto;
     }
 

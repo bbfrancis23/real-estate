@@ -1,8 +1,9 @@
 'use strict';
 
-export interface MenuItem {
+export class MenuItem {
   icon?: string;
   title: string;
+  displayChildren?: boolean = false;
   children?: [MenuItem];
 }
 

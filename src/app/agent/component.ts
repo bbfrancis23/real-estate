@@ -32,7 +32,7 @@ export class AgentComponent implements OnInit, OnDestroy {
 
   agentControlPanel: ControlPanel = {
     title: 'Agent Control Panel',
-    MenuItems: [{ icon: 'people', title: 'CLIENTS', children: [{ title: 'Add Client' },] }]
+    MenuItems: [{ icon: 'people', title: 'Clients', children: [{ title: 'Add Client' }, { title: 'List Clients' }] }]
   };
 
   constructor(
@@ -69,7 +69,11 @@ export class AgentComponent implements OnInit, OnDestroy {
     }
   }
 
-
+  menuItemSelected(item) {
+    if (item === 'Add Client') {
+      console.log('you to call Add client dialog');
+    }
+  }
 
   ngOnDestroy(): void {
 
