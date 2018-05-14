@@ -15,6 +15,8 @@ import { AccountEntry } from './account/entry/component';
 import { EmailControl } from './account/ctrls/email/component';
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
+import { ControlPanelService } from './aeo/control-panel/service';
+
 'use strict';
 
 @NgModule({
@@ -38,7 +40,7 @@ import { DefaultComponet } from './default';
 
   ],
   entryComponents: [AccountDialog, SettingsDialog],
-  providers: [AccountService, AppService],
+  providers: [AccountService, AppService, ControlPanelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

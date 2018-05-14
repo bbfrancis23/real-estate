@@ -10,13 +10,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DropDown } from './drop-down/component';
+
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanel],
-  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanel]
+  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanel, DropDown],
+  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanel, DropDown]
 })
 export class AeoModule { }

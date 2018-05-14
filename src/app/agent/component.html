@@ -1,15 +1,7 @@
 <control-panel>
   <div class="sidenav">
 
-  <div class="container" >
-    <div class="row" (click)="display = !display">
-      <div class="col"><mat-icon>people</mat-icon></div><div class="col-8-md">CLIENTS</div><div class="col"><mat-icon>chevron_right</mat-icon></div>
-    </div>
-    <ul *ngIf="display">
-      <li>ADD NEW CLIENT</li>
-      <li>LIST CLIENTS</li>
-    </ul>
-  </div>
+  <drop-down></drop-down>
   <!-- <mat-expansion-panel >
     <mat-expansion-panel-header>
       <mat-panel-title>CLIENTS</mat-panel-title>

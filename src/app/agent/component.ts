@@ -20,7 +20,6 @@ export class AgentComponent implements OnDestroy {
 
 
 
-  display = false;
 
 
   showClientDataTable = false;
