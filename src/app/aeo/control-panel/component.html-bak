@@ -1,0 +1,28 @@
+<div class="control-panel-container" [class.is-mobile]="mobileQuery.matches">
+  <!-- <mat-toolbar color="primary" >
+    <button mat-icon-button (click)="snav.toggle()" color="accent" ><mat-icon>menu</mat-icon></button>
+    <h1>yOUR MOPM</h1>
+  </mat-toolbar> -->
+
+  <mat-sidenav-container >
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" opened="true">
+    <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode === 'FULL'" >Agent Control Panel</strong> <button mat-icon-button (click)="toggleMode()"><mat-icon>menu</mat-icon></button></div>
+    <div class="container"  >
+      <div class="row" (click)="display = !display">
+        <div class="col"><mat-icon>people</mat-icon></div><div class="col-8-md" *ngIf="mode === 'FULL'">CLIENTS</div><div class="col" *ngIf="mode === 'FULL'"><mat-icon>chevron_right</mat-icon></div>
+      </div>
+      <div class="children" *ngIf="display">
+      <ul> 
+      <li (click)="clicker()">ADD NEW CLIENT</li>
+        <li>LIST CLIENTS</li>
+      </ul>
+      </div>
+    </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- <client-data-table *ngIf="showClientDataTable"></client-data-table> -->
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

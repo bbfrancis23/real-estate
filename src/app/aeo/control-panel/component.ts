@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ControlPanelService } from './service';
+import { ControlPanel } from './control-panel';
 
 @Component({
   selector: 'control-panel',
@@ -9,15 +10,16 @@ import { ControlPanelService } from './service';
   styleUrls: ['styles.scss']
 
 })
-export class ControlPanel {
+export class ControlPanelComponent {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
-  mode = 'FULL';
+  mode = 'OPEN';
 
   controlPanel: ControlPanel;
-  controlPanelSub = this.controlPanelService.currentControlPanel.subscribe(controlPanel => {
 
+  controlPanelSub = this.controlPanelService.currentControlPanel.subscribe(cp => {
+    this.controlPanel = cp;
   });
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public controlPanelService: ControlPanelService) {
@@ -27,10 +29,10 @@ export class ControlPanel {
   }
 
   toggleMode() {
-    if (this.mode === 'FULL') {
+    if (this.mode === 'OPEN') {
       this.mode = 'ICON';
     } else {
-      this.mode = 'FULL';
+      this.mode = 'OPEN';
     }
   }
 

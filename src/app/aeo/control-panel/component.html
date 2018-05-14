@@ -1,26 +1,6 @@
-<div class="control-panel-container" [class.is-mobile]="mobileQuery.matches">
-  <!-- <mat-toolbar color="primary" >
-    <button mat-icon-button (click)="snav.toggle()" color="accent" ><mat-icon>menu</mat-icon></button>
-    <h1>yOUR MOPM</h1>
-  </mat-toolbar> -->
-
-  <mat-sidenav-container >
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" opened="true">
-    <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode === 'FULL'" >Agent Control Panel</strong> <button mat-icon-button (click)="toggleMode()"><mat-icon>menu</mat-icon></button></div>
-    <div class="container"  >
-      <div class="row" (click)="display = !display">
-        <div class="col"><mat-icon>people</mat-icon></div><div class="col-8-md" *ngIf="mode === 'FULL'">CLIENTS</div><div class="col" *ngIf="mode === 'FULL'"><mat-icon>chevron_right</mat-icon></div>
-      </div>
-      <ul *ngIf="display">
-      <li (click)="clicker()">ADD NEW CLIENT</li>
-        <li>LIST CLIENTS</li>
-      </ul>
+<div class="aeo-sidedrawer-container" [ngClass]="{'open': mode === 'OPEN', 'icon': mode === 'ICON'}">
+  <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode==='OPEN'">{{controlPanel.title}}</strong><button mat-icon-button (click)="toggleMode()"><mat-icon>menu</mat-icon></button></div>
+  <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" >
+      <span  ><button mat-icon-button  style="postion: relative; bottom:3px;"><mat-icon>{{menuItem.icon}}</mat-icon></button></span><span *ngIf="mode==='OPEN'" >{{menuItem.title}}</span><span *ngIf="mode==='OPEN'" style="float:right" ><button mat-icon-button style="postion: relative; bottom:3px;" ><mat-icon>chevron_right</mat-icon></button></span>
     </div>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <!-- <client-data-table *ngIf="showClientDataTable"></client-data-table> -->
-
-    </mat-sidenav-content>
-  </mat-sidenav-container>
 </div>

@@ -1,12 +1,12 @@
 'use strict';
 
-export class MenuItem {
-  icon: string;
+export interface MenuItem {
+  icon?: string;
   title: string;
-  children: [MenuItem];
+  children?: [MenuItem];
 }
 
-export class ControlPanel {
+export interface ControlPanel {
   title: string;
   MenuItems: [MenuItem];
 }

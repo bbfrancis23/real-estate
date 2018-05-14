@@ -9,18 +9,15 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 import { AppService } from '../service';
 import { AccountService } from '../account/service';
+import { ControlPanelService } from '../aeo/control-panel/service';
+import { ControlPanel } from '../aeo/control-panel/control-panel';
 
 @Component({
   selector: 'agent',
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AgentComponent implements OnDestroy {
-
-
-
-
-
+export class AgentComponent implements OnInit, OnDestroy {
 
   showClientDataTable = false;
 
@@ -33,14 +30,22 @@ export class AgentComponent implements OnDestroy {
     }
   });
 
+  agentControlPanel: ControlPanel = {
+    title: 'Agent Control Panel',
+    MenuItems: [{ icon: 'people', title: 'CLIENTS', children: [{ title: 'Add Client' },] }]
+  };
 
-
-  constructor(public dialog: MatDialog, public agentService: AgentService, public appService: AppService, public accountService: AccountService) {
+  constructor(
+    public accountService: AccountService, public agentService: AgentService, public appService: AppService,
+    public controlPanelService: ControlPanelService,
+    public dialog: MatDialog) {
 
   }
 
 
-
+  ngOnInit() {
+    this.controlPanelService.changeControlPanel(this.agentControlPanel);
+  }
 
 
 

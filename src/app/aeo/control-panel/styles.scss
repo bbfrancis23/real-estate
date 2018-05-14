@@ -1,3 +1,39 @@
+
+$drawer-width: 225px;
+$drawer-layer: 4;
+$button-spacing: 20px;
+
+div.aeo-sidedrawer-container{
+
+  position:fixed;
+  top: 0;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+  border-right: 1px solid grey;
+  z-index: $drawer-layer;
+
+  left: 0px;
+
+  &.closed{ left: -$drawer-width }
+
+  button.aeo-sidedrawer-control{
+    position: absolute;
+    top: $button-spacing;
+    left: ($drawer-width + $button-spacing);
+  }
+}
+
+
+div.aeo-sidedrawer-container.open{
+  width: 225px;
+}
+
+div.aeo-sidedrawer-container.icon{
+  width: 50px;
+}
+
+////////////////////////////////////////////////////
+/*
 .control-panel-container {
   display: flex;
   flex-direction: column;
@@ -11,13 +47,23 @@
     flex: 1;
 
     .is-mobil{
-      /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-         `<body>` to be our scrolling element for mobile layouts. */
+    
       flex: 1 0 auto;
+    }
+
+    .children{
+      position: absolute;
+      left: 500px;
+      z-index: 99999999999999999999999999999999999;
     }
   }
 }
 
+.children{
+  position: absolute;
+  left: 500px;
+  z-index: 99999999999999999999999999999999999;
+}
 
 .settings-item{
   height: 30px;
@@ -38,3 +84,5 @@
 mat-sidenav{
   border-right: 1px grey solid;
 }
+
+*/
