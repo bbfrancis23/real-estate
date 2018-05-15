@@ -10,7 +10,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { AppService } from '../service';
 import { AccountService } from '../account/service';
 import { ControlPanelService } from '../aeo/control-panel/service';
-import { ControlPanel } from '../aeo/control-panel/control-panel';
+import { ControlPanel, MenuItem } from '../aeo/control-panel/control-panel';
+import { UrlDecodePipe } from '../aeo/pipes/url-decode/pipe';
+
 
 @Component({
   selector: 'agent',
@@ -31,8 +33,13 @@ export class AgentComponent implements OnInit, OnDestroy {
   });
 
   agentControlPanel: ControlPanel = {
-    title: 'Agent Control Panel',
-    MenuItems: [{ icon: 'people', title: 'Clients', children: [{ title: 'Add Client' }, { title: 'List Clients' }] }]
+    title: 'Agent Dashboard',
+    MenuItems:
+      [
+        { icon: 'people', title: 'Clients', children: [{ title: 'Add Client' }, { title: 'List Clients' }] },
+        { icon: 'palette', title: 'Themes' }
+
+      ]
   };
 
   constructor(
@@ -44,6 +51,14 @@ export class AgentComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+
+    let menuItems: Array<MenuItem> = [];
+
+    this.appService.themes.forEach((t) => {
+      menuItems.push({ title: new UrlDecodePipe().transform(t, true) })
+    });
+    this.agentControlPanel.MenuItems[1].children = menuItems;
+
     this.controlPanelService.changeControlPanel(this.agentControlPanel);
   }
 
@@ -69,10 +84,15 @@ export class AgentComponent implements OnInit, OnDestroy {
     }
   }
 
-  menuItemSelected(item) {
-    if (item === 'Add Client') {
-      console.log('you to call Add client dialog');
+  menuItemSelected(e) {
+
+
+    if (e.parent === 'Themes') {
+      e.child = e.child.replace(/\b\w/g, first => first.toLocaleLowerCase());
+      e.child = e.child.replace(/ /g, '-');
+      this.updateTheme(e.child);
     }
+
   }
 
   ngOnDestroy(): void {

@@ -4,4 +4,4 @@ $beach-theme-primary: mat-palette($mat-cyan);
 $beach-theme-accent: mat-palette($mat-brown, 300, 100, 500);
 $beach-theme-warn: mat-palette($mat-red);
 
-$beach-theme: mat-light-theme( $beach-theme-primary, $beach-theme-accent, $beach-theme-warn);
+$beach-theme: mat-dark-theme( $beach-theme-primary, $beach-theme-accent, $beach-theme-warn);

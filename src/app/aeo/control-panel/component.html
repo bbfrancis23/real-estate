@@ -8,18 +8,28 @@
 
   <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" >
 
-    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="menuItem.displayChildren = !menuItem.displayChildren" >
+    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="toggleDisplayChildren(menuItem)"   >
       <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
       <span  *ngIf="mode==='OPEN'">{{menuItem.title}}</span>
       <span *ngIf="mode==='OPEN'" style="float:right" ><mat-icon class="submenu-icon">expand_{{menuItem.displayChildren ? 'less' : 'more'}}</mat-icon></span>
     </button>
 
 
-    <div *ngIf="menuItem.displayChildren">
-      <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit(childItem.title)" >{{childItem.title}}</button>
+    <div class="child-container" *ngIf="menuItem.displayChildren">
+      <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})" >{{childItem.title}}</button>
     </div>
-    <!--  <ul *ngIf="menuItem.displayChildren" class="children">
-      <li mat-button *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit(childItem.title)">{{childItem.title}}</li>
-    </ul> -->
+
   </div>
+
+  <!-- <div [ngClass]="{'text-center': mode === 'ICON'}">
+    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="displayThemes =!displayThemes" >
+      <mat-icon class="menu-icon">palette</mat-icon>
+      <span  *ngIf="mode==='OPEN'">Themes</span>
+      <span *ngIf="mode==='OPEN'" style="float:right" ><mat-icon class="submenu-icon">expand_{{displayTheme ? 'less' : 'more'}}</mat-icon></span>
+    </button>
+
+    <div class="child-container" *ngIf="displayThemes" >
+      <button mat-button  class="children"  *ngFor="let theme of appService.themes" (click)="updateTheme(theme)">{{theme}}</button>
+    </div>
+  </div> -->
 </div>

@@ -4,4 +4,4 @@ $utah-theme-primary: mat-palette($mat-blue, A400, 200, 800);
 $utah-theme-accent: mat-palette($mat-deep-purple, 500, 200, 600);
 $utah-theme-warn: mat-palette($mat-red);
 
-$utah-theme: mat-light-theme( $utah-theme-primary, $utah-theme-accent, $utah-theme-warn);
+$utah-theme: mat-dark-theme( $utah-theme-primary, $utah-theme-accent, $utah-theme-warn);

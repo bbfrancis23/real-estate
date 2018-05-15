@@ -4,4 +4,4 @@ $pink-lemonaid-primary-color: mat-palette($mat-pink, 300, 200, 600);
 $pink-lemonaid-accent-color: mat-palette($mat-grey, 700, 600, 800 );
 $pink-lemonaid-warn-color: mat-palette($mat-red);
 
-$pink-lemonaid-theme: mat-light-theme( $pink-lemonaid-primary-color, $pink-lemonaid-accent-color, $pink-lemonaid-warn-color);
+$pink-lemonaid-theme: mat-dark-theme( $pink-lemonaid-primary-color, $pink-lemonaid-accent-color, $pink-lemonaid-warn-color);
