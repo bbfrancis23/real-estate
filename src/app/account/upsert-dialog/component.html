@@ -1,5 +1,5 @@
 <div>
-  <span mat-dialog-title (click)=clicky()>{{data.action}} CLIENT</span>
+  <span mat-dialog-title (click)=clicky() >{{data.action}} CLIENT</span>
   <mat-dialog-content>
     <form [formGroup]="accountForm" (ngSubmit)="submit()">
       <div class="fluid-container">
@@ -18,7 +18,7 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <button class="submit" type="submit" mat-raised-button color="accent" [disabled]="accountForm.invalid || !phoneCtrl.validPhoneNumber || !addressCtrl.validAddress">Create New Client</button></div>
+            <button class="submit" type="submit" mat-raised-button color="primary" [disabled]="accountForm.invalid || !phoneCtrl.validPhoneNumber || !addressCtrl.validAddress">Create New Client</button></div>
         </div>
 
       </div>

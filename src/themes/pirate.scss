@@ -4,4 +4,4 @@ $pirate-theme-primary: mat-palette($mat-grey, 900, 700, 800);
 $pirate-theme-accent: mat-palette($mat-red, 900, A700, 800);
 $pirate-theme-warn: mat-palette($mat-red);
 
-$pirate-theme: mat-dark-theme( $pirate-theme-primary, $pirate-theme-accent, $pirate-theme-warn);
+$pirate-theme: mat-light-theme( $pirate-theme-primary, $pirate-theme-accent, $pirate-theme-warn);

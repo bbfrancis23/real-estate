@@ -4,4 +4,4 @@ $corp-primary-color: mat-palette($mat-blue-grey);
 $corp-accent-color: mat-palette($mat-grey, 400, 200, 800);
 $corp-warn-color: mat-palette($mat-red);
 
-$corp-theme: mat-dark-theme( $corp-primary-color, $corp-accent-color, $corp-warn-color);
+$corp-theme: mat-light-theme( $corp-primary-color, $corp-accent-color, $corp-warn-color);

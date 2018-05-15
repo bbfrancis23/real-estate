@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
-$cobra-kai-primary-color: mat-palette($mat-yellow, A200, A100, A700);
-$cobra-kai-accent-color: mat-palette($mat-red, A700, A200, 900);
+$cobra-kai-primary-color: mat-palette($mat-gray, 900, 900, 900);
+$cobra-kai-accent-color: mat-palette($mat-yellow, A200, A100, A700);
 $cobra-kai-warn-color: mat-palette($mat-red);
 
 $cobra-kai-theme: mat-light-theme( $cobra-kai-primary-color, $cobra-kai-accent-color, $cobra-kai-warn-color);

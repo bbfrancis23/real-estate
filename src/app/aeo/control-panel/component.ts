@@ -46,7 +46,6 @@ export class ControlPanelComponent implements OnInit {
   }
 
   toggleMode() {
-
     this.closeAllChildren();
 
 
@@ -55,6 +54,18 @@ export class ControlPanelComponent implements OnInit {
       this.mode = 'ICON';
     } else {
       this.mode = 'OPEN';
+    }
+  }
+
+  displayChildren(menuItem) {
+    if (this.mode === 'ICON') {
+      menuItem.displayChildren = true;
+    }
+  }
+
+  hideChildren(menuItem) {
+    if (this.mode === 'ICON') {
+      menuItem.displayChildren = false;
     }
   }
 

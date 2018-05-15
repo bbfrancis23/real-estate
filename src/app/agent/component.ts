@@ -86,8 +86,11 @@ export class AgentComponent implements OnInit, OnDestroy {
 
   menuItemSelected(e) {
 
-
-    if (e.parent === 'Themes') {
+    if (e.child === 'Add Client') {
+      this.openClientDialog();
+    } else if (e.child === 'List Clients') {
+      this.showClientDataTable = true;
+    } else if (e.parent === 'Themes') {
       e.child = e.child.replace(/\b\w/g, first => first.toLocaleLowerCase());
       e.child = e.child.replace(/ /g, '-');
       this.updateTheme(e.child);

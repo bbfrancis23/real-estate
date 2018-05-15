@@ -6,7 +6,7 @@
 
   </div>
 
-  <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" >
+  <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" (mouseenter)="displayChildren(menuItem)" (mouseleave)="hideChildren(menuItem)">
 
     <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="toggleDisplayChildren(menuItem)"   >
       <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>

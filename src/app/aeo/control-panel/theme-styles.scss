@@ -9,13 +9,13 @@
 
   div.aeo-sidedrawer-container{
     background-color: mat-color($primary, darker);
-    color: mat-color($foreground, base);
+    color: white;
   }
 
   div.aeo-sidedrawer-container.icon{
     .children{
       background-color: mat-color($primary, darker);
-      color: mat-color($foreground, base);
+      color: white;
     }
   }
 }
