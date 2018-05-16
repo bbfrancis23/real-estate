@@ -176,7 +176,7 @@ export class AccountService {
 
   authAccount(account) {
 
-    return this.http.post('/api/auth', JSON.stringify(account))
+    return this.http.post('/api/auth', account)
       .toPromise()
       .then(res => {
         this.account.authenticated = true;
