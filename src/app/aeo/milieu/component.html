@@ -2,20 +2,36 @@
   <mat-sidenav mode="side" opened>
     <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >Agent Milieu</strong><button mat-icon-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button>
 
-    <div [ngClass]="{'text-center': mode === 'ICON'}">
+    <div [ngClass]="{'text-center': mode === 'ICON'}" >
 
-      <button class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}"    >
+
+
+      <mat-menu #menu="matMenu" [overlapTrigger]="false" >
+        <button mat-menu-item>Item 1 slarty alskdf asldfj as </button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+
+
+      <button  [matMenuTriggerFor]="menu" class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" (click)="displayChildren = !displayChildren"   >
         <mat-icon class="menu-icon">people</mat-icon>
         <span  *ngIf="milieuMode==='OPENED'">CLIENTS</span>
-        <span *ngIf="milieuMode==='OPENED'" style="float:right" ><mat-icon class="submenu-icon">expand_less</mat-icon></span>
       </button>
 
+      <br><br>
 
-      <!-- <div class="child-container" *ngIf="menuItem.displayChildren">
-        <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})" >{{childItem.title}}</button>
-      </div>-->
+      <!--<mat-menu #appMenu="matMenu" yPosition="above" xPosition="after">
+        <button mat-menu-item>Item 1 slarty alskdf asldfj as </button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+      <button mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" [matMenuTriggerFor]="appMenu" class='menu-item' (click)="displayChildren = !displayChildren"  style="margin-right: 500px; margin-left: 500px">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    -->
 
     </div>
+
 
 
   </mat-sidenav>

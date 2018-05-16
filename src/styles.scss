@@ -113,9 +113,6 @@ div.mat-expansion-panel-body{
 .mat-expansion-panel:first-of-type {
   border-top: 0px;
 }
-
-
-
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     color: #AAAAAA;
 }
@@ -123,6 +120,11 @@ div.mat-expansion-panel-body{
 
 .theme-text{
   margin-left: 5px;
+}
+
+.cdk-overlay-pane{
+  left: 5px !important;
+  position: relative !important;
 }
 
 #arizona-theme-select{ background-color: #8D6E63 }

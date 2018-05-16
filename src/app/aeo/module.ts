@@ -12,10 +12,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DropDown } from './drop-down/component';
 
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
+    MatMenuModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
   declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown],

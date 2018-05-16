@@ -12,7 +12,29 @@ mat-sidenav-container {
 
 mat-sidenav-container.opened{
   mat-sidenav{
-    width: 200px;
+    //width: 225px;
+  }
+}
+
+
+
+mat-sidenav-container.icon{
+  .child-container{
+    //display: none;
+    background-color: red;
+    position: relative;
+    left: 50px;
+    bottom: 40px;
+    z-index: 999;
+    //height:0px;
+    //width:0px;
+  }
+
+  .children{
+
+    //text-align: left;
+    border-radius: 0px;
+    width: 225px;
   }
 }
 
