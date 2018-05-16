@@ -23,7 +23,7 @@ export class AgentComponent implements OnInit, OnDestroy {
 
   showClientDataTable = false;
 
-  account: Account;
+  account: any;
   accountSub = this.accountService.currentAccount.subscribe(account => {
     this.account = account;
 
@@ -32,7 +32,7 @@ export class AgentComponent implements OnInit, OnDestroy {
     }
   });
 
-  agentControlPanel: ControlPanel = {
+  agentControlPanel = {
     title: 'Agent Dashboard',
     MenuItems:
       [
@@ -52,14 +52,7 @@ export class AgentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    let menuItems: Array<MenuItem> = [];
 
-    this.appService.themes.forEach((t) => {
-      menuItems.push({ title: new UrlDecodePipe().transform(t, true) })
-    });
-    this.agentControlPanel.MenuItems[1].children = menuItems;
-
-    this.controlPanelService.changeControlPanel(this.agentControlPanel);
   }
 
 

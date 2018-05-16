@@ -2,7 +2,7 @@ import { Component, OnDestroy, ViewChild, } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { AgentService } from '../../service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 'use strict';
 
@@ -16,12 +16,12 @@ export class ClientDataTable implements OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  clients: [Account];
+  clients: [any];
   clientsSub: Subscription;
 
   displayedColumns = ['img', 'name', 'email', 'phone', 'select'];
   dataSource = new MatTableDataSource();
-  selection = new SelectionModel<Account>(true, []); // any change to  Account
+  selection = new SelectionModel<any>(true, []); // any change to  Account
 
   constructor(public agentService: AgentService) {
     this.agentService.getClients().then(() => {

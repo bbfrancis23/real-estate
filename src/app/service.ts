@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 import { Headers, Http } from '@angular/http';
 import { State } from './state';
+
+
+import { HttpClient } from '@angular/common/http';
 'use strict';
 
 @Injectable()
@@ -20,7 +23,7 @@ export class AppService {
 
   states: Array<State>;
 
-  constructor(readonly http: Http) { }
+  constructor(readonly http: HttpClient) { }
 
   getStates() {
     if (this.states) {
@@ -29,7 +32,7 @@ export class AppService {
       this.http.get('/api/states')
         .toPromise()
         .then(res => {
-          this.states = res.json();
+          //this.states = res.json();
         })
         .catch(err => console.log(err))
     }

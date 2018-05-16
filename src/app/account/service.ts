@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { Account } from './account'
 import { FormControl, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 
 'use strict';
 
@@ -29,19 +31,22 @@ export class AccountService {
 
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
-  account = new Account();
+  account: Account = new Account();
 
   readonly accountSource = new BehaviorSubject<Account>(this.account);
   readonly currentAccount = this.accountSource.asObservable();
   public changeAccount(account: Account) { this.accountSource.next(account) }
 
 
-  constructor(readonly http: Http, router: Router) {
+  constructor(readonly http: HttpClient, router: Router) {
 
-    this.http.get('/api/accounts/me')
+    this.http.get<Account>('/api/accounts/me')
       .toPromise()
       .then(res => {
-        this.account = res.json();
+
+        this.account = res;
+
+        //this.account = new Account(res);
         this.account.authenticated = true;
         this.changeAccount(this.account);
         if (this.account.type === 'Agent') {
@@ -65,37 +70,37 @@ export class AccountService {
 
     this.http.post('/api/accounts/img', fd).subscribe(
       res => {
-        this.account = res.json();
-        this.account.authenticated = true;
-        this.changeAccount(this.account);
+        //this.account = res.json();
+        //this.account.authenticated = true;
+        //this.changeAccount(this.account);
       }
     );
   }
 
   updateName(name) {
 
-    return this.http.post('/api/accounts/name', { name: name }, { headers: this.headers })
+    return this.http.post('/api/accounts/name', { name: name })
       .toPromise()
       .then(res => {
 
-        this.account = res.json();
-        this.account.authenticated = true;
-        this.account.name = name;
-        this.changeAccount(this.account);
+        //this.account = res.json();
+        //this.account.authenticated = true;
+        //this.account.name = name;
+        //this.changeAccount(this.account);
         return true;
       })
       .catch(err => err);
   }
 
   updatePhone(phone) {
-    return this.http.post('/api/accounts/phone', { phone: phone }, { headers: this.headers })
+    return this.http.post('/api/accounts/phone', { phone: phone })
       .toPromise()
       .then(res => {
 
-        this.account = res.json();
-        this.account.authenticated = true;
-        this.account.phone = phone;
-        this.changeAccount(this.account);
+        //this.account = res.json();
+        //this.account.authenticated = true;
+        //this.account.phone = phone;
+        //this.changeAccount(this.account);
         return true;
       })
       .catch(err => err);
@@ -106,13 +111,13 @@ export class AccountService {
 
     return this.http.post('/api/accounts/address', {
       address
-    }, { headers: this.headers })
+    })
       .toPromise()
       .then(res => {
-        this.account = res.json();
-        this.account.authenticated = true;
-        this.account.address = address;
-        this.changeAccount(this.account);
+        //this.account = res.json();
+        //this.account.authenticated = true;
+        //this.account.address = address;
+        //this.changeAccount(this.account);
 
         return true;
       })
@@ -153,7 +158,7 @@ export class AccountService {
       a.agent = account.agent;
     }
 
-    return this.http.post('/api/accounts', JSON.stringify(a), { headers: this.headers })
+    return this.http.post('/api/accounts', JSON.stringify(a))
       .toPromise()
       .then(res => {
         console.log(res);
@@ -171,13 +176,13 @@ export class AccountService {
 
   authAccount(account) {
 
-    return this.http.post('/api/auth', JSON.stringify(account), { headers: this.headers })
+    return this.http.post('/api/auth', JSON.stringify(account))
       .toPromise()
       .then(res => {
         this.account.authenticated = true;
         this.account.email = account.email;
-        this.account._id = res.json()._id;
-        console.log(this.account);
+        //this.account._id = res.json()._id;
+        //console.log(this.account);
         window.location.reload();
         return true;
 
@@ -187,7 +192,7 @@ export class AccountService {
   }
 
   promote(rank: number) {
-    this.http.post('/api/accounts/promote', { rank: rank }, { headers: this.headers }).toPromise().then(res => {
+    this.http.post('/api/accounts/promote', { rank: rank }).toPromise().then(res => {
       window.location.reload();
     }).catch(err => console.log(err));
   }

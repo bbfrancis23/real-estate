@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 import { Account } from '../account/account';
+
+import { HttpClient } from '@angular/common/http';
 
 'use strict';
 
@@ -18,7 +20,7 @@ export class AgentService {
   readonly currentClients = this.clientsSource.asObservable();
   private changeCurrentClients(clinets: [Account]) { this.clientsSource.next(clinets) }
 
-  constructor(readonly http: Http) {
+  constructor(readonly http: HttpClient) {
 
   }
 
@@ -29,8 +31,8 @@ export class AgentService {
     return this.http.get('/api/accounts/clients')
       .toPromise()
       .then(res => {
-        this.clients = res.json();
-        this.changeCurrentClients(this.clients);
+        //this.clients = res.json();
+        //this.changeCurrentClients(this.clients);
 
       })
       .catch(err => console.log(err))
@@ -39,7 +41,7 @@ export class AgentService {
   updateTheme(theme) {
 
 
-    return this.http.post('/api/accounts/theme', { theme: theme }, { headers: this.headers })
+    return this.http.post('/api/accounts/theme', { theme: theme })
       .toPromise()
       .then(res => {
       })
