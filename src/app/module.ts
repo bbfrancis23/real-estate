@@ -15,7 +15,7 @@ import { AccountEntry } from './account/entry/component';
 import { EmailControl } from './account/ctrls/email/component';
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
-import { ControlPanelService } from './aeo/control-panel/service';
+import { MilieuService } from './aeo/milieu/service';
 
 'use strict';
 
@@ -40,7 +40,7 @@ import { ControlPanelService } from './aeo/control-panel/service';
 
   ],
   entryComponents: [AccountDialog, SettingsDialog],
-  providers: [AccountService, AppService, ControlPanelService],
+  providers: [AccountService, AppService, MilieuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

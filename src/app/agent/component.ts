@@ -1,29 +1,24 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
-
-import { MatDialog, MatDialogRef, MatTableDataSource, MatSort, MatPaginator, } from '@angular/material';
-import { UpsertAccountDialog } from '../account/upsert-dialog/component';
-import { AgentService } from './service';
-
-import { SelectionModel } from '@angular/cdk/collections';
-
-import { AppService } from '../service';
+import { Account } from '../account/account'
 import { AccountService } from '../account/service';
-import { ControlPanelService } from '../aeo/control-panel/service';
-import { ControlPanel, MenuItem } from '../aeo/control-panel/control-panel';
-import { UrlDecodePipe } from '../aeo/pipes/url-decode/pipe';
+import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
+import { AgentService } from './service';
+import { AppService } from '../service';
 
 @Component({
   selector: 'agent',
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AgentComponent implements OnInit, OnDestroy {
+export class AgentComponent implements OnDestroy {
+
 
   showClientDataTable = false;
 
-  account: any;
+  account: Account;
   accountSub = this.accountService.currentAccount.subscribe(account => {
     this.account = account;
 
@@ -32,28 +27,11 @@ export class AgentComponent implements OnInit, OnDestroy {
     }
   });
 
-  agentControlPanel = {
-    title: 'Agent Dashboard',
-    MenuItems:
-      [
-        { icon: 'people', title: 'Clients', children: [{ title: 'Add Client' }, { title: 'List Clients' }] },
-        { icon: 'palette', title: 'Themes' }
-
-      ]
-  };
-
-  constructor(
-    public accountService: AccountService, public agentService: AgentService, public appService: AppService,
-    public controlPanelService: ControlPanelService,
-    public dialog: MatDialog) {
+  constructor(public accountService: AccountService, public agentService: AgentService, public appService: AppService, public dialog: MatDialog) {
 
   }
 
 
-  ngOnInit() {
-
-
-  }
 
 
 
@@ -68,28 +46,9 @@ export class AgentComponent implements OnInit, OnDestroy {
 
   listClients() {
     this.showClientDataTable = true;
-    if (this.agentService.clients) {
-
-    } else {
-      /*
-
-      // */
-    }
   }
 
-  menuItemSelected(e) {
 
-    if (e.child === 'Add Client') {
-      this.openClientDialog();
-    } else if (e.child === 'List Clients') {
-      this.showClientDataTable = true;
-    } else if (e.parent === 'Themes') {
-      e.child = e.child.replace(/\b\w/g, first => first.toLocaleLowerCase());
-      e.child = e.child.replace(/ /g, '-');
-      this.updateTheme(e.child);
-    }
-
-  }
 
   ngOnDestroy(): void {
 

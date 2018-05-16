@@ -4,7 +4,7 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
 import { UrlDecodePipe } from './pipes/url-decode/pipe';
 import { AeoSideDrawer } from './side-drawer/component';
 import { MediaViewPort } from './media-view-port/component';
-import { ControlPanelComponent } from './control-panel/component';
+import { MilieuComponent } from './milieu/component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -18,7 +18,7 @@ import { DropDown } from './drop-down/component';
     MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanelComponent, DropDown],
-  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, ControlPanelComponent, DropDown]
+  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown],
+  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown]
 })
 export class AeoModule { }

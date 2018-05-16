@@ -1,4 +1,13 @@
-<div class="aeo-sidedrawer-container" [ngClass]="{'open': mode === 'OPEN', 'icon': mode === 'ICON'}">
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >Agent Milieu</strong><button mat-icon-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- <div class="aeo-sidedrawer-container" [ngClass]="{'open': mode === 'OPEN', 'icon': mode === 'ICON'}">
   <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode==='OPEN'">{{controlPanel.title}}</strong>
 
     <button mat-icon-button (click)="toggleMode()" >
@@ -21,15 +30,5 @@
 
   </div>
 
-  <!-- <div [ngClass]="{'text-center': mode === 'ICON'}">
-    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="displayThemes =!displayThemes" >
-      <mat-icon class="menu-icon">palette</mat-icon>
-      <span  *ngIf="mode==='OPEN'">Themes</span>
-      <span *ngIf="mode==='OPEN'" style="float:right" ><mat-icon class="submenu-icon">expand_{{displayTheme ? 'less' : 'more'}}</mat-icon></span>
-    </button>
 
-    <div class="child-container" *ngIf="displayThemes" >
-      <button mat-button  class="children"  *ngFor="let theme of appService.themes" (click)="updateTheme(theme)">{{theme}}</button>
-    </div>
-  </div> -->
-</div>
+</div> -->

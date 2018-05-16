@@ -8,7 +8,7 @@ export class MenuItem {
   alias?: string;
 }
 
-export interface ControlPanel {
+export interface Milieu {
   title: string;
   MenuItems: [MenuItem];
 }

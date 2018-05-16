@@ -18,7 +18,7 @@
 @import "app/aeo/side-drawer/theme-styles.scss";
 @import "app/theme-styles.scss";
 @import "app/agent/theme-styles.scss";
-@import "app/aeo/control-panel/theme-styles.scss";
+@import "app/aeo/milieu/theme-styles.scss";
 @import "app/account/upsert-dialog/theme-styles.scss";
 
 @mixin custom-components-theme($theme){
@@ -27,7 +27,7 @@
   @include side-drawer-theme($theme);
   @include app-theme($theme);
   @include agent-theme($theme);
-  @include control-panel-theme($theme);
+  @include milieu-theme($theme);
 }
 
 .corporation-theme{

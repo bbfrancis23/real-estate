@@ -1,32 +1,37 @@
 import { ChangeDetectorRef, Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ControlPanelService } from './service';
-import { ControlPanel } from './control-panel';
+import { MilieuService } from './service';
+import { Milieu } from './milieu';
 import { AppService } from '../../service';
 
 @Component({
-  selector: 'control-panel',
+  selector: 'milieu',
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 
 })
-export class ControlPanelComponent implements OnInit {
+export class MilieuComponent implements OnInit {
+
+
+
+  milieuMode = 'OPENED';
+
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
   mode = 'OPEN';
 
-  controlPanel: ControlPanel;
+  milieu: Milieu;
 
   @Output() menuItemSelected = new EventEmitter<object>();
 
 
-  controlPanelSub = this.controlPanelService.currentControlPanel.subscribe(cp => {
-    this.controlPanel = cp;
+  milieuSub = this.milieuService.currentMilieu.subscribe(cp => {
+    this.milieu = cp;
   });
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public controlPanelService: ControlPanelService, public appService: AppService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public milieuService: MilieuService, public appService: AppService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -42,19 +47,20 @@ export class ControlPanelComponent implements OnInit {
   }
 
   closeAllChildren() {
-    this.controlPanel.MenuItems.forEach(menuItem => menuItem.displayChildren = false);
+    this.milieu.MenuItems.forEach(menuItem => menuItem.displayChildren = false);
   }
 
-  toggleMode() {
-    this.closeAllChildren();
+  toggleMilieuMode() {
+    //this.closeAllChildren();
 
 
 
-    if (this.mode === 'OPEN') {
-      this.mode = 'ICON';
+    if (this.milieuMode === 'OPENED') {
+      this.milieuMode = 'ICON';
     } else {
-      this.mode = 'OPEN';
+      this.milieuMode = 'OPENED';
     }
+
   }
 
   displayChildren(menuItem) {
@@ -80,6 +86,6 @@ export class ControlPanelComponent implements OnInit {
 
   ngOnDestroy() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.controlPanelSub.unsubscribe();
+    this.milieuSub.unsubscribe();
   }
 }
