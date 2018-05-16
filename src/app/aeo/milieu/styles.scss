@@ -10,7 +10,11 @@ mat-sidenav-container {
   }
 }
 
-
+mat-sidenav-container.opened{
+  mat-sidenav{
+    width: 200px;
+  }
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 $drawer-width: 225px;

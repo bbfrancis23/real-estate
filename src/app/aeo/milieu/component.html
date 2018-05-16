@@ -1,6 +1,23 @@
-<mat-sidenav-container>
+<mat-sidenav-container [ngClass]="{'opened': milieuMode === 'OPENED', 'icon': milieuMode === 'ICON'}" autosize>
   <mat-sidenav mode="side" opened>
     <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >Agent Milieu</strong><button mat-icon-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button>
+
+    <div [ngClass]="{'text-center': mode === 'ICON'}">
+
+      <button class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}"    >
+        <mat-icon class="menu-icon">people</mat-icon>
+        <span  *ngIf="milieuMode==='OPENED'">CLIENTS</span>
+        <span *ngIf="milieuMode==='OPENED'" style="float:right" ><mat-icon class="submenu-icon">expand_less</mat-icon></span>
+      </button>
+
+
+      <!-- <div class="child-container" *ngIf="menuItem.displayChildren">
+        <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})" >{{childItem.title}}</button>
+      </div>-->
+
+    </div>
+
+
   </mat-sidenav>
   <mat-sidenav-content>
   </mat-sidenav-content>
