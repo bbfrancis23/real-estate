@@ -21,7 +21,7 @@ export class AppService {
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
 
-  states: Array<State>;
+  states: any;//Array<State>;
 
   constructor(readonly http: HttpClient) { }
 
@@ -32,7 +32,7 @@ export class AppService {
       this.http.get('/api/states')
         .toPromise()
         .then(res => {
-          //this.states = res.json();
+          this.states = res;
         })
         .catch(err => console.log(err))
     }

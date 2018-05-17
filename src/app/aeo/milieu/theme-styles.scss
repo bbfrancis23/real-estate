@@ -5,17 +5,14 @@
   $primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
-  //$background: map-get($theme, background);
+  $background: map-get($theme, background);
 
-  div.aeo-sidedrawer-container{
-    background-color: mat-color($primary, darker);
-    color: white;
-  }
+  .mat-drawer{
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
 
-  div.aeo-sidedrawer-container.icon{
-    .children{
-      background-color: mat-color($primary, darker);
-      color: white;
+    .mat-list-item{      
+      color: mat-color($primary, default-contrast);
     }
   }
 }

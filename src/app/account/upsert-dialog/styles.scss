@@ -1,10 +1,7 @@
+button.submit{ width: 100% }
 
-div{
-  mat-divider{
-    margin: 15px 0px
-  }
-
-  button.submit{
-    width: 100%;
-  }
+.dialog-ctrl{
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }

@@ -158,7 +158,7 @@ export class AccountService {
       a.agent = account.agent;
     }
 
-    return this.http.post('/api/accounts', JSON.stringify(a))
+    return this.http.post('/api/accounts', a)
       .toPromise()
       .then(res => {
         console.log(res);

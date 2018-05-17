@@ -12,7 +12,7 @@ export class MilieuService {
 
   readonly milieuSource = new BehaviorSubject<Milieu>(this.milieu);
   readonly currentMilieu = this.milieuSource.asObservable();
-  public changemilieu(m: Milieu) { this.milieuSource.next(m) }
+  public changeMilieu(m: Milieu) { this.milieuSource.next(m) }
 
 
 

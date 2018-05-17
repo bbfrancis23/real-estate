@@ -1,9 +1,12 @@
 import { Component, Inject, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from '../service';
-import { AppService } from '../../service';
+import { FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
 import { Account } from '../account';
+
+import { AppService } from '../../service';
+import { AccountService } from '../service';
+
 import { AccountNameControl } from '../ctrls/account-name/component';
 import { AddressControl } from '../ctrls/address/component'
 import { EmailControl } from '../ctrls/email/component';
@@ -26,27 +29,14 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   @ViewChild(PhoneControl) phoneCtrl;
 
   accountForm = new FormGroup({});
-
   account: Account;
-
-  accountSub = this.accountService.currentAccount.subscribe(account => {
-    this.account = account;
-  });
-
+  accountSub = this.accountService.currentAccount.subscribe(account => this.account = account);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
-    appService.getStates();
-
-    console.log(this.account);
-
-  }
-
-  clicky() {
-
+    appService.getStates(); //lasjdflaksndflkasdfl kasfldk jasdlkf
   }
 
   ngOnInit() {
-
     this.accountForm.addControl('email', this.emailCtrl.email);
     this.accountForm.addControl('password', this.passwordCtrl.password);
     this.accountForm.addControl('name', this.accountNameCtrl.accountName);
@@ -62,8 +52,6 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   submit() {
     this.accountForm.value.type = 'Client';
     this.accountForm.value.agent = this.account._id;
-
-
     this.accountService.createAccount(this.accountForm.value);
   }
 

@@ -1,42 +1,54 @@
 <mat-sidenav-container [ngClass]="{'opened': milieuMode === 'OPENED', 'icon': milieuMode === 'ICON'}" autosize>
+
   <mat-sidenav mode="side" opened>
-    <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >Agent Milieu</strong><button mat-icon-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button>
+    <!-- <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >{{milieu.title}}</strong><button mat-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button> -->
 
-    <div [ngClass]="{'text-center': mode === 'ICON'}" >
+    <!-- <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of milieu?.menuItems">
 
+      <button  [matMenuTriggerFor]="menu" class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" (click)="displayChildren = !displayChildren"   >
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+        <span  *ngIf="milieuMode==='OPENED'">{{menuItem.title}}</span>
+      </button>
 
 
       <mat-menu #menu="matMenu" [overlapTrigger]="false" >
-        <button mat-menu-item>Item 1 slarty alskdf asldfj as </button>
-        <button mat-menu-item>Item 2</button>
+        <button mat-menu-item *ngFor="let childItem of menuItem.menuItems">
+          <mat-icon class="menu-icon">{{childItem.icon}}</mat-icon>
+          <span >{{childItem.title}}</span>
+        </button>
       </mat-menu>
+    </div> -->
 
+    <mat-nav-list>
+      <mat-list-item>
+        <a><strong *ngIf="milieuMode==='OPENED'">{{milieu.title}}</strong><button mat-icon-button (click)="toggleMilieuMode()"><mat-icon>menu</mat-icon></button></a>
+      </mat-list-item>
+    </mat-nav-list>
 
+    <mat-nav-list>
+      <mat-list-item *ngFor="let menuItem of milieu?.menuItems" [matMenuTriggerFor]="menu">
+        <a ><button mat-icon-button ><mat-icon>{{menuItem.icon}}</mat-icon></button><span *ngIf="milieuMode==='OPENED'">{{menuItem.title}}</span></a>
 
-      <button  [matMenuTriggerFor]="menu" class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" (click)="displayChildren = !displayChildren"   >
-        <mat-icon class="menu-icon">people</mat-icon>
-        <span  *ngIf="milieuMode==='OPENED'">CLIENTS</span>
-      </button>
+        <!-- <mat-menu class="side-nav-dropdown-menu" #menu="matMenu" [overlapTrigger]="false" > -->
+        <mat-menu class="side-nav-dropdown-menu" #menu="matMenu" [overlapTrigger]="false" >
+          <button mat-menu-item *ngFor="let childItem of menuItem.menuItems" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})">
+            <mat-icon class="menu-icon" *ngIf="childItem.icon">{{childItem.icon}}</mat-icon>
+            <span >{{childItem.title}}</span>
+          </button>
+        </mat-menu>
 
-      <br><br>
-
-      <!--<mat-menu #appMenu="matMenu" yPosition="above" xPosition="after">
-        <button mat-menu-item>Item 1 slarty alskdf asldfj as </button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
-
-      <button mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" [matMenuTriggerFor]="appMenu" class='menu-item' (click)="displayChildren = !displayChildren"  style="margin-right: 500px; margin-left: 500px">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    -->
-
-    </div>
-
-
+      </mat-list-item>
+    </mat-nav-list>
 
   </mat-sidenav>
-  <mat-sidenav-content>
-  </mat-sidenav-content>
+  <mat-sidenav-content width="100%">
+    <div class="container-fluid" width="100%">
+      <ng-content>
+
+      </ng-content>
+    </div>
+
+    </mat-sidenav-content>
 </mat-sidenav-container>
 
 

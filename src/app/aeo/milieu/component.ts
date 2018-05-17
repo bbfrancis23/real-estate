@@ -47,7 +47,7 @@ export class MilieuComponent implements OnInit {
   }
 
   closeAllChildren() {
-    this.milieu.MenuItems.forEach(menuItem => menuItem.displayChildren = false);
+    //this.milieu.MenuItems.forEach(menuItem => menuItem.displayChildren = false);
   }
 
   toggleMilieuMode() {

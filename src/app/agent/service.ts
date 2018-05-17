@@ -28,11 +28,11 @@ export class AgentService {
 
   getClients() {
 
-    return this.http.get('/api/accounts/clients')
+    return this.http.get<[Account]>('/api/accounts/clients')
       .toPromise()
       .then(res => {
-        //this.clients = res.json();
-        //this.changeCurrentClients(this.clients);
+        this.clients = res;
+        this.changeCurrentClients(this.clients);
 
       })
       .catch(err => console.log(err))

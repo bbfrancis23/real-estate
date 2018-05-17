@@ -122,9 +122,15 @@ div.mat-expansion-panel-body{
   margin-left: 5px;
 }
 
-.cdk-overlay-pane{
-  left: 5px !important;
-  position: relative !important;
+//.side-nav-dropdown-menu{
+  //left:10px;
+  //position: relative;
+//}
+
+.mat-dialog-container{
+  .mat-form-field.mat-focused .mat-form-field-label {
+    //color: black;
+  }
 }
 
 #arizona-theme-select{ background-color: #8D6E63 }

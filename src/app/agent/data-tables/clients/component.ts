@@ -26,6 +26,9 @@ export class ClientDataTable implements OnDestroy {
   constructor(public agentService: AgentService) {
     this.agentService.getClients().then(() => {
       this.clientsSub = this.agentService.currentClients.subscribe(clients => {
+
+        console.log(clients);
+
         this.clients = clients;
 
         this.dataSource.data = this.clients;

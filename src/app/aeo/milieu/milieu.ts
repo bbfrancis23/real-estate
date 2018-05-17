@@ -6,9 +6,10 @@ export class MenuItem {
   displayChildren?: boolean = false;
   children?: any;
   alias?: string;
+  menuItems?: Array<MenuItem>
 }
 
 export interface Milieu {
   title: string;
-  MenuItems: [MenuItem];
+  menuItems: Array<MenuItem>;
 }

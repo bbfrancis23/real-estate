@@ -18,8 +18,8 @@ export class PasswordControl {
 
     let password = this.password;
 
-    return password.hasError('required') ? 'You must enter a value.'
-      : password.hasError('pattern') ? 'Not a valid password.'
+    return password.hasError('required') ? ''
+      : password.hasError('pattern') ? 'Invalid'
         : password.hasError('minlength') ? `Too Short.`
           : password.hasError('maxlength') ? 'Too long.' : '';
   }

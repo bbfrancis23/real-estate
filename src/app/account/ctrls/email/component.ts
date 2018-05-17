@@ -14,7 +14,7 @@ export class EmailControl {
   email = new FormControl('', [Validators.required, Validators.email, Validators.maxLength(this.EMAIL.max)]);
 
   getEmailError() {
-    return this.email.hasError('required') ? 'You must enter a value'
-      : this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('required') ? ''
+      : this.email.hasError('email') ? 'Invalid' : '';
   }
 }
