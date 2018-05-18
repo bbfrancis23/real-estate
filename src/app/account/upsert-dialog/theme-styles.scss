@@ -7,11 +7,20 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
+.title{
+  background-color: brown;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 99999999999999999999999999999999999999999999999999;
+  position: relative;
+  top: -25px;
+}
+
   .mat-dialog-container{
     background-color: white;
     color: mat-color($accent, darker);
 
 
-    
+
   }
 }

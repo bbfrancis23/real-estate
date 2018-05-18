@@ -133,6 +133,10 @@ div.mat-expansion-panel-body{
   }
 }
 
+cdk-overlay-container:empty {
+    display: none !important;
+}
+
 #arizona-theme-select{ background-color: #8D6E63 }
 #arizona-theme-accent{background-color: #FF7043 }
 

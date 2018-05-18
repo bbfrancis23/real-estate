@@ -1,0 +1,79 @@
+<mat-sidenav-container [ngClass]="{'opened': milieuMode === 'OPENED', 'icon': milieuMode === 'ICON'}" autosize>
+
+  <mat-sidenav mode="side" opened [style.backgroundImage]="'url(/assets/img/themes/'+theme+'-sidebar.jpg)'">
+    <div class="overlay"></div>
+    <!-- <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >{{milieu.title}}</strong><button mat-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button> -->
+
+    <!-- <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of milieu?.menuItems">
+
+      <button  [matMenuTriggerFor]="menu" class='menu-item' mat-button [ngClass]="{'mat-button': milieuMode === 'OPENED', 'mat-icon-button': milieuMode === 'ICON'}" (click)="displayChildren = !displayChildren"   >
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+        <span  *ngIf="milieuMode==='OPENED'">{{menuItem.title}}</span>
+      </button>
+
+
+      <mat-menu #menu="matMenu" [overlapTrigger]="false" >
+        <button mat-menu-item *ngFor="let childItem of menuItem.menuItems">
+          <mat-icon class="menu-icon">{{childItem.icon}}</mat-icon> 
+          <span >{{childItem.title}}</span>
+        </button>
+    </div> -->
+
+    <mat-nav-list>
+      <mat-list-item>
+        <a><strong *ngIf="milieuMode==='OPENED'">{{milieu.title}}</strong><button mat-icon-button (click)="toggleMilieuMode()"><mat-icon>menu</mat-icon></button></a>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let menuItem of milieu?.menuItems" [matMenuTriggerFor]="menu">
+        <a ><button mat-icon-button ><mat-icon>{{menuItem.icon}}</mat-icon></button><span *ngIf="milieuMode==='OPENED'">{{menuItem.title}}</span></a>
+
+        <!-- <mat-menu class="side-nav-dropdown-menu" #menu="matMenu" [overlapTrigger]="false" > -->
+        <mat-menu class="side-nav-dropdown-menu" #menu="matMenu" [overlapTrigger]="false" >
+          <button mat-menu-item *ngFor="let childItem of menuItem.menuItems" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})">
+            <mat-icon class="menu-icon" *ngIf="childItem.icon">{{childItem.icon}}</mat-icon>
+            <span >{{childItem.title}}</span>
+          </button>
+        </mat-menu>
+
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content width="100%">
+    <div class="container-fluid" width="100%">
+      <ng-content>
+
+      </ng-content>
+    </div>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- <div class="aeo-sidedrawer-container" [ngClass]="{'open': mode === 'OPEN', 'icon': mode === 'ICON'}">
+  <div class="sidenav-header" style="text-align: center"><strong *ngIf="mode==='OPEN'">{{controlPanel.title}}</strong>
+
+    <button mat-icon-button (click)="toggleMode()" >
+      <mat-icon>menu</mat-icon></button>
+
+  </div>
+
+  <div [ngClass]="{'text-center': mode === 'ICON'}" *ngFor="let menuItem of controlPanel?.MenuItems" (mouseenter)="displayChildren(menuItem)" (mouseleave)="hideChildren(menuItem)">
+
+    <button class='menu-item' mat-button [ngClass]="{'mat-button': mode === 'OPEN', 'mat-icon-button': mode === 'ICON'}" (click)="toggleDisplayChildren(menuItem)"   >
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span  *ngIf="mode==='OPEN'">{{menuItem.title}}</span>
+      <span *ngIf="mode==='OPEN'" style="float:right" ><mat-icon class="submenu-icon">expand_{{menuItem.displayChildren ? 'less' : 'more'}}</mat-icon></span>
+    </button>
+
+
+    <div class="child-container" *ngIf="menuItem.displayChildren">
+      <button mat-button  class="children"  *ngFor="let childItem of menuItem.children" (click)="menuItemSelected.emit({parent: menuItem.title, child: childItem.title})" >{{childItem.title}}</button>
+    </div>
+
+  </div>
+
+
+</div> -->

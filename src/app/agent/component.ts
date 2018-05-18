@@ -18,6 +18,7 @@ import { AppService } from '../service';
 })
 export class AgentComponent implements OnDestroy, OnInit {
 
+  MENU_ITEMS = { ADD_CLIENT: 'NEW CLIENT' }
 
   milieu: Milieu = {
     title: 'AGENT MILIEU',
@@ -25,7 +26,7 @@ export class AgentComponent implements OnDestroy, OnInit {
       {
         title: 'CLIENTS', icon: 'people',
         menuItems: [
-          { title: 'ADD CLIENT', icon: 'person_add' },
+          { title: this.MENU_ITEMS.ADD_CLIENT, icon: 'person_add' },
           { title: 'LIST CLIENTS', icon: 'list' },
         ]
       },
@@ -68,7 +69,7 @@ export class AgentComponent implements OnDestroy, OnInit {
 
 
   openClientDialog(action = 'NEW') {
-    let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action } });
+    let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action }, hasBackdrop: false });
   }
 
   updateTheme(theme: string) {
@@ -88,7 +89,7 @@ export class AgentComponent implements OnDestroy, OnInit {
 
     if (e.parent === 'THEMES') {
       this.updateTheme(e.child);
-    } else if (e.child === "ADD CLIENT") {
+    } else if (e.child === this.MENU_ITEMS.ADD_CLIENT) {
       this.openClientDialog()
     } else if (e.child === 'LIST CLIENTS') {
       this.showClientDataTable = true;
