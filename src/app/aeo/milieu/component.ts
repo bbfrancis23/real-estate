@@ -13,7 +13,8 @@ import { AppService } from '../../service';
 })
 export class MilieuComponent implements OnInit {
 
-
+  theme: string;
+  themeSub = this.appService.currentTheme.subscribe(theme => this.theme = theme);
 
   milieuMode = 'OPENED';
 
@@ -35,6 +36,7 @@ export class MilieuComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    console.log(appService.currentTheme);
   }
 
   ngOnInit() {
@@ -87,5 +89,6 @@ export class MilieuComponent implements OnInit {
   ngOnDestroy() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.milieuSub.unsubscribe();
+    this.themeSub.unsubscribe();
   }
 }

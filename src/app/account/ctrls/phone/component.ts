@@ -49,7 +49,7 @@ export class PhoneControl {
 
   checkValid() {
 
-    console.log('check');
+    //console.log('check');
     if (this.areaCode.value || this.prefix.value || this.suffix.value) {
       if (this.areaCode.value && this.areaCode.valid && this.prefix.value && this.prefix.valid && this.suffix.value && this.suffix.valid) {
         this.validPhoneNumber = true;

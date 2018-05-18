@@ -26,6 +26,7 @@ export class AddressControl {
       if (this.address.value && this.address.valid && this.city.value && this.city.valid && this.stateCtrl.value && this.stateCtrl.valid && this.zip.value && this.zip.valid) {
         this.validAddress = true;
       } else {
+        //console.log(this.address.value, this.address.valid, this.city.value, this.city.valid, this.stateCtrl.value, this.stateCtrl.valid, this.zip.value, this.zip.valid);
         this.validAddress = false;
       }
 

@@ -1,20 +1,17 @@
-<div class="container-fluid">
-<span mat-dialog-title>{{data.action}} <div class="dialog-ctrl"><button tabindex="-1" color="accent" mat-icon-button><mat-icon>cancel</mat-icon></button></div></span>
-
-
-
-<mat-dialog-content>
-
-  <form [formGroup]="accountForm" (ngSubmit)="submit()">
-    <div class="fluid-container">
-      <div class="row"><email-ctrl  class="col-6 "></email-ctrl><password-ctrl class="col-6" ></password-ctrl></div>
-      <strong>OPIONAL</strong>
-      <div class="row"><account-name-ctrl class="col-sm-6 col-xs-12"></account-name-ctrl><phone-ctrl class="col-sm-6 col-xs-12"></phone-ctrl></div>
-    </div>
-    <address-ctrl [states]="appService.states"></address-ctrl>
-    <div class="container">
-      <button class="submit" type="submit" mat-raised-button color="accent" [disabled]="accountForm.invalid || !phoneCtrl.validPhoneNumber || !addressCtrl.validAddress">Create New Client</button>
-    </div>
-  </form>
-</mat-dialog-content>
-</div>
+<div class="container-fluid" ><div class="row" ><div class="col" >
+  <mat-dialog-cancel-ctrl (click)="dialogRef.close()"></mat-dialog-cancel-ctrl>
+  <span   mat-dialog-title (click)="clicky()">{{data.action}} </span>
+  <mat-dialog-content >
+    <form [formGroup]="accountForm" (ngSubmit)="submit()">
+      <div class="fluid-container">
+        <div class="row"><email-ctrl  class="col-6 "></email-ctrl><password-ctrl class="col-6" ></password-ctrl></div>
+        <strong>OPIONAL</strong>
+        <div class="row"><account-name-ctrl class="col-sm-6 col-xs-12"></account-name-ctrl><phone-ctrl class="col-sm-6 col-xs-12"></phone-ctrl></div>
+      </div>
+      <address-ctrl [states]="appService.states"></address-ctrl>
+      <div class="container">
+        <button class="submit" type="submit" mat-raised-button color="accent" [disabled]="checkValid()">Create New Client</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div></div></div>

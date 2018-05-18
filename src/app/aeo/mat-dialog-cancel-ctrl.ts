@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
     `
     .dialog-ctrl{
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: -20px;
+      right: -20px;
     }
     `
   ]

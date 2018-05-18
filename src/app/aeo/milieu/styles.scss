@@ -6,8 +6,17 @@ mat-sidenav-container {
   right: 0;
 
   mat-sidenav{
-    border-right: 1px gray solid;
+    //border-right: 1px gray solid;
+    color: red;
   }
+
+  .mat-drawer{
+    
+    background-size: cover;
+  }
+
+
+
 }
 
 mat-sidenav-container.opened{
