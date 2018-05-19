@@ -1,0 +1,25 @@
+
+
+.sidebar{
+  position: fixed;
+  height: 100vh;
+  background-size: cover;
+  top: 0px;
+  left: 0px;
+
+
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.list-group-item{
+  //background: none;
+}
+
+.aeo-col{
+  padding-right: 0px;
+  padding-left: 0px;
+}

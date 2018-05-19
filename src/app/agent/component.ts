@@ -69,7 +69,7 @@ export class AgentComponent implements OnDestroy, OnInit {
 
 
   openClientDialog(action = 'NEW') {
-    let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action }, hasBackdrop: false });
+    let dialogRef = this.dialog.open(UpsertAccountDialog, { data: { 'action': action }, panelClass: 'pinky' });
   }
 
   updateTheme(theme: string) {

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col-auto sidebar aeo-col"   [style.background]="'url(/assets/img/themes/'+theme+'-sidebar.jpg)'">
+
+
+      <div class="aeo-overlay"></div>
+
+
+
+      <div class="list-group"  style="position: fixed; z-index: +1">
+        <button type=button class="list-group-item list-group-item-action" (click)="toggleMilieuMode()"><mat-icon>menu</mat-icon><span *ngIf="milieuMode==='OPENED'">milieu</span></button>
+      </div>
+
+      <div class="list-group" style="position: relative; top: 50px; left:50px; z-index: 9999999999">
+        <div *ngFor="let menuItem of milieu?.menuItems">
+          <button type=button class="list-group-item list-group-item-action" (click)="menuItem.displayChildren = !menuItem.displayChildren" ><mat-icon>{{menuItem.icon}}</mat-icon><span *ngIf="milieuMode==='OPENED'">{{menuItem.title}}</span></button>
+
+          <div class="list-group" *ngIf="menuItem.displayChildren">
+            <div *ngFor="let childItem of menuItem.menuItems">
+              <button type=button class="list-group-item list-group-item-action" ><mat-icon>{{childItem.icon}}</mat-icon><span *ngIf="milieuMode==='OPENED'">{{childItem.title}}</span></button>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col aeo-col">
+      content
+    </div>
+
+  </div>
+</div>

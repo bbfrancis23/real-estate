@@ -15,13 +15,15 @@ import { DropDown } from './drop-down/component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogCancelCtrl } from './mat-dialog-cancel-ctrl';
 
+import { ModalVueComponent } from './milieu/modal-vue.component';
+
 @NgModule({
   imports: [
     CommonModule,
     MatMenuModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl],
-  exports: [AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl]
+  declarations: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl],
+  exports: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl]
 })
 export class AeoModule { }
