@@ -8,7 +8,5 @@ import { FormControl, Validators } from '@angular/forms'
 })
 export class AccountNameControl {
   readonly ACCOUNT_NAME = { max: 64 };
-
   accountName = new FormControl('', [Validators.maxLength(this.ACCOUNT_NAME.max)]);
-
 }

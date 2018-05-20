@@ -15,9 +15,7 @@ export class PasswordControl {
 
 
   getPasswordError() {
-
     let password = this.password;
-
     return password.hasError('required') ? ''
       : password.hasError('pattern') ? 'Invalid'
         : password.hasError('minlength') ? `Too Short.`

@@ -1,4 +1,4 @@
-<div (keyup)="checkValid()">
+<div >
   <mat-icon >phone</mat-icon>
   ( <mat-form-field >
     <input matInput   (keyup)="areaCodeKeyUp()" [formControl]="areaCode" autocomplete="tel-area-code">
@@ -10,6 +10,4 @@
   <mat-form-field >
     <input  matInput #phonePostEl  type="tel" [formControl]="suffix" maxlength="4"  autocomplete="tel">
   </mat-form-field>
-
-  <!-- <mat-error class="faux">{{getErrorMessage()}}</mat-error> -->
 </div>

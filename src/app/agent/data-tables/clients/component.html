@@ -11,7 +11,7 @@
 
  <ng-container matColumnDef="name">
    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-   <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+   <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
  </ng-container>
 
  <ng-container matColumnDef="email">
@@ -21,7 +21,7 @@
 
  <ng-container matColumnDef="phone">
    <mat-header-cell *matHeaderCellDef> phone </mat-header-cell>
-   <mat-cell *matCellDef="let element"> ({{element.phone.toString().substr(0,3)}}){{element.phone.toString().substr(3,3)}}-{{element.phone.toString().substr(6,4)}}  </mat-cell>
+   <mat-cell *matCellDef="let element"> ({{element.phone ? element.phone.toString().substr(0,3) : ''}}){{element.phone ? element.phone.toString().substr(3,3) : '' }}-{{element.phone ? element.phone.toString().substr(6,4) : ''}}  </mat-cell>
  </ng-container>
 
  <!-- <ng-container matColumnDef="actions">
@@ -44,6 +44,6 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
 </mat-table>
 <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>

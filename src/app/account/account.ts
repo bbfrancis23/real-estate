@@ -2,10 +2,10 @@
 
 export class Account {
   _id?: string;
-  email?: string;
+  email: string;
   authenticated?: boolean = false;
   admin?: boolean = false;
-  password?: string;
+  password: string;
   rank?: number = 0;
   img?: string;
   name?: string;
@@ -18,5 +18,4 @@ export class Account {
     state: string;
     zip: string;
   }
-
 }

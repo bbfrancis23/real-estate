@@ -1,8 +1,11 @@
-import { Component, OnDestroy, ViewChild, } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { AgentService } from '../../service';
 import { Subscription } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { AccountNameControl } from '../../../account/ctrls/account-name/component';
+import { MatTable } from '@angular/material';
 
 'use strict';
 
@@ -11,7 +14,11 @@ import { Subscription } from 'rxjs';
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class ClientDataTable implements OnDestroy {
+export class ClientDataTable implements OnInit, OnDestroy {
+
+  nameForm = new FormGroup({});
+
+  @ViewChild(MatTable) matTable;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,7 +34,7 @@ export class ClientDataTable implements OnDestroy {
     this.agentService.getClients().then(() => {
       this.clientsSub = this.agentService.currentClients.subscribe(clients => {
 
-        console.log(clients);
+        //console.log(clients);
 
         this.clients = clients;
 
@@ -36,6 +43,25 @@ export class ClientDataTable implements OnDestroy {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  ngOnInit() {
+    console.log(this.matTable);
+    //this.nameForm.addControl('name', this.accountNameCtrl.accountName);
+  }
+
+  nameSubmit() {
+
+  }
+
+  onElementClicked(row) {
+    console.log(row);
+  }
+
+  getName(name: string) {
+
+    console.log(name);
+    return 'McFly';
   }
 
   applyFilter(filterValue: string) {

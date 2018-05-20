@@ -1,5 +1,4 @@
-
-<div class="fluid-container" (keyup)="checkValid()">
+<div class="fluid-container" >
   <div class="row">
     <mat-form-field class="col-md-12">
       <input matInput placeholder=Address [formControl]="address" autocomplete=address-line1>
@@ -9,15 +8,11 @@
     <mat-form-field class="col">
       <input matInput placeholder=City [formControl]="city" autocomplete=address-level2>
     </mat-form-field>
-
     <mat-form-field class="col">
-
       <mat-select placeholder="State" [formControl]="stateCtrl">
         <mat-option *ngFor="let state of states"  value="{{state.abbr}}"  autocomplete="address-level1">{{state.name}}</mat-option>
       </mat-select>
     </mat-form-field>
-
-
     <mat-form-field class="col">
       <input matInput placeholder=Zip [formControl]="zip" maxlength="10" autocomplete=postal-code>
     </mat-form-field>

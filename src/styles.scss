@@ -133,24 +133,23 @@ div.mat-expansion-panel-body{
   }
 }
 
+mat-dialog-container.mat-dialog-container{
+  border-radius: 20px;
+}
 
-modal-vue .modal-mode {
-  display: block;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 999999999999999999999999999999999999999;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-modal-vue .modal-vue-content {
-  margin: auto;
-  width: 70%;
-  z-index: 9999999999999999999999999999999999999999999;
-  box-shadow: 10px 10px 1px 0 rgba(0, 0, 0, 0.3);
-}
+.dialog-ctrl{
+  position: absolute;
+  top: -20px;
+  right: -20px; }
+
+
+  account-name-ctrl.mini{
+    mat-form-field.mat-form-field{
+
+      width: 50%
+    }
+  }
+
 
 #arizona-theme-select{ background-color: #8D6E63 }
 #arizona-theme-accent{background-color: #FF7043 }

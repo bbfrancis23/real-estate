@@ -32,13 +32,9 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   account: Account;
   accountSub = this.accountService.currentAccount.subscribe(account => this.account = account);
 
-  constructor(public dialogRef: MatDialogRef<UpsertAccountDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
+  constructor(
+    public dialogRef: MatDialogRef<UpsertAccountDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
     appService.getStates();
-
-  }
-
-  clicky() {
-    //console.log(this.accountForm.valid, this.phoneCtrl.validPhoneNumber, this.addressCtrl.validAddress, this.accountForm);
   }
 
   ngOnInit() {
@@ -61,21 +57,17 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   }
 
   checkValid() {
-
-    //console.log(this.accountForm.valid, this.phoneCtrl.validPhoneNumber, this.addressCtrl.validAddress)
     this.phoneCtrl.checkValid();
     this.addressCtrl.checkValid();
 
     if (this.accountForm.valid && this.phoneCtrl.validPhoneNumber && this.addressCtrl.validAddress) {
-      //console.log('this is good to go');
       return false;
     } else {
-      //console.log('not everything is valid');
       return true;
     }
-
-
   }
+
+
 
   ngOnDestroy() {
     this.accountSub.unsubscribe();
