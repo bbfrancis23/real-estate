@@ -17,6 +17,7 @@ import { MatTable } from '@angular/material';
 export class ClientDataTable implements OnInit, OnDestroy {
 
   nameForm = new FormGroup({});
+  displayBody = true;
 
   @ViewChild(MatTable) matTable;
 
@@ -45,8 +46,23 @@ export class ClientDataTable implements OnInit, OnDestroy {
     });
   }
 
+  toggleDisplayBody() {
+    if (this.displayBody) {
+      this.displayBody = false;
+    } else {
+
+      //this.dataSource.data = this.clients;
+      //this.dataSource.sort = this.sort;
+      //this.dataSource.paginator = this.paginator;
+
+      this.displayBody = true;
+
+
+    }
+  }
+
   ngOnInit() {
-    console.log(this.matTable);
+    console.log('Init the object');
     //this.nameForm.addControl('name', this.accountNameCtrl.accountName);
   }
 
