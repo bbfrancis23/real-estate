@@ -41,6 +41,8 @@ export class AgentComponent implements OnDestroy, OnInit {
   accountSub = this.accountService.currentAccount.subscribe(account => {
     this.account = account;
 
+    console.log(this.account);
+
     if (account.theme) {
       this.appService.changeTheme(account.theme + '-theme');
     }
@@ -90,7 +92,7 @@ export class AgentComponent implements OnDestroy, OnInit {
     if (e.parent === 'THEMES') {
       this.updateTheme(e.child);
     } else if (e.child === this.MENU_ITEMS.ADD_CLIENT) {
-      this.openClientDialog()
+      this.openClientDialog();
     } else if (e.child === 'LIST CLIENTS') {
       this.showClientDataTable = true;
     }

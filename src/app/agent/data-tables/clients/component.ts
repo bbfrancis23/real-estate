@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild, } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { AgentService } from '../../service';
@@ -24,6 +24,8 @@ export class ClientDataTable implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  @Output() close = new EventEmitter();
+
   clients: [any];
   clientsSub: Subscription;
 
@@ -35,7 +37,7 @@ export class ClientDataTable implements OnInit, OnDestroy {
     this.agentService.getClients().then(() => {
       this.clientsSub = this.agentService.currentClients.subscribe(clients => {
 
-        //console.log(clients);
+
 
         this.clients = clients;
 
@@ -86,6 +88,6 @@ export class ClientDataTable implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.clientsSub.unsubscribe();
+    //this.clientsSub.unsubscribe();
   }
 }

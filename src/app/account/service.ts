@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { AgentService } from '../agent/service';
 
 'use strict';
 
@@ -38,7 +38,7 @@ export class AccountService {
   public changeAccount(account: Account) { this.accountSource.next(account) }
 
 
-  constructor(readonly http: HttpClient, router: Router) {
+  constructor(readonly http: HttpClient, router: Router, public agentService: AgentService) {
 
     this.http.get<Account>('/api/accounts/me')
       .toPromise()
@@ -46,12 +46,29 @@ export class AccountService {
 
         this.account = res;
 
-        //this.account = new Account(res);
+
         this.account.authenticated = true;
         this.changeAccount(this.account);
         if (this.account.type === 'Agent') {
           router.navigate(['agent'])
         }
+
+      })
+      .catch(err => console.log(err))
+  }
+
+
+  getAccount() {
+    this.http.get<Account>('/api/accounts/me')
+      .toPromise()
+      .then(res => {
+
+        this.account = res;
+
+
+        this.account.authenticated = true;
+        this.changeAccount(this.account);
+
 
       })
       .catch(err => console.log(err))
@@ -126,7 +143,7 @@ export class AccountService {
 
   createAccount(account) {
 
-    console.log(account);
+    //console.log(account);
 
 
     let a: any = {};
@@ -161,7 +178,9 @@ export class AccountService {
     return this.http.post('/api/accounts', a)
       .toPromise()
       .then(res => {
-        console.log(res);
+
+        this.agentService.getClients();
+
         return true;
       })
       .catch(err => console.log(err));

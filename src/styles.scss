@@ -143,6 +143,11 @@ close-ctrl.dialog{
   right: -20px;
 }
 
+close-ctrl.vue-ctrl{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
   account-name-ctrl.mini{
     mat-form-field.mat-form-field{

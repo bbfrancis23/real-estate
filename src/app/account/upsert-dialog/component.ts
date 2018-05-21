@@ -12,6 +12,7 @@ import { AddressControl } from '../ctrls/address/component'
 import { EmailControl } from '../ctrls/email/component';
 import { PasswordControl } from '../ctrls/password/component';
 import { PhoneControl } from '../ctrls/phone/component';
+import { AgentService } from '../../agent/service';
 
 "use strict";
 
@@ -33,6 +34,7 @@ export class UpsertAccountDialog implements OnInit, OnDestroy {
   accountSub = this.accountService.currentAccount.subscribe(account => this.account = account);
 
   constructor(
+    //public agentService: AgentService,
     public dialogRef: MatDialogRef<UpsertAccountDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public accountService: AccountService, public appService: AppService) {
     appService.getStates();
   }
