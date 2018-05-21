@@ -17,6 +17,7 @@ import { PasswordControl } from './ctrls/password/component';
 import { PhoneControl } from './ctrls/phone/component';
 import { AddressControl } from './ctrls/address/component';
 import { AccountNameControl } from './ctrls/account-name/component';
+import { ProfileVue } from './vues/profile/component';
 
 @NgModule({
   imports: [
@@ -28,8 +29,8 @@ import { AccountNameControl } from './ctrls/account-name/component';
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],
-  declarations: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameControl],
-  exports: [AccountComponent, PasswordControl, PhoneControl, AddressControl, AccountNameControl]
+  declarations: [AccountComponent, PasswordControl, PhoneControl, ProfileVue, AddressControl, AccountNameControl],
+  exports: [AccountComponent, PasswordControl, PhoneControl, ProfileVue, AddressControl, AccountNameControl]
 
 })
 export class AccountModule { }

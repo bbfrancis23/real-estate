@@ -88,6 +88,6 @@ export class ClientDataTable implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    //this.clientsSub.unsubscribe();
+    this.clientsSub.unsubscribe();
   }
 }

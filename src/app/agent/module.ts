@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AeoModule } from '../aeo/module';
 import { AgentComponent } from './component';
 import { AgentRoutingModule } from './routing.module';
+import { ProfileVue } from '../account/vues/profile/component';
 
 import {
   MatButtonModule,

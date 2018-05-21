@@ -1,3 +1,12 @@
 <milieu (menuItemSelected)="menuItemSelected($event)">
-  <client-data-table *ngIf="showClientDataTable" (close)="showClientDataTable = false"></client-data-table>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <client-data-table *ngIf="showClientDataTable" (close)="showClientDataTable = false"></client-data-table>
+      </div>
+      <div class="col">
+        <profile-vue mode="'CLIENT'" ></profile-vue>
+      </div>
+    </div>
+  </div>
 </milieu>

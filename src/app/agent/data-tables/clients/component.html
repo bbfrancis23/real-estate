@@ -2,11 +2,27 @@
 <vue [icon]="'list'" [title]="'CLIENT LIST'">
 <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
 
+<!-- Selected: {{selection.selected | json}} -->
 
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-left">
+      <mat-form-field><input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"></mat-form-field>
+    </div>
+    <div class="col text-right">
+    
+        <button mat-mini-fab color="primary" [disabled]="selection.selected.length === 0">
+          <mat-icon >message</mat-icon>
+        </button>
+      <button mat-mini-fab color="primary" [disabled]="selection.selected.length === 0">
+        <mat-icon >sms</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" [disabled]="selection.selected.length === 0">
+        <mat-icon >email</mat-icon>
+      </button>
+    </div>
+</div>
+</div>
 <div class="table-responsive">
 <table class="table table-striped  table-hover" mat-table  [dataSource]="dataSource" matSort >
 
