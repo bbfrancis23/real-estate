@@ -1,12 +1,8 @@
 <br>
-<div class="card">
-  <div style="position: absolute; top: -20px;left: 10px" > <button mat-fab color="accent" (click)="toggleDisplayBody()">
-   <mat-icon >list</mat-icon>
- </button></div>
-  <div class="aeo-card-header" style="margin-left: 75px; margin-top: 10px; margin-bottom: 10px">
-    <strong>CLIENTS</strong>
-  </div>
-  <div class="card-body" [hidden]="!displayBody">
+<vue [icon]="'list'" [title]="'CLIENT LIST'">
+
+
+
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
@@ -49,4 +45,4 @@
 </table>
 <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>
 </div>
-</div>
+</vue>

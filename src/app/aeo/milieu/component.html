@@ -1,6 +1,6 @@
 <mat-sidenav-container [ngClass]="{'opened': milieuMode === 'OPENED', 'icon': milieuMode === 'ICON'}" autosize>
 
-  <mat-sidenav mode="side" opened [style.background]="'url(/assets/img/themes/'+theme+'-sidebar.jpg)'">
+  <mat-sidenav mode="side" opened [style.background-image]="'url(/assets/img/themes/'+theme+'-sidebar.jpg)'" >
     <div class="overlay"></div>
     <!-- <strong class="milieu-header" *ngIf="milieuMode === 'OPENED'" >{{milieu.title}}</strong><button mat-button (click)="toggleMilieuMode()" ><mat-icon>menu</mat-icon></button> -->
 

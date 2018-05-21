@@ -137,10 +137,11 @@ mat-dialog-container.mat-dialog-container{
   border-radius: 20px;
 }
 
-.dialog-ctrl{
+close-ctrl.dialog{
   position: absolute;
   top: -20px;
-  right: -20px; }
+  right: -20px;
+}
 
 
   account-name-ctrl.mini{

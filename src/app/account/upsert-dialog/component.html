@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <span mat-dialog-title >{{data.action}}</span>
-      <mat-dialog-cancel-ctrl (click)="dialogRef.close()"></mat-dialog-cancel-ctrl>
+      <close-ctrl class="dialog" (click)="dialogRef.close()"></close-ctrl>
       <mat-dialog-content >
         <form [formGroup]="accountForm" (ngSubmit)="submit()">
           <div class="fluid-container">

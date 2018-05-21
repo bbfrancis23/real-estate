@@ -46,20 +46,7 @@ export class ClientDataTable implements OnInit, OnDestroy {
     });
   }
 
-  toggleDisplayBody() {
-    if (this.displayBody) {
-      this.displayBody = false;
-    } else {
 
-      //this.dataSource.data = this.clients;
-      //this.dataSource.sort = this.sort;
-      //this.dataSource.paginator = this.paginator;
-
-      this.displayBody = true;
-
-
-    }
-  }
 
   ngOnInit() {
     console.log('Init the object');

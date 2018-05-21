@@ -13,9 +13,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { DropDown } from './drop-down/component';
 
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDialogCancelCtrl } from './mat-dialog-cancel-ctrl';
+import { CloseCtrl } from './close-ctrl';
 
 import { ModalVueComponent } from './milieu/modal-vue.component';
+import { Vue } from './vue/component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { ModalVueComponent } from './milieu/modal-vue.component';
     MatMenuModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl],
-  exports: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, MatDialogCancelCtrl]
+  declarations: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
+  exports: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
 })
 export class AeoModule { }
