@@ -68,8 +68,14 @@ router.post('/address', auth, async (req, res) =>{
 });
 
 router.post('/name', auth, async (req, res)=>{
-  const account = await Account.findByIdAndUpdate(req.account._id,{ name: req.body.name, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
-  res.send(account);
+  if(req.body._id){
+    const account = await Account.findByIdAndUpdate(req.body._id,{ name: req.body.name, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }else{
+    const account = await Account.findByIdAndUpdate(req.account._id,{ name: req.body.name, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }
+
 });
 
 router.post('/phone', auth, async (req, res)=>{

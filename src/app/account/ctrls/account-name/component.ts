@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms'
 
 @Component({
@@ -7,6 +7,8 @@ import { FormControl, Validators } from '@angular/forms'
   styleUrls: ['styles.scss']
 })
 export class AccountNameControl {
+
+  @Input() submitButton = false;
   readonly ACCOUNT_NAME = { max: 64 };
   accountName = new FormControl('', [Validators.maxLength(this.ACCOUNT_NAME.max)]);
 }

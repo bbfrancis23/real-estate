@@ -94,9 +94,16 @@ export class AccountService {
     );
   }
 
-  updateName(name) {
+  updateName(name: string, _id?: string) {
 
-    return this.http.post('/api/accounts/name', { name: name })
+    let obj = {};
+    if (_id) {
+      obj = { name: name, _id: _id }
+    } else {
+      obj = { name: name }
+    }
+
+    return this.http.post('/api/accounts/name', obj)
       .toPromise()
       .then(res => {
 

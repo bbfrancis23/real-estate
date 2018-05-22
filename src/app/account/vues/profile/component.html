@@ -1,10 +1,22 @@
 <br>
-<vue [icon]="'account_circle'" [title]="'PROFILE'">
-  <div class="container-fluid">
+<vue [icon]="'account_circle'" [title]="mode+' PROFILE'">
+  <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
+  <div class="container">
   <div class="row">
     <div class="col">
-      profile info
+      <div class="text-center"><img   [src]="account?.img" height=150px ></div>
+    </div>
+    <div class="col">
+      <table>
+        <tr >
+          <td class="text-right"><button mat-icon-button (click)="editMode=!editMode"><mat-icon>edit</mat-icon></button></td>
+          <td class="text-right" *ngIf="!editMode"><strong>Account:</strong></td>
+          <td class="text-right" *ngIf="!editMode">{{account?.name}}</td>
+          <td class="text-left" [hidden]="!editMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-ctrl [submitButton]="true"></account-name-ctrl></form></td>
+        </tr>
+      </table>
     </div>
   </div>
+
 </div>
 </vue>

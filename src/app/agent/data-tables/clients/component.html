@@ -10,7 +10,7 @@
       <mat-form-field><input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"></mat-form-field>
     </div>
     <div class="col text-right">
-    
+
         <button mat-mini-fab color="primary" [disabled]="selection.selected.length === 0">
           <mat-icon >message</mat-icon>
         </button>
@@ -57,7 +57,7 @@
   </ng-container>
 
   <thead ><tr class="thead-light" mat-header-row *matHeaderRowDef="displayedColumns"></tr></thead>
-  <tbody><tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr></tbody>
+  <tbody><tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onElementClicked(row)"></tr></tbody>
 </table>
 <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>
 </div>

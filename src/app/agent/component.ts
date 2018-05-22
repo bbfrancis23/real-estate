@@ -35,7 +35,8 @@ export class AgentComponent implements OnDestroy, OnInit {
     ]
   };
 
-  showClientDataTable = false;
+  showClientDataTable = true;
+  showProfileVue = true;
 
   account: Account;
   accountSub = this.accountService.currentAccount.subscribe(account => {

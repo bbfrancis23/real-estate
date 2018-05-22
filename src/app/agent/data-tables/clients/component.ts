@@ -25,9 +25,17 @@ export class ClientDataTable implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @Output() close = new EventEmitter();
+  @Output() openClientView = new EventEmitter();
 
   clients: [any];
   clientsSub: Subscription;
+
+  //selectedClient: Account;
+
+  //selectedClientSub = this.agentService.currentSelectedClient.subscribe(client => {
+
+  //  this. = client;
+  //});
 
   displayedColumns = ['img', 'name', 'email', 'phone', 'select'];
   dataSource = new MatTableDataSource();
@@ -60,7 +68,9 @@ export class ClientDataTable implements OnInit, OnDestroy {
   }
 
   onElementClicked(row) {
-    console.log(row);
+    this.agentService.changeCurrentSelectedClient(row);
+    this.openClientView.emit();
+
   }
 
   getName(name: string) {

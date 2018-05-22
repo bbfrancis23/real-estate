@@ -15,10 +15,15 @@ export class AgentService {
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
   clients: [Account];
+  selectedClient: Account;
 
   private readonly clientsSource = new BehaviorSubject<[Account]>(this.clients);
   readonly currentClients = this.clientsSource.asObservable();
   private changeCurrentClients(clinets: [Account]) { this.clientsSource.next(clinets) }
+
+  private readonly selectedClientSource = new BehaviorSubject<Account>(this.selectedClient);
+  readonly currentSelectedClient = this.selectedClientSource.asObservable();
+  public changeCurrentSelectedClient(client: Account) { this.selectedClientSource.next(client) }
 
   constructor(readonly http: HttpClient) {
 
@@ -34,6 +39,11 @@ export class AgentService {
         this.clients = res;
         this.changeCurrentClients(this.clients);
 
+        console.log(this.clients[0]);
+        if (this.clients[0]) {
+          this.changeCurrentSelectedClient(this.clients[0]);
+        }
+        //this.changeCurrentSelectedClient = this.clients[0];
       })
       .catch(err => console.log(err))
   }

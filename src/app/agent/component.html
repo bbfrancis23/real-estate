@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <client-data-table *ngIf="showClientDataTable" (close)="showClientDataTable = false"></client-data-table>
+        <client-data-table *ngIf="showClientDataTable" (close)="showClientDataTable = false" (openClientView)="showProfileVue=true" ></client-data-table>
       </div>
       <div class="col">
-        <profile-vue mode="'CLIENT'" ></profile-vue>
+        <profile-vue mode="CLIENT" *ngIf="showProfileVue" (close)="showProfileVue = false"></profile-vue>
       </div>
     </div>
   </div>
