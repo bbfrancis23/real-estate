@@ -1,12 +1,9 @@
-
 <div class="card">
-  
   <div class="vue-button" ><button mat-fab color="accent" (click)="displayBody = !displayBody"><mat-icon >{{icon}}</mat-icon></button></div>
-  <div class="aeo-card-header" style="margin-left: 75px; margin-top: 10px; margin-bottom: 10px">
+  <div class="aeo-card-header">
     <strong>{{title}}</strong>
   </div>
   <div class="card-body" >
-
     <ng-content *ngIf="displayBody"></ng-content>
 </div>
 </div>

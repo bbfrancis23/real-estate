@@ -21,7 +21,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   @Output() close = new EventEmitter();
 
-
+  nameEditMode = false;
 
   account: Account;
 
@@ -33,6 +33,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   @ViewChild(AccountNameControl) accountNameCtrl;
 
   nameForm = new FormGroup({});
+  phoneForm = new FormGroup({});
 
   constructor(public agentService: AgentService, public accountService: AccountService) {
 
@@ -50,8 +51,17 @@ export class ProfileVue implements OnInit, OnDestroy {
   }
 
   nameSubmit() {
-    //console.log(this.account._id, this.nameForm.value.name);
-    this.accountService.updateName(this.nameForm.value.name, this.account._id)
+    this.accountService.updateName(this.nameForm.value.name, this.account._id).then(result => {
+      if (result) {
+        this.agentService.getClients();
+        this.nameEditMode = false;
+        this.account.name = this.nameForm.value.name;
+        this.nameForm.reset();
+
+      } else {
+
+      }
+    });
   }
 
   ngOnDestroy() {

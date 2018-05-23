@@ -156,6 +156,27 @@ close-ctrl.vue-ctrl{
     }
   }
 
+  .actions{
+    button:first-of-type{
+      margin-right: 5px;
+    }
+    button:last-of-type{
+      margin-left: 5px;
+    }
+    button{
+        margin-right: 5px;
+        margin-left: 5px;
+
+    }
+  }
+
+
+  .data-table{
+    .form-control.filter{
+      border-radius: 10rem;
+      margin-bottom: 15px;
+    }
+  }
 
 #arizona-theme-select{ background-color: #8D6E63 }
 #arizona-theme-accent{background-color: #FF7043 }

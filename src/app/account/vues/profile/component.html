@@ -1,22 +1,29 @@
-<br>
 <vue [icon]="'account_circle'" [title]="mode+' PROFILE'">
   <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
   <div class="container">
   <div class="row">
-    <div class="col">
-      <div class="text-center"><img   [src]="account?.img" height=150px ></div>
+    <div class="col-4">
+      <div class="text-center"><img   [src]="account?.img" height=100px ></div>
     </div>
-    <div class="col">
+    <div class="col-8">
       <table>
         <tr >
-          <td class="text-right"><button mat-icon-button (click)="editMode=!editMode"><mat-icon>edit</mat-icon></button></td>
-          <td class="text-right" *ngIf="!editMode"><strong>Account:</strong></td>
-          <td class="text-right" *ngIf="!editMode">{{account?.name}}</td>
-          <td class="text-left" [hidden]="!editMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-ctrl [submitButton]="true"></account-name-ctrl></form></td>
+          <td class="text-right"><button mat-icon-button (click)="nameEditMode=!nameEditMode"><mat-icon>edit</mat-icon></button></td>
+          <td class="text-right" *ngIf="!nameEditMode"><strong>Account:</strong></td>
+          <td class="text-right" *ngIf="!nameEditMode">{{account?.name}}</td>
+          <td class="text-left" [hidden]="!nameEditMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-ctrl [submitButton]="true"></account-name-ctrl></form></td>
+        </tr>
+      </table>
+        <table >
+        <tr>
+          <td class="text-right"><button mat-icon-button (click)="phoneEditMode=!phoneEditMode"><mat-icon>edit</mat-icon></button></td>
+          <td class="text-right" *ngIf="!phoneEditMode"><strong>Phone:</strong></td>
+          <td class="text-right" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>
+          <td class="text-left" [hidden]="!phoneEditMode"><form [formGroup]="phoneForm" (ngSubmit)="phoneSubmit()"> <phone-ctrl ></phone-ctrl><mat-icon>send</mat-icon></form></td>
         </tr>
       </table>
     </div>
   </div>
 
-</div>
+  </div>
 </vue>

@@ -1,16 +1,13 @@
-<br>
+
 <vue [icon]="'list'" [title]="'CLIENT LIST'">
 <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
 
-<!-- Selected: {{selection.selected | json}} -->
-
-<div class="container-fluid">
+<div class="container-fluid data-table">
   <div class="row">
     <div class="col text-left">
-      <mat-form-field><input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"></mat-form-field>
+      <input class="form-control filter" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </div>
-    <div class="col text-right">
-
+    <div class="col text-right actions">
         <button mat-mini-fab color="primary" [disabled]="selection.selected.length === 0">
           <mat-icon >message</mat-icon>
         </button>

@@ -106,14 +106,9 @@ export class AccountService {
     return this.http.post('/api/accounts/name', obj)
       .toPromise()
       .then(res => {
-
-        //this.account = res.json();
-        //this.account.authenticated = true;
-        //this.account.name = name;
-        //this.changeAccount(this.account);
         return true;
       })
-      .catch(err => err);
+      .catch(err => false);
   }
 
   updatePhone(phone) {

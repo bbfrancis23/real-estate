@@ -1,5 +1,16 @@
-.vue-button{
-  position: absolute;
-  top: -20px;
-  left:10px;
+div.card{
+  margin-top: 25px;
+
+  .aeo-card-header{
+    margin-left: 75px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  .vue-button{
+    position: absolute;
+    top: -20px;
+    left:10px;
+  }
 }
