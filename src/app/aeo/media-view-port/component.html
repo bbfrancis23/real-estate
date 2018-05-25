@@ -3,7 +3,9 @@
     <ng-content select="media"></ng-content>
   </div>
   <div class="view-port-content">
-    <ng-content select="content"></ng-content>
+    <div class="row">
+      <div class="col"></div>  <div class="col"><ng-content select="content"></ng-content></div>  <div class="col"></div>
+    </div>
   </div>
   <div class="view-port-overlay"></div>
 </div>

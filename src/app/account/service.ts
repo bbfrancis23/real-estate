@@ -40,7 +40,7 @@ export class AccountService {
 
   constructor(readonly http: HttpClient, router: Router, public agentService: AgentService) {
 
-    this.http.get<Account>('/api/accounts/me')
+    /*this.http.get<Account>('/api/accounts/me')
       .toPromise()
       .then(res => {
 
@@ -55,6 +55,7 @@ export class AccountService {
 
       })
       .catch(err => console.log(err))
+      */
   }
 
 
