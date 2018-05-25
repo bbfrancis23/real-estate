@@ -16,6 +16,11 @@ import { EmailControl } from './account/ctrls/email/component';
 import { AppRoutingModule } from './routing.module';
 import { DefaultComponet } from './default';
 import { MilieuService } from './aeo/milieu/service';
+import { APP_BASE_HREF } from '@angular/common';
+
+
+
+import { HttpClientModule } from '@angular/common/http';
 
 'use strict';
 
@@ -36,11 +41,12 @@ import { MilieuService } from './aeo/milieu/service';
     FormsModule,
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
 
   ],
   entryComponents: [AccountDialog, SettingsDialog],
-  providers: [AccountService, AppService, MilieuService],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, AccountService, AppService, MilieuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

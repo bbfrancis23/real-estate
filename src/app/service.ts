@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import { State } from './state';
-
-
 import { HttpClient } from '@angular/common/http';
+
 'use strict';
 
 @Injectable()
@@ -18,10 +16,7 @@ export class AppService {
   readonly currentTheme = this.themeSource.asObservable();
   public changeTheme(theme: string) { this.themeSource.next(theme) }
 
-  readonly headers = new Headers({ 'Content-Type': 'application/json' });
-
-
-  states: any;//Array<State>;
+  states: Array<State>;
 
   constructor(readonly http: HttpClient) { }
 
@@ -29,7 +24,7 @@ export class AppService {
     if (this.states) {
 
     } else {
-      this.http.get('/api/states')
+      this.http.get<[State]>('localhost:3000/api/states')
         .toPromise()
         .then(res => {
           this.states = res;
@@ -38,6 +33,4 @@ export class AppService {
     }
   }
 
-  ngOnDestroy() {
-  }
 }

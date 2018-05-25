@@ -1,5 +1,5 @@
-export class State {
-  id: string;
+export interface State {
+  _id: string;
   name: string;
   abbr: string;
 }

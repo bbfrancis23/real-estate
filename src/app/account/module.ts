@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
-
 import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
 import { MediaViewPort } from '../aeo/media-view-port/component';
@@ -25,7 +23,6 @@ import { ProfileVue } from './vues/profile/component';
     AeoModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatSelectModule, MatStepperModule,
     ReactiveFormsModule,
   ],

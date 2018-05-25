@@ -1,19 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './component';
-
-import { MatButtonModule, MatDialogModule, MatTooltipModule, MatIconModule } from '@angular/material';
-import { AeoModule } from './aeo/module';
-import { AppService } from './service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SettingsDialog } from './settings-dialog/component';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { AppModule } from './module';
+
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [],
       imports: [AppModule]
     }).compileComponents();
-  }));
+  });
 
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
