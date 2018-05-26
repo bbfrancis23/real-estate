@@ -1,17 +1,14 @@
 <vue icon="lock_open" [title]="action">
   <form [formGroup]="accountForm" (ngSubmit)="accountService.authAccount(this.accountForm.value)">
-    <mat-form-field>
-      <input matInput type="text" placeholder="Email" type="Email"  formControlName="email" required autocomplete="true" />
-      <mat-error *ngIf="emailCtrl?.invalid">{{getEmailError()}}</mat-error>
-    </mat-form-field>
-    <mat-form-field hintLabel="4 - 16 characters N0 spaces" *ngIf="action !== RESET_PASSWORD">
+  <email-form-control></email-form-control>
+    <!-- <mat-form-field hintLabel="4 - 16 characters N0 spaces" *ngIf="action !== RESET_PASSWORD">
       <input matInput #input placeholder="Password" maxlength="16" formControlName="password"  required autocomplete="false" [type]="inputType">
       <button mat-button *ngIf="passwordCtrl.value" matSuffix mat-icon-button aria-label="Visability" type="button" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
         <mat-icon>{{inputType === 'text' ? 'visibility' : 'visibility_off'}}</mat-icon>
       </button>
       <mat-error *ngIf="passwordCtrl.invalid">{{getPasswordError()}}</mat-error>
       <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
-    </mat-form-field>
+    </mat-form-field> -->
     <button mat-icon-button color="primary" type="submit" >
      <mat-icon >send</mat-icon>
    </button>

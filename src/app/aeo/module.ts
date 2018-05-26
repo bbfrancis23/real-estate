@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatTooltipModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { UrlDecodePipe } from './pipes/url-decode/pipe';
 import { AeoSideDrawer } from './side-drawer/component';
 import { MediaViewPort } from './media-view-port/component';
@@ -17,14 +17,16 @@ import { CloseCtrl } from './close-ctrl';
 
 import { ModalVueComponent } from './milieu/modal-vue.component';
 import { Vue } from './vue/component';
+import { EmailFormControl } from './form-controls/email/component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MatMenuModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
+    CommonModule, FormsModule, ReactiveFormsModule,
+    MatMenuModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
-  exports: [ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
+  declarations: [EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
+  exports: [EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
 })
 export class AeoModule { }

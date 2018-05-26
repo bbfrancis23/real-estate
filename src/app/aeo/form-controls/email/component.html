@@ -1,0 +1,4 @@
+<mat-form-field>
+  <input matInput type="text" placeholder="Email" type="Email" [formControl]="email" required autocomplete="email" />
+  <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
+</mat-form-field>
