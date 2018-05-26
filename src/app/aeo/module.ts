@@ -19,6 +19,7 @@ import { ModalVueComponent } from './milieu/modal-vue.component';
 import { Vue } from './vue/component';
 import { EmailFormControl } from './form-controls/email/component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PasswordFormControl } from './form-controls/password/component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
-  exports: [EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
+  declarations: [PasswordFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
+  exports: [PasswordFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
 })
 export class AeoModule { }

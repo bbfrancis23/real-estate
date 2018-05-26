@@ -1,6 +1,7 @@
 <vue icon="lock_open" [title]="action">
   <form [formGroup]="accountForm" (ngSubmit)="accountService.authAccount(this.accountForm.value)">
   <email-form-control></email-form-control>
+  <password-form-control></password-form-control>
     <!-- <mat-form-field hintLabel="4 - 16 characters N0 spaces" *ngIf="action !== RESET_PASSWORD">
       <input matInput #input placeholder="Password" maxlength="16" formControlName="password"  required autocomplete="false" [type]="inputType">
       <button mat-button *ngIf="passwordCtrl.value" matSuffix mat-icon-button aria-label="Visability" type="button" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
