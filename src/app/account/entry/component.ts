@@ -1,46 +1,33 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { AccountService } from '../service';
+import { EmailFormControl } from '../../aeo/form-controls/email/component';
+import { PasswordFormControl } from '../../aeo/form-controls/password/component';
+
 @Component({
   selector: 'entry',
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
 })
-export class AccountEntry {
+export class AccountEntry implements OnInit {
+
+  @ViewChild(EmailFormControl) emailFormCtrl;
+  @ViewChild(PasswordFormControl) passwordFormCtrl;
 
   inputType = 'password';
 
-  readonly PASSWORD = this.accountService.PASSWORD;
-
-  readonly LOGIN = "SIGN IN";
-  readonly CREATE = "NEW ACCOUNT";
-  readonly RESET_PASSWORD = "FORGOT PASSWORD"
+  readonly LOGIN = { title: "SIGN IN", icon: 'lock_open' };
+  readonly CREATE = { title: "NEW ACCOUNT", icon: 'person_add' };
+  readonly RESET_PASSWORD = { title: "FORGOT PASSWORD", icon: '?' }
 
   action = this.LOGIN;
 
-  readonly accountForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email, Validators.max(this.accountService.EMAIL.max)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])
-  });
-
-  readonly emailCtrl = this.accountForm.controls.email;
-  readonly passwordCtrl = this.accountForm.controls.password;
-
+  readonly accountForm = new FormGroup({});
   constructor(protected accountService: AccountService) { }
 
-  getEmailError() {
-    return this.emailCtrl.hasError('required') ? 'You must enter a value'
-      : this.emailCtrl.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getPasswordError() {
-
-    let password = this.passwordCtrl;
-
-    return password.hasError('required') ? 'You must enter a value.'
-      : password.hasError('pattern') ? 'Not a valid password.'
-        : password.hasError('minlength') ? `You must enter at least ${this.PASSWORD.min} characters.`
-          : password.hasError('maxlength') ? 'Too long.' : '';
+  ngOnInit() {
+    this.accountForm.addControl('email', this.emailFormCtrl.email);
+    this.accountForm.addControl('password', this.passwordFormCtrl.password);
   }
 }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AgentService } from '../agent/service';
 
+
 'use strict';
 
 @Injectable()
@@ -40,12 +41,13 @@ export class AccountService {
 
   constructor(readonly http: HttpClient, router: Router, public agentService: AgentService) {
 
-    /*this.http.get<Account>('/api/accounts/me')
+    this.http.get<Account>('/api/accounts/me')
       .toPromise()
       .then(res => {
 
-        this.account = res;
+        console.log('here is the response', res);
 
+        this.account = res;
 
         this.account.authenticated = true;
         this.changeAccount(this.account);
@@ -55,7 +57,7 @@ export class AccountService {
 
       })
       .catch(err => console.log(err))
-      */
+
   }
 
 
@@ -197,6 +199,8 @@ export class AccountService {
   }
 
   authAccount(account) {
+
+    console.log(account);
 
     return this.http.post('/api/auth', account)
       .toPromise()

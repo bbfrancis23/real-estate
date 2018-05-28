@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+
+@mixin email-theme($theme){
+
+  .mat-form-field-appearance-legacy .mat-form-field-label{
+    color: black;
+  }
+}

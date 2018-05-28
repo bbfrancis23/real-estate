@@ -1,4 +1,12 @@
-mat-divider{
-  margin-top: 25px;
-  margin-bottom: 15px;
+vue{
+  button{
+    margin-top: 15px;
+    width: 200px;
+    margin-right: 3px;
+    margin-left: 3px;
+
+    &.submit-button{
+      margin-bottom: 15px;
+    }
+  }
 }
