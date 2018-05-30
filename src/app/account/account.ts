@@ -1,12 +1,13 @@
 'use strict';
 
-export class Account {
+export interface Account {
   _id?: string;
   email: string;
-  authenticated?: boolean = false;
-  admin?: boolean = false;
-  password: string;
-  rank?: number = 0;
+  authenticated?: boolean;
+  admin?: boolean;
+  password?: string;
+  updated: string;
+  rank?: number;
   img?: string;
   name?: string;
   phone?: string;

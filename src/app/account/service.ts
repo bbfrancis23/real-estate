@@ -32,7 +32,7 @@ export class AccountService {
 
   readonly headers = new Headers({ 'Content-Type': 'application/json' });
 
-  account: Account = new Account();
+  account: Account;
 
   readonly accountSource = new BehaviorSubject<Account>(this.account);
   readonly currentAccount = this.accountSource.asObservable();
@@ -45,7 +45,7 @@ export class AccountService {
       .toPromise()
       .then(res => {
 
-        console.log('here is the response', res);
+
 
         this.account = res;
 
@@ -200,15 +200,11 @@ export class AccountService {
 
   authAccount(account) {
 
-    console.log(account);
+
 
     return this.http.post('/api/auth', account)
       .toPromise()
       .then(res => {
-        this.account.authenticated = true;
-        this.account.email = account.email;
-        //this.account._id = res.json()._id;
-        //console.log(this.account);
         window.location.reload();
         return true;
 
