@@ -36,7 +36,7 @@ export class MilieuComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    console.log(appService.currentTheme);
+    //console.log(appService.currentTheme);
   }
 
   ngOnInit() {

@@ -59,7 +59,7 @@ export class ClientDataTable implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    console.log('Init the object');
+    //console.log('Init the object');
     //this.nameForm.addControl('name', this.accountNameCtrl.accountName);
   }
 

@@ -44,8 +44,11 @@ export class AgentComponent implements OnDestroy, OnInit {
 
     console.log(this.account);
 
-    if (account.theme) {
-      this.appService.changeTheme(account.theme + '-theme');
+    if (account) {
+      if (account.theme) {
+        this.appService.changeTheme(account.theme + '-theme');
+      }
+
     }
   });
 

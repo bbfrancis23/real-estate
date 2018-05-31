@@ -39,7 +39,7 @@ export class AgentService {
         this.clients = res;
         this.changeCurrentClients(this.clients);
 
-        console.log(this.clients[0]);
+        //console.log(this.clients[0]);
         if (this.clients[0]) {
           //this.changeCurrentSelectedClient(this.clients[0]);
         }
