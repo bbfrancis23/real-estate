@@ -5,7 +5,6 @@ import { FormControl, Validators } from '@angular/forms';
   selector: 'email-form-control',
   templateUrl: 'component.html',
   styleUrls: ['styles.scss']
-
 })
 export class EmailFormControl {
   readonly EMAIL = { max: 256 };
