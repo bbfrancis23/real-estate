@@ -96,7 +96,7 @@ export class AccountDialog implements OnDestroy {
 
       this.accountService.authAccount(this.accountForm.value).then((response) => {
         this.formPending = false;
-        if (response === true) {
+        if (response) {
         } else {
           this.message = "Invalid Name or Password";
         }
