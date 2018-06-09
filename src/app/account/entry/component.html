@@ -1,9 +1,14 @@
 <vue [icon]="action.icon" >
-  <form [formGroup]="accountForm" (ngSubmit)="accountService.authAccount(accountForm.value)">
-    <email-form-control ></email-form-control><br>
-    <password-form-control [hidden]="action === RESET_PASSWORD"></password-form-control><br>
-    <button class="submit-button" mat-raised-button color="primary" type="submit" [disabled]="accountForm.invalid">{{action.title}}</button>
+  <form [formGroup]="accountForm" (ngSubmit)="submit()">
+    <div [hidden]="processing">
+      <email-form-control ></email-form-control><br>
+      <password-form-control [hidden]="action === RESET_PASSWORD"></password-form-control><br>
+    </div>
+    <mat-spinner *ngIf="processing" ></mat-spinner>
+    <button class="submit-button" mat-raised-button color="primary" type="submit" [disabled]="accountForm.invalid || processing">{{action.title}}</button>
   </form>
+
+  <div class="alert" [ngClass]="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'danger'}" *ngIf="message.text">{{message.text}}</div>
   <mat-divider></mat-divider>
   <button mat-raised-button type="button" *ngIf="action !== LOGIN" (click)="action = LOGIN">{{LOGIN.title}}</button>
   <button mat-raised-button type="button" *ngIf="action !== CREATE" (click)="action = CREATE">{{CREATE.title}}</button>
