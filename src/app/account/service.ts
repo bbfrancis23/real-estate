@@ -126,7 +126,7 @@ export class AccountService {
   }
 
   authAccount(account) {
-    return this.http.post('/api/auth', account).toPromise().then(res => window.location.reload()).catch(err => console.log(err));
+    return this.http.post('/api/auth', account).toPromise().then(res => res).catch(err => err);
   }
 
   promote(rank: number) {

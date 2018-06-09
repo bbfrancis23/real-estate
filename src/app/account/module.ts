@@ -6,7 +6,7 @@ import { AccountRoutingModule } from './routing.module';
 import { AccountComponent } from './component';
 import { MediaViewPort } from '../aeo/media-view-port/component';
 import { AeoModule } from '../aeo/module';
-import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

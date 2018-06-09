@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatAutocompleteModule, MatProgressSpinnerModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatTooltipModule, MatInputModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { AeoModule } from './aeo/module';
 import { AccountModule } from './account/module';
@@ -39,7 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    MatAutocompleteModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
+    MatAutocompleteModule, MatProgressSpinnerModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule
