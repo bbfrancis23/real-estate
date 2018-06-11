@@ -9,6 +9,7 @@ import { AddressControl } from '../../ctrls/address/component';
 import { AccountNameControl } from '../../ctrls/account-name/component';
 
 import { AccountService } from '../../service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'profile-vue',
@@ -23,12 +24,10 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   nameEditMode = false;
 
+  showProfileVue = true;
   account: Account;
 
-  clientSub = this.agentService.currentSelectedClient.subscribe(client => {
-
-    this.account = client;
-  });
+  clientSub: Subscription;
 
   @ViewChild(AccountNameControl) accountNameCtrl;
 
@@ -37,15 +36,19 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   constructor(public agentService: AgentService, public accountService: AccountService) {
 
+
   }
 
   ngOnInit() {
     if (this.mode === 'ACCOUNT' || this.mode === 'CLIENT') {
-      this.editPermission = true;
+      //this.editPermission = true;
     }
 
     if (this.mode === 'CLIENT') {
-      this.nameForm.addControl('name', this.accountNameCtrl.accountName);
+      this.agentService.currentSelectedClient.subscribe(client => {
+
+        this.account = client;
+      });
 
     }
   }

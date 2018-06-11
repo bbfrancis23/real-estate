@@ -42,7 +42,7 @@ export class AgentComponent implements OnDestroy, OnInit {
   accountSub = this.accountService.currentAccount.subscribe(account => {
     this.account = account;
 
-    console.log(this.account);
+
 
     if (account) {
       if (account.theme) {
