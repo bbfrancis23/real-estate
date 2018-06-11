@@ -1,0 +1,3 @@
+<div [ngClass]="{'back-ctrl': type === 'back', 'forward-ctrl': type === 'forward'}">
+  <button (click)="iterate.emit(type)" color="accent" mat-icon-button><mat-icon>arrow_{{type}}_ios</mat-icon></button>
+</div>

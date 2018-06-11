@@ -1,0 +1,18 @@
+$icon-padding: 10px;
+$layer: 1;
+$position: 50%;
+
+.back-ctrl{
+  position: absolute;
+  left: $icon-padding;
+  top: $position;
+  z-index: $layer;
+}
+
+
+.forward-ctrl{
+  position: absolute;
+  right: $icon-padding;
+  top: $position;
+  z-index: $layer;
+}
