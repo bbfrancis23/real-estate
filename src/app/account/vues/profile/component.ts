@@ -29,7 +29,6 @@ export class ProfileVue implements OnInit, OnDestroy {
   clients: [any];
 
   clientSub: Subscription;
-  clientsSub: Subscription;
 
   @ViewChild(AccountNameControl) accountNameCtrl;
 
@@ -47,21 +46,16 @@ export class ProfileVue implements OnInit, OnDestroy {
     }
 
     if (this.mode === 'CLIENT') {
-      this.agentService.currentSelectedClient.subscribe(client => {
 
+      this.clientSub = this.agentService.currentSelectedClient.subscribe(client => {
         this.account = client;
-
-        this.clientsSub = this.agentService.currentClients.subscribe(clients => {
-          this.clients = clients;
-        });
       });
+
 
     }
   }
 
-  iterate(e) {
-    console.log(this.account);
-  }
+
 
   nameSubmit() {
     this.accountService.updateName(this.nameForm.value.name, this.account._id).then(result => {
@@ -79,6 +73,5 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.clientSub.unsubscribe();
-    this.clientsSub.unsubscribe();
   }
 }

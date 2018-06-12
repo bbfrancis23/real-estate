@@ -21,6 +21,7 @@
 @import "app/aeo/milieu/theme-styles.scss";
 @import "app/account/upsert-dialog/theme-styles.scss";
 @import "app/aeo/form-controls/email/theme-styles.scss";
+@import "app/agent/data-tables/clients/theme-styles.scss";
 
 @mixin custom-components-theme($theme){
 
@@ -30,6 +31,7 @@
   @include agent-theme($theme);
   @include milieu-theme($theme);
   @include email-theme($theme);
+  @include clients-data-table-theme($theme);
 }
 
 .corporation-theme{

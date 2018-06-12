@@ -1,7 +1,6 @@
 <vue [icon]="'account_circle'" [title]="mode+' PROFILE'" >
   <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
-  <rec-iterator-ctrl (iterate)="iterate($event)" ></rec-iterator-ctrl>
-  <rec-iterator-ctrl type="forward" (iterate)="iterate($event)"></rec-iterator-ctrl>
+  
 <div class="container">
     <div class="row"><div class="col text-center"><img [src]="account?.img"  ></div></div>
     <div class="row">

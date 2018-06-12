@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin clients-data-table-theme($theme){
+
+  $primary: map-get($theme, primary);
+
+  tr.selecte-row{
+    background-color: mat-color($primary) !important;
+    color: mat-color($primary, default-contrast);
+
+    .mat-checkbox-frame{
+      border-color: mat-color($primary, default-contrast);
+    }
+  }
+
+}
