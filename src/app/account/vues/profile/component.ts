@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['styles.scss']
 })
 export class ProfileVue implements OnInit, OnDestroy {
+
   @Input() 'mode': string // ACCOUNT / CLIENT / AGENT
   editPermission = false;
 
