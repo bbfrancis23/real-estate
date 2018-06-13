@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -9,10 +9,13 @@ import { FormControl, Validators } from '@angular/forms';
 export class EmailFormControl {
   readonly EMAIL = { max: 256 };
 
+  @Input() showSubmit = false;
   email = new FormControl('', [Validators.required, Validators.email, Validators.maxLength(this.EMAIL.max)]);
 
   getEmailError() {
     return this.email.hasError('required') ? ''
-      : this.email.hasError('email') ? 'Invalid' : '';
+      : this.email.hasError('email') ? 'Invalid'
+        : this.email.hasError('unique') ? 'Email alreay in use.'
+          : this.email.hasError('database') ? 'Database Error' : '';
   }
 }

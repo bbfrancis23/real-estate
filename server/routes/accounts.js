@@ -78,6 +78,16 @@ router.post('/name', auth, async (req, res)=>{
 
 });
 
+router.post('/email', auth, async(req, res) =>{
+  if(req.body._id){
+    console.log(req.body._id,req.body.email);
+    const account = await Account.findByIdAndUpdate(req.body._id,{ email: req.body.email, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }else{
+
+  }
+});
+
 router.post('/phone', auth, async (req, res)=>{
 
   const account = await Account.findByIdAndUpdate(req.account._id,{ phone: req.body.phone, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));

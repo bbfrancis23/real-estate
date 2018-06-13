@@ -70,6 +70,26 @@ export class AccountService {
     return this.http.post('/api/accounts/name', obj).toPromise().then(res => true).catch(err => false);
   }
 
+  updateEmail(email: string, _id?: string) {
+
+    let obj = {};
+    if (_id) {
+      obj = { email: email, _id: _id }
+    } else {
+      obj = { email: email }
+    }
+
+    return this.http.post('/api/accounts/email', obj).toPromise().then(res => {
+      return { result: true, code: 1, message: 'Email was successfully updated.' }
+    }).catch(err => {
+      if (err.error.message.code === 11000) {
+        return { result: false, code: err.error.message.code, message: 'Email Address is already taken.' }
+      } else {
+        return { result: false, code: 0, message: 'Unknown Error' }
+      }
+    });
+  }
+
   updatePhone(phone) {
     return this.http.post('/api/accounts/phone', { phone: phone })
       .toPromise()

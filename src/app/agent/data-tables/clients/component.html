@@ -45,6 +45,6 @@
       <thead ><tr class="thead-light" mat-header-row *matHeaderRowDef="displayedColumns"></tr></thead>
       <tbody><tr [ngClass]="{'selecte-row': row._id === selectedClient?._id}" mat-row *matRowDef="let row; columns: displayedColumns;let rIndex = index; " (click)="onElementClicked(row,rIndex)"></tr></tbody>
     </table>
-    <mat-paginator #paginator (page)="somethingHappened()" [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>
+    <mat-paginator #paginator  [pageSize]="10" [pageSizeOptions]="[1,5, 10, 20]" [showFirstLastButtons]="true"> </mat-paginator>
   </div>
 </vue>

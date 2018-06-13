@@ -11,6 +11,10 @@ import { AccountNameControl } from '../../ctrls/account-name/component';
 import { AccountService } from '../../service';
 import { Subscription } from 'rxjs';
 
+// new
+import { EmailFormControl } from '../../../aeo/form-controls/email/component';
+
+
 @Component({
   selector: 'profile-vue',
   templateUrl: 'component.html',
@@ -18,12 +22,17 @@ import { Subscription } from 'rxjs';
 })
 export class ProfileVue implements OnInit, OnDestroy {
 
+
+
+  @ViewChild(EmailFormControl) emailFormCtrl;
+
   @Input() 'mode': string // ACCOUNT / CLIENT / AGENT
   editPermission = false;
 
   @Output() close = new EventEmitter();
 
   nameEditMode = false;
+  emailEditMode = false;
 
   showProfileVue = true;
   account: Account;
@@ -35,6 +44,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   nameForm = new FormGroup({});
   phoneForm = new FormGroup({});
+  emailForm = new FormGroup({});
 
   constructor(public agentService: AgentService, public accountService: AccountService) {
 
@@ -54,6 +64,9 @@ export class ProfileVue implements OnInit, OnDestroy {
 
 
     }
+
+
+    this.emailForm.addControl('email', this.emailFormCtrl.email);
   }
 
 
@@ -68,6 +81,24 @@ export class ProfileVue implements OnInit, OnDestroy {
 
       } else {
 
+      }
+    });
+  }
+
+  emailSubmit() {
+
+    this.accountService.updateEmail(this.emailForm.value.email, this.account._id).then(response => {
+      if (response.result) {
+        this.agentService.getClients();
+        this.emailEditMode = false;
+        this.account.email = this.emailForm.value.email;
+        this.emailForm.reset();
+      } else {
+        if (response.code === 11000) {
+          this.emailForm.controls['email'].setErrors({ 'unique': true });
+        } else {
+          this.emailForm.controls['email'].setErrors({ 'database': true });
+        }
       }
     });
   }

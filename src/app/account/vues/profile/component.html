@@ -1,10 +1,18 @@
 <vue [icon]="'account_circle'" [title]="mode+' PROFILE'" >
   <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
-  
+
 <div class="container">
     <div class="row"><div class="col text-center"><img [src]="account?.img"  ></div></div>
     <div class="row">
       <div class="col" >
+        <table class="center">
+          <tr>
+            <td class="text-right"><button mat-icon-button (click)="emailEditMode=!emailEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-right" *ngIf="!emailEditMode"><strong>Email:</strong></td>
+            <td class="text-right" *ngIf="!emailEditMode">{{account?.email}}</td>
+            <td class="text-left" [hidden]="!emailEditMode"><form [formGroup]="emailForm" (ngSubmit)="emailSubmit()"> <email-form-control showSubmit="true"></email-form-control></form></td>
+          </tr>
+        </table>
         <table class="center">
           <tr>
             <td class="text-right"><button mat-icon-button (click)="nameEditMode=!nameEditMode"><mat-icon>edit</mat-icon></button></td>
