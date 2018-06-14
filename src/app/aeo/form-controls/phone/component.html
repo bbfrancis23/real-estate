@@ -1,0 +1,13 @@
+<div style="display:inline ">
+  <mat-icon >phone</mat-icon>
+  ( <mat-form-field >
+    <input matInput   (keyup)="areaCodeKeyUp()" [formControl]="areaCode" autocomplete="tel-area-code">
+  </mat-form-field> )
+
+  <mat-form-field >
+    <input  matInput  #prefixEl (keyup)="preKeyUp()" [formControl]="prefix" autocomplete="tel-local-prefix">
+  </mat-form-field> -
+  <mat-form-field >
+    <input  matInput #phonePostEl  type="tel" [formControl]="suffix" maxlength="4"  autocomplete="tel">
+  </mat-form-field>
+</div>

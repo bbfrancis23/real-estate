@@ -100,9 +100,17 @@ router.post('/email', auth, async(req, res) =>{
 });
 
 router.post('/phone', auth, async (req, res)=>{
+  if(req.body._id){
 
-  const account = await Account.findByIdAndUpdate(req.account._id,{ phone: req.body.phone, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
-  res.send(account);
+    //console.log('update  by id');
+    const account = await Account.findByIdAndUpdate(req.body._id,{ phone: req.body.phone, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }else{
+    //console.log('update  by account');
+    const account = await Account.findByIdAndUpdate(req.account._id,{ phone: req.body.phone, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }
+
 });
 
 router.post('/promote', auth, async(req, res) =>{

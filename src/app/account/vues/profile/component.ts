@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 
 // new
 import { EmailFormControl } from '../../../aeo/form-controls/email/component';
+import { PhoneFormControl } from '../../../aeo/form-controls/phone/component';
 import { AccountNameFormControl } from '../../../aeo/form-controls/account-name/component';
 
 
@@ -27,6 +28,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   @ViewChild(EmailFormControl) emailFormCtrl;
   @ViewChild(AccountNameFormControl) accountNameCtrl;
+  @ViewChild(PhoneFormControl) phoneFormCtrl;
 
   @ViewChild('file') file: any;
 
@@ -37,6 +39,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   nameEditMode = false;
   emailEditMode = false;
+  phoneEditMode = false;
 
   showProfileVue = true;
   account: Account;
@@ -83,6 +86,11 @@ export class ProfileVue implements OnInit, OnDestroy {
     this.photoForm = this._formBuilder.group({
       photoCtrl: ['', []]
     });
+
+    this.phoneForm.addControl('areaCode', this.phoneFormCtrl.areaCode);
+    this.phoneForm.addControl('suffix', this.phoneFormCtrl.suffix);
+    this.phoneForm.addControl('prefix', this.phoneFormCtrl.prefix);
+    //console.log(this.phoneFormCtrl);
   }
 
 
@@ -129,6 +137,20 @@ export class ProfileVue implements OnInit, OnDestroy {
         } else {
           this.emailForm.controls['email'].setErrors({ 'database': true });
         }
+      }
+    });
+  }
+
+  phoneSubmit() {
+    let phone = `${this.phoneFormCtrl.areaCode.value}${this.phoneFormCtrl.prefix.value}${this.phoneFormCtrl.suffix.value}`;
+    this.accountService.updatePhone(phone, this.account._id).then(response => {
+      if (response) {
+        this.agentService.getClients();
+        this.phoneEditMode = false;
+        //this.account.email = this.emailForm.value.email;
+        this.phoneForm.reset();
+      } else {
+
       }
     });
   }

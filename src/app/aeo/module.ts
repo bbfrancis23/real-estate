@@ -18,6 +18,7 @@ import { CloseCtrl } from './close-ctrl';
 import { ModalVueComponent } from './milieu/modal-vue.component';
 import { Vue } from './vue/component';
 import { EmailFormControl } from './form-controls/email/component';
+import { PhoneFormControl } from './form-controls/phone/component';
 import { AccountNameFormControl } from './form-controls/account-name/component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordFormControl } from './form-controls/password/component';
@@ -29,7 +30,7 @@ import { VueRecordIteratorControl } from './vue/ctrls/record-iterator/component'
     MatMenuModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSidenavModule, MatExpansionModule, MatListModule, MatToolbarModule
 
   ],
-  declarations: [AccountNameFormControl, VueRecordIteratorControl, PasswordFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
-  exports: [AccountNameFormControl, VueRecordIteratorControl, PasswordFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
+  declarations: [AccountNameFormControl, VueRecordIteratorControl, PasswordFormControl, PhoneFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue],
+  exports: [AccountNameFormControl, VueRecordIteratorControl, PasswordFormControl, PhoneFormControl, EmailFormControl, ModalVueComponent, AeoSideDrawer, MediaViewPort, UrlDecodePipe, MilieuComponent, DropDown, CloseCtrl, Vue]
 })
 export class AeoModule { }

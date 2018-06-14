@@ -33,9 +33,9 @@
           </tr>
           <tr>
             <td class="text-left"><button mat-icon-button (click)="phoneEditMode=!phoneEditMode"><mat-icon>edit</mat-icon></button></td>
-            <td class="text-left" *ngIf="!phoneEditMode"><strong>Phone:</strong></td>
+            <td class="text-left" ><strong>Phone:</strong></td>
             <td class="text-left" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>
-            <td class="text-left" [hidden]="!phoneEditMode"><form [formGroup]="phoneForm" (ngSubmit)="phoneSubmit()"> <phone-ctrl ></phone-ctrl><mat-icon>send</mat-icon></form></td>
+            <td class="text-left" [hidden]="!phoneEditMode"><form [formGroup]="phoneForm" (ngSubmit)="phoneSubmit()"> <phone-form-control ></phone-form-control><button mat-icon-button type="submit"><mat-icon>save_alt</mat-icon></button></form></td>
           </tr>
         </table>
 

@@ -96,8 +96,18 @@ export class AccountService {
     });
   }
 
-  updatePhone(phone) {
-    return this.http.post('/api/accounts/phone', { phone: phone })
+  updatePhone(phone, _id?: string) {
+
+    //console.log(phone, _id);
+
+    let obj = {};
+    if (_id) {
+      obj = { phone: phone, _id: _id }
+    } else {
+      obj = { phone: phone }
+    }
+
+    return this.http.post('/api/accounts/phone', obj)
       .toPromise()
       .then(res => true).catch(err => false);
   }
