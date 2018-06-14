@@ -4,31 +4,28 @@
 <div class="container">
     <div class="row"><div class="col text-center"><img [src]="account?.img"  ></div></div>
     <div class="row">
-      <div class="col" >
+      <div class="col " >
         <table class="center">
           <tr>
-            <td class="text-right"><button mat-icon-button (click)="emailEditMode=!emailEditMode"><mat-icon>edit</mat-icon></button></td>
-            <td class="text-right" *ngIf="!emailEditMode"><strong>Email:</strong></td>
-            <td class="text-right" *ngIf="!emailEditMode">{{account?.email}}</td>
-            <td class="text-left" [hidden]="!emailEditMode"><form [formGroup]="emailForm" (ngSubmit)="emailSubmit()"> <email-form-control showSubmit="true"></email-form-control></form></td>
+            <td class="text-left"><button mat-icon-button (click)="emailEditMode=!emailEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-left" ><strong>Email:</strong></td>
+            <td class="text-left" *ngIf="!emailEditMode">{{account?.email}}</td>
+            <td class="text-left" [hidden]="!emailEditMode"><form [formGroup]="emailForm" (ngSubmit)="emailSubmit()"> <email-form-control showSubmit="true" focus="true"></email-form-control></form></td>
           </tr>
-        </table>
-        <table class="center">
           <tr>
-            <td class="text-right"><button mat-icon-button (click)="nameEditMode=!nameEditMode"><mat-icon>edit</mat-icon></button></td>
-            <td class="text-right" *ngIf="!nameEditMode"><strong>Account:</strong></td>
-            <td class="text-right" *ngIf="!nameEditMode">{{account?.name}}</td>
-            <td class="text-left" [hidden]="!nameEditMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-ctrl [submitButton]="true"></account-name-ctrl></form></td>
+            <td class="text-left"><button mat-icon-button (click)="nameEditMode=!nameEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-left" ><strong>Account:</strong></td>
+            <td class="text-left" *ngIf="!nameEditMode">{{account?.name}}</td>
+            <td class="text-left" [hidden]="!nameEditMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-form-control showSubmit="true" focus="true"></account-name-form-control></form></td>
           </tr>
-        </table>
-        <table class="center">
           <tr>
-            <td class="text-right"><button mat-icon-button (click)="phoneEditMode=!phoneEditMode"><mat-icon>edit</mat-icon></button></td>
-            <td class="text-right" *ngIf="!phoneEditMode"><strong>Phone:</strong></td>
-            <td class="text-right" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>
+            <td class="text-left"><button mat-icon-button (click)="phoneEditMode=!phoneEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-left" *ngIf="!phoneEditMode"><strong>Phone:</strong></td>
+            <td class="text-left" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>
             <td class="text-left" [hidden]="!phoneEditMode"><form [formGroup]="phoneForm" (ngSubmit)="phoneSubmit()"> <phone-ctrl ></phone-ctrl><mat-icon>send</mat-icon></form></td>
           </tr>
         </table>
+
       </div>
     </div>
   </div>

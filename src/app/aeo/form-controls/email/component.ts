@@ -10,6 +10,8 @@ export class EmailFormControl {
   readonly EMAIL = { max: 256 };
 
   @Input() showSubmit = false;
+
+  @Input() focus = false;
   email = new FormControl('', [Validators.required, Validators.email, Validators.maxLength(this.EMAIL.max)]);
 
   getEmailError() {

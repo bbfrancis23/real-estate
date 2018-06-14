@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 
 // new
 import { EmailFormControl } from '../../../aeo/form-controls/email/component';
+import { AccountNameFormControl } from '../../../aeo/form-controls/account-name/component';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
 
   @ViewChild(EmailFormControl) emailFormCtrl;
+  @ViewChild(AccountNameFormControl) accountNameCtrl;
 
   @Input() 'mode': string // ACCOUNT / CLIENT / AGENT
   editPermission = false;
@@ -40,7 +42,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   clientSub: Subscription;
 
-  @ViewChild(AccountNameControl) accountNameCtrl;
+
 
   nameForm = new FormGroup({});
   phoneForm = new FormGroup({});
@@ -67,16 +69,17 @@ export class ProfileVue implements OnInit, OnDestroy {
 
 
     this.emailForm.addControl('email', this.emailFormCtrl.email);
+    this.nameForm.addControl('accountName', this.accountNameCtrl.accountName);
   }
 
 
 
   nameSubmit() {
-    this.accountService.updateName(this.nameForm.value.name, this.account._id).then(result => {
+    this.accountService.updateName(this.nameForm.value.accountName, this.account._id).then(result => {
       if (result) {
         this.agentService.getClients();
         this.nameEditMode = false;
-        this.account.name = this.nameForm.value.name;
+        this.account.name = this.nameForm.value.accountName;
         this.nameForm.reset();
 
       } else {

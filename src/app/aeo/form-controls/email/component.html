@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput type="text" placeholder="Email" type="Email" [formControl]="email" required autocomplete="email" />
+  <input matInput type="text" placeholder="Email" type="Email" [formControl]="email" [autofocus]="focus" required autocomplete="email" />
   <button type="submit" mat-icon-button matSuffix *ngIf="showSubmit"><mat-icon>save_alt</mat-icon></button>
   <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
 </mat-form-field>

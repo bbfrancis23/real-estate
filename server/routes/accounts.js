@@ -107,7 +107,7 @@ router.post('/promote', auth, async(req, res) =>{
 router.get('/clients', auth, async (req, res) =>{
   const account = await Account.findById(req.account._id).select('-password').catch((err) =>  res.status(400).send({message: err}));
 
-  const clients = await  Account.find({ agent: account._id}).select('-password').catch((err) => res.status(400).send({message: err}));
+  const clients = await  Account.find({ agent: account._id}).sort('name').select('-password').catch((err) => res.status(400).send({message: err}));
 
   res.send(clients);
 });

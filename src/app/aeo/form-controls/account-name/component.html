@@ -1,0 +1,6 @@
+<mat-form-field>
+  <input matInput type="text" placeholder="Account Name" [formControl]="accountName" [autofocus]="focus" required [maxlength]="ACCOUNT_NAME.max"/>
+  <button type="submit" mat-icon-button matSuffix *ngIf="showSubmit"><mat-icon>save_alt</mat-icon></button>
+  <mat-hint align="end">{{accountName.value?.length || 0}}/{{ACCOUNT_NAME.max}}</mat-hint>
+  <mat-error *ngIf="accountName.invalid">{{getAccountNameError()}}</mat-error>
+</mat-form-field>
