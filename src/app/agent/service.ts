@@ -25,6 +25,7 @@ export class AgentService {
     return this.http.get<[Account]>('/api/accounts/clients').toPromise().then(res => {
       this.clients = res;
       this.changeCurrentClients(this.clients);
+      return true;
     }).catch(err => console.log(err))
   }
 

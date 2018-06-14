@@ -44,7 +44,13 @@ export class ClientDataTable implements OnDestroy {
         this.dataSource.data = this.clients;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.agentService.changeCurrentSelectedClient(this.clients[0]);
+
+        if (!this.selectedClient) {
+          this.agentService.changeCurrentSelectedClient(this.clients[0]);
+        } else {
+          this.agentService.changeCurrentSelectedClient(this.clients.find((c) => c._id === this.selectedClient._id));
+        }
+
         this.agentService.currentSelectedClient.subscribe(client => { this.selectedClient = client; });
 
       });

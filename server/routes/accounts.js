@@ -52,14 +52,25 @@ router.get('/me', auth, async (req, res)=>{
 
 router.post('/img', auth, upload.single('image'), async (req,res) =>{
 
-  const account = await
-    Account.findByIdAndUpdate(req.account._id,{ img: `/uploads/${req.file.filename}`, updated: Date.now() })
-    .select('-password')
-    .catch((err) =>  res.status(400).send({message: err}));
+    const account = await
+      Account.findByIdAndUpdate(req.account._id,{ img: `/uploads/${req.file.filename}`, updated: Date.now() })
+      .select('-password')
+      .catch((err) =>  res.status(400).send({message: err}));
 
 
-  account.img = `/uploads/${req.file.filename}`;
-  res.send(account);
+    account.img = `/uploads/${req.file.filename}`;
+    res.send(account);
+
+});
+
+router.post('/img/:id', auth, upload.single('image'), async (req,res) =>{
+
+    const account = await
+      Account.findByIdAndUpdate(req.params.id,{ img: `/uploads/${req.file.filename}`, updated: Date.now() })
+      .select('-password')
+      .catch((err) =>  res.status(400).send({message: err}));
+    account.img = `/uploads/${req.file.filename}`;
+    res.send(account);
 });
 
 router.post('/address', auth, async (req, res) =>{

@@ -1,8 +1,21 @@
 <vue [icon]="'account_circle'" [title]="mode+' PROFILE'" >
   <close-ctrl class="vue-ctrl" (click)=close.emit(e)></close-ctrl>
+  <div class="container">
 
-<div class="container">
-    <div class="row"><div class="col text-center"><img [src]="account?.img"  ></div></div>
+    <div class="row">
+      <div class="col text-center">
+        <img class="profile" [src]="account?.img" (click)="imgEditMode=!imgEditMode" >
+        <form [formGroup]="photoForm" [hidden]="!imgEditMode">
+          <ng-template matStepLabel>Upload a photo</ng-template>
+          <input type="file" (change)="onFileSelected($event)" #file>
+          <button mat-icon-button color="primary" (click)="uploadImg()" [disabled]="!selectedFile">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </form>
+        <div class="alert alert-danger" *ngIf="imgError">{{imgError}}</div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col " >
         <table class="center">

@@ -52,10 +52,16 @@ export class AccountService {
     }).catch(err => console.log(err))
   }
 
-  uploadImg(img) {
+  uploadImg(img, _id?: string) {
     let fd = new FormData();
     fd.append('image', img, img.name);
-    this.http.post('/api/accounts/img', fd).subscribe(res => { });
+
+    if (_id) {
+      return this.http.post(`/api/accounts/img/${_id}`, fd).toPromise().then(res => res);
+    } else {
+      return this.http.post('/api/accounts/img', fd).toPromise().then(res => res);
+    }
+
   }
 
   updateName(name: string, _id?: string) {
