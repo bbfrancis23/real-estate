@@ -24,7 +24,7 @@ export class AppService {
     if (this.states) {
 
     } else {
-      this.http.get<[State]>('localhost:3000/api/states')
+      this.http.get<[State]>('/api/states')
         .toPromise()
         .then(res => {
           this.states = res;

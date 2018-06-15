@@ -11,8 +11,9 @@
           <button mat-icon-button color="primary" (click)="uploadImg()" [disabled]="!selectedFile">
             <mat-icon>save_alt</mat-icon>
           </button>
+          <div class="alert alert-danger" *ngIf="imgError">{{imgError}}</div>
         </form>
-        <div class="alert alert-danger" *ngIf="imgError">{{imgError}}</div>
+
       </div>
     </div>
 
@@ -37,6 +38,20 @@
             <td class="text-left" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>
             <td class="text-left" [hidden]="!phoneEditMode"><form [formGroup]="phoneForm" (ngSubmit)="phoneSubmit()"> <phone-form-control ></phone-form-control><button mat-icon-button type="submit"><mat-icon>save_alt</mat-icon></button></form></td>
           </tr>
+          <tr>
+            <td class="text-left"><button mat-icon-button (click)="addressEditMode=!addressEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-left" ><strong>Address:</strong></td>
+            <td class="text-left" *ngIf="!addressEditMode">{{account?.address?.address}}<br>{{account?.address?.city}}, {{account?.address?.state}} {{account?.address?.zip}}</td>
+            <td class="text-left" [hidden]="!addressEditMode">
+
+              <form [formGroup]="addressForm" (ngSubmit)="addressSubmit()">
+                <address-form-control></address-form-control>
+                <div class="text-right"><button type="submit" mat-mini-fab color="primary"  [disabled]="!addressFormCtrl.checkValid()"><mat-icon>save_alt</mat-icon></button></div>
+              </form>
+
+            </td>
+          </tr>
+
         </table>
 
       </div>

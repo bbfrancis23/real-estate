@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { EmailFormControl } from '../../../aeo/form-controls/email/component';
 import { PhoneFormControl } from '../../../aeo/form-controls/phone/component';
 import { AccountNameFormControl } from '../../../aeo/form-controls/account-name/component';
+import { AddressFormControl } from '../../../aeo/form-controls/address/component';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   @ViewChild(EmailFormControl) emailFormCtrl;
   @ViewChild(AccountNameFormControl) accountNameCtrl;
   @ViewChild(PhoneFormControl) phoneFormCtrl;
+  @ViewChild(AddressFormControl) addressFormCtrl;
 
   @ViewChild('file') file: any;
 
@@ -40,6 +42,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   nameEditMode = false;
   emailEditMode = false;
   phoneEditMode = false;
+  addressEditMode = false;
 
   showProfileVue = true;
   account: Account;
@@ -56,6 +59,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   phoneForm = new FormGroup({});
   emailForm = new FormGroup({});
   photoForm = new FormGroup({});
+  addressForm = new FormGroup({});
 
   constructor(private _formBuilder: FormBuilder, public agentService: AgentService, public accountService: AccountService) {
 
@@ -71,6 +75,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
       this.clientSub = this.agentService.currentSelectedClient.subscribe(client => {
         this.account = client;
+        //console.log(this.account);
       });
 
       this.clientsSub = this.agentService.currentClients.subscribe(clients => {
@@ -90,7 +95,13 @@ export class ProfileVue implements OnInit, OnDestroy {
     this.phoneForm.addControl('areaCode', this.phoneFormCtrl.areaCode);
     this.phoneForm.addControl('suffix', this.phoneFormCtrl.suffix);
     this.phoneForm.addControl('prefix', this.phoneFormCtrl.prefix);
-    //console.log(this.phoneFormCtrl);
+
+    this.addressForm.addControl('address', this.addressFormCtrl.address);
+    this.addressForm.addControl('city', this.addressFormCtrl.city);
+    this.addressForm.addControl('state', this.addressFormCtrl.stateCtrl);
+    this.addressForm.addControl('zip', this.addressFormCtrl.zip);
+
+
   }
 
 
@@ -141,6 +152,24 @@ export class ProfileVue implements OnInit, OnDestroy {
     });
   }
 
+  addressSubmit() {
+
+    //console.log(this.addressForm.value);
+    this.accountService.updateAddress(this.addressForm.value, this.account._id).then(response => {
+      if (response) {
+        this.agentService.getClients();
+        this.addressEditMode = false;
+        this.account.address = this.addressForm.value.address;
+        this.addressForm.reset();
+      } else {
+
+        this.addressForm.controls['address'].setErrors({ 'database': true });
+
+      }
+    });
+    // */
+  }
+
   phoneSubmit() {
     let phone = `${this.phoneFormCtrl.areaCode.value}${this.phoneFormCtrl.prefix.value}${this.phoneFormCtrl.suffix.value}`;
     this.accountService.updatePhone(phone, this.account._id).then(response => {
@@ -165,6 +194,8 @@ export class ProfileVue implements OnInit, OnDestroy {
       }
     );
   }
+
+
 
   ngOnDestroy() {
     this.clientSub.unsubscribe();

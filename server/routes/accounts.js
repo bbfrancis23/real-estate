@@ -74,8 +74,16 @@ router.post('/img/:id', auth, upload.single('image'), async (req,res) =>{
 });
 
 router.post('/address', auth, async (req, res) =>{
-  const account = await Account.findByIdAndUpdate(req.account._id,{ address: req.body.address, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
-  res.send(account);
+
+
+  if(req.body._id){
+    const account = await Account.findByIdAndUpdate(req.body._id,{ address: req.body.address, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }else{
+    const account = await Account.findByIdAndUpdate(req.account._id,{ address: req.body.address, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }
+
 });
 
 router.post('/name', auth, async (req, res)=>{

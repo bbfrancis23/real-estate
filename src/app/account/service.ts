@@ -112,8 +112,25 @@ export class AccountService {
       .then(res => true).catch(err => false);
   }
 
-  updateAddress(address) {
-    return this.http.post('/api/accounts/address', { address }).toPromise().then(res => true).catch(err => err);
+  updateAddress(address, _id?: string) {
+
+    let obj = {};
+    if (_id) {
+      obj = { address: address, _id: _id }
+    } else {
+      obj = { address: address }
+    }
+
+
+    return this.http.post('/api/accounts/address', obj).toPromise().then(
+      res => {
+        return true;
+      }
+    ).catch(
+      err => {
+        return false;
+      }
+    );
   }
 
   createAccount(account) {
