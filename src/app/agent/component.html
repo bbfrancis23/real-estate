@@ -5,7 +5,18 @@
         <client-data-table *ngIf="showClientDataTable" (close)="showClientDataTable = false" (openClientView)="showProfileVue=true" ></client-data-table>
       </div>
       <div class="col">
-        <profile-vue mode="CLIENT" *ngIf="showProfileVue" (close)="showProfileVue = false"></profile-vue>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <profile-vue mode="CLIENT" icon="person" *ngIf="showProfileVue" (close)="showProfileVue = false"></profile-vue>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <profile-vue ></profile-vue>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

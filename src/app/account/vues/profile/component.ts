@@ -34,7 +34,8 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   @ViewChild('file') file: any;
 
-  @Input() 'mode': string // ACCOUNT / CLIENT / AGENT
+  @Input() 'mode' = 'ACCOUNT' // ACCOUNT / CLIENT / AGENT
+  @Input() 'icon' = 'account_circle'
   editPermission = false;
 
   @Output() close = new EventEmitter();
@@ -50,6 +51,9 @@ export class ProfileVue implements OnInit, OnDestroy {
 
   clientSub: Subscription;
   clientsSub: Subscription;
+
+  accountSub: Subscription;
+
 
   selectedFile = null;
   imgError: string;
@@ -82,6 +86,10 @@ export class ProfileVue implements OnInit, OnDestroy {
         this.clients = clients;
       });
 
+    } else if (this.mode === 'ACCOUNT') {
+      this.accountSub = this.accountService.currentAccount.subscribe(account => {
+        this.account = account;
+      });
     }
 
 
@@ -113,6 +121,7 @@ export class ProfileVue implements OnInit, OnDestroy {
         this.nameEditMode = false;
         this.account.name = this.nameForm.value.accountName;
         this.nameForm.reset();
+        this.accountService.getAccount();
 
       } else {
 
@@ -142,6 +151,7 @@ export class ProfileVue implements OnInit, OnDestroy {
         this.emailEditMode = false;
         this.account.email = this.emailForm.value.email;
         this.emailForm.reset();
+        this.accountService.getAccount();
       } else {
         if (response.code === 11000) {
           this.emailForm.controls['email'].setErrors({ 'unique': true });
@@ -161,6 +171,7 @@ export class ProfileVue implements OnInit, OnDestroy {
         this.addressEditMode = false;
         this.account.address = this.addressForm.value.address;
         this.addressForm.reset();
+        this.accountService.getAccount();
       } else {
 
         this.addressForm.controls['address'].setErrors({ 'database': true });
@@ -176,8 +187,8 @@ export class ProfileVue implements OnInit, OnDestroy {
       if (response) {
         this.agentService.getClients();
         this.phoneEditMode = false;
-        //this.account.email = this.emailForm.value.email;
         this.phoneForm.reset();
+        this.accountService.getAccount();
       } else {
 
       }
@@ -191,6 +202,7 @@ export class ProfileVue implements OnInit, OnDestroy {
         this.imgEditMode = false;
         this.photoForm.reset();
         this.file.nativeElement.value = "";
+        this.accountService.getAccount();
       }
     );
   }
@@ -200,5 +212,6 @@ export class ProfileVue implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.clientSub.unsubscribe();
     this.clientsSub.unsubscribe();
+    this.accountSub.unsubscribe();
   }
 }
