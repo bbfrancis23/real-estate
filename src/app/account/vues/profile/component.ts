@@ -210,8 +210,19 @@ export class ProfileVue implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    this.clientSub.unsubscribe();
-    this.clientsSub.unsubscribe();
-    this.accountSub.unsubscribe();
+
+    if (this.clientSub) {
+      this.clientSub.unsubscribe();
+    }
+
+    if (this.clientsSub) {
+      this.clientsSub.unsubscribe();
+    }
+
+    if (this.accountSub) {
+      this.accountSub.unsubscribe();
+    }
+
+
   }
 }

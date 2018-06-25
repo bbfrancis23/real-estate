@@ -10,6 +10,7 @@ import { UpsertAccountDialog } from '../account/upsert-dialog/component';
 
 import { AgentService } from './service';
 import { AppService } from '../service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'agent',
@@ -29,7 +30,13 @@ export class AgentComponent implements OnDestroy, OnInit {
           { title: this.MENU_ITEMS.ADD_CLIENT, icon: 'person_add' },
           { title: 'LIST CLIENTS', icon: 'list' },
         ]
-      },
+      }, {
+        title: 'ACCOUNT', icon: 'account_circle',
+        menuItems: [
+          { title: 'MY ACCOUNT' },
+          { title: 'LOG OUT' }
+        ]
+      }
 
 
     ]
@@ -49,6 +56,8 @@ export class AgentComponent implements OnDestroy, OnInit {
         this.appService.changeTheme(account.theme + '-theme');
       }
 
+    } else {
+
     }
   });
 
@@ -57,7 +66,8 @@ export class AgentComponent implements OnDestroy, OnInit {
     public agentService: AgentService,
     public appService: AppService,
     public milieuService: MilieuService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public router: Router) {
 
   }
 
@@ -71,6 +81,13 @@ export class AgentComponent implements OnDestroy, OnInit {
     this.milieu.menuItems.push({ title: 'THEMES', icon: 'palette', menuItems: themeMenuItems });
 
     this.milieuService.changeMilieu(this.milieu);
+
+    if (this.accountService.account) {
+      //console.log(this.accountService.account);
+    } else {
+      console.log('routing to home page');
+      this.router.navigate(['']);
+    }
   }
 
 
@@ -99,12 +116,17 @@ export class AgentComponent implements OnDestroy, OnInit {
       this.openClientDialog();
     } else if (e.child === 'LIST CLIENTS') {
       this.showClientDataTable = true;
+    } else if (e.child === 'LOG OUT') {
+      this.accountService.logout();
+
     }
   }
 
   ngOnDestroy(): void {
 
-    this.accountSub.unsubscribe();
+    if (this.accountSub) {
+      this.accountSub.unsubscribe();
+    }
 
   }
 }

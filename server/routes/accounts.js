@@ -17,7 +17,7 @@ const upload = multer({storage: storage});
 */
 
 router.get('/logout', async(req,res)=>{
-  res.clearCookie("token").catch((err) => {res.status(400).send({message: err})});
+  res.clearCookie("token");
   res.send({message: 'Cookie cleared'});
 });
 

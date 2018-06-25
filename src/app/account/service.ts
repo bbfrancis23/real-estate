@@ -175,7 +175,14 @@ export class AccountService {
   }
 
   logout() {
-    this.http.get('/api/accounts/logout').toPromise().then(res => window.location.reload()).catch(err => console.log(err));
+    console.log('logging out');
+    this.http.get('/api/accounts/logout').toPromise().then(
+      res => {
+        console.log(res);
+        window.location.reload();
+      })
+      .catch(err => console.log(err)
+      );
   }
 
   authAccount(account) {

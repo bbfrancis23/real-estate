@@ -38,6 +38,9 @@ export class ClientDataTable implements OnDestroy {
   constructor(public agentService: AgentService) {
 
     this.agentService.getClients().then(() => {
+
+
+
       this.clientsSub = this.agentService.currentClients.subscribe(clients => {
 
         this.clients = clients;
@@ -81,7 +84,13 @@ export class ClientDataTable implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.clientsSub.unsubscribe();
-    this.selectedClientSub.unsubscribe();
+    if (this.clientsSub) {
+      this.clientsSub.unsubscribe();
+    }
+
+    if (this.selectedClientSub) {
+      this.selectedClientSub.unsubscribe();
+    }
+
   }
 }
