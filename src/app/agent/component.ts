@@ -56,6 +56,7 @@ export class AgentComponent implements OnDestroy, OnInit {
         this.appService.changeTheme(account.theme + '-theme');
       }
 
+
     } else {
 
     }
@@ -82,12 +83,7 @@ export class AgentComponent implements OnDestroy, OnInit {
 
     this.milieuService.changeMilieu(this.milieu);
 
-    if (this.accountService.account) {
-      //console.log(this.accountService.account);
-    } else {
-      console.log('routing to home page');
-      this.router.navigate(['']);
-    }
+
   }
 
 

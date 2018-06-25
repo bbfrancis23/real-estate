@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['styles.scss']
 })
 export class PasswordFormControl {
+
+  @Input() showSubmit = false;
 
   readonly PASSWORD = { min: 4, max: 16, pattern: /^[^\s]+$/ };
   password = new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD.min), Validators.maxLength(this.PASSWORD.max), Validators.pattern(this.PASSWORD.pattern)])

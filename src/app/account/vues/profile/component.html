@@ -33,6 +33,12 @@
             <td class="text-left" [hidden]="!nameEditMode"><form [formGroup]="nameForm" (ngSubmit)="nameSubmit()"> <account-name-form-control showSubmit="true" focus="true"></account-name-form-control></form></td>
           </tr>
           <tr>
+            <td class="text-left"><button mat-icon-button (click)="passwordEditMode=!passwordEditMode"><mat-icon>edit</mat-icon></button></td>
+            <td class="text-left" ><strong>Password:</strong></td>
+            <td class="text-left" *ngIf="!passwordEditMode"></td>
+            <td class="text-left" [hidden]="!passwordEditMode"><form [formGroup]="passwordForm" (ngSubmit)="passwordSubmit()"> <password-form-control showSubmit="true" focus="true"></password-form-control></form></td>
+          </tr>
+          <tr>
             <td class="text-left"><button mat-icon-button (click)="phoneEditMode=!phoneEditMode"><mat-icon>edit</mat-icon></button></td>
             <td class="text-left" ><strong>Phone:</strong></td>
             <td class="text-left" *ngIf="!phoneEditMode">({{account?.phone ? account?.phone.toString().substr(0,3) : ''}}) {{account?.phone ? account?.phone.toString().substr(3,3) : '' }}-{{account?.phone ? account?.phone.toString().substr(6,4) : ''}}</td>

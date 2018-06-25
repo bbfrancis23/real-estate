@@ -97,6 +97,28 @@ router.post('/name', auth, async (req, res)=>{
 
 });
 
+router.post('/password', auth, async (req, res)=>{
+
+  if(req.body._id){
+
+    const salt = await bcrypt.genSalt(10).catch((err) =>  res.status(400).send({message: err}));
+    let password = await bcrypt.hash(req.body.password, salt).catch((err) =>  res.status(400).send({message: err}));
+
+    const account = await Account.findByIdAndUpdate(req.body._id,{ password: password, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+
+
+  }else{
+
+    const salt = await bcrypt.genSalt(10).catch((err) =>  res.status(400).send({message: err}));
+    let password = await bcrypt.hash(account.password, salt).catch((err) =>  res.status(400).send({message: err}));
+
+    const account = await Account.findByIdAndUpdate(req.account._id,{ password: password, updated: Date.now() }).select('-password').catch((err) =>  res.status(400).send({message: err}));
+    res.send(account);
+  }
+
+});
+
 router.post('/email', auth, async(req, res) =>{
   if(req.body._id){
     console.log(req.body._id,req.body.email);

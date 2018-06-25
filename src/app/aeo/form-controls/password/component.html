@@ -3,6 +3,8 @@
   <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Visability" type="button" (mousedown)="inputType='text'" (mouseup)="inputType='password'" (mouseout)="inputType='password'" >
     <mat-icon>{{inputType === 'text' ? 'visibility' : 'visibility_off'}}</mat-icon>
   </button>
+  <button type="submit" mat-icon-button matSuffix *ngIf="showSubmit"><mat-icon>save_alt</mat-icon></button>
+  
   <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
   <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
 </mat-form-field>

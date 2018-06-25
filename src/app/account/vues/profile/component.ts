@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Account } from '../../account';
 
-import { AddressControl } from '../../ctrls/address/component';
-import { AccountNameControl } from '../../ctrls/account-name/component';
+//import { AddressControl } from '../../ctrls/address/component';
+//import { AccountNameControl } from '../../ctrls/account-name/component';
 
 import { AccountService } from '../../service';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ import { EmailFormControl } from '../../../aeo/form-controls/email/component';
 import { PhoneFormControl } from '../../../aeo/form-controls/phone/component';
 import { AccountNameFormControl } from '../../../aeo/form-controls/account-name/component';
 import { AddressFormControl } from '../../../aeo/form-controls/address/component';
-
+import { PasswordFormControl } from '../../../aeo/form-controls/password/component';
 
 @Component({
   selector: 'profile-vue',
@@ -31,6 +31,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   @ViewChild(AccountNameFormControl) accountNameCtrl;
   @ViewChild(PhoneFormControl) phoneFormCtrl;
   @ViewChild(AddressFormControl) addressFormCtrl;
+  @ViewChild(PasswordFormControl) passwordFormCtrl;
 
   @ViewChild('file') file: any;
 
@@ -44,6 +45,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   emailEditMode = false;
   phoneEditMode = false;
   addressEditMode = false;
+  passwordEditMode = false;
 
   showProfileVue = true;
   account: Account;
@@ -64,6 +66,7 @@ export class ProfileVue implements OnInit, OnDestroy {
   emailForm = new FormGroup({});
   photoForm = new FormGroup({});
   addressForm = new FormGroup({});
+  passwordForm = new FormGroup({});
 
   constructor(private _formBuilder: FormBuilder, public agentService: AgentService, public accountService: AccountService) {
 
@@ -95,6 +98,7 @@ export class ProfileVue implements OnInit, OnDestroy {
 
     this.emailForm.addControl('email', this.emailFormCtrl.email);
     this.nameForm.addControl('accountName', this.accountNameCtrl.accountName);
+    this.passwordForm.addControl('password', this.passwordFormCtrl.password);
 
     this.photoForm = this._formBuilder.group({
       photoCtrl: ['', []]
@@ -127,6 +131,22 @@ export class ProfileVue implements OnInit, OnDestroy {
 
       }
     });
+  }
+
+  passwordSubmit() {
+    this.accountService.updatePassword(this.passwordForm.value.password, this.account._id).then(result => {
+      if (result) {
+        //this.agentService.getClients();
+        this.passwordEditMode = false;
+        this.account.password = this.passwordForm.value.password;
+        this.passwordForm.reset();
+        this.accountService.getAccount();
+
+      } else {
+
+      }
+    });
+
   }
 
   onFileSelected(e) {

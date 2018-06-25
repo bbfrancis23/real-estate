@@ -34,7 +34,7 @@ export class AccountService {
   public changeAccount(account: Account) { this.accountSource.next(account) }
 
 
-  constructor(readonly http: HttpClient, router: Router, public agentService: AgentService) {
+  constructor(readonly http: HttpClient, public router: Router, public agentService: AgentService) {
 
     this.http.get<Account>('/api/accounts/me').toPromise().then(res => {
       this.account = res;
@@ -93,6 +93,25 @@ export class AccountService {
       } else {
         return { result: false, code: 0, message: 'Unknown Error' }
       }
+    });
+  }
+
+  updatePassword(password: string, _id?: string) {
+
+    let obj = {};
+    if (_id) {
+      obj = { password: password, _id: _id }
+    } else {
+      obj = { password: password }
+    }
+
+    console.log(obj);
+
+    return this.http.post('/api/accounts/password', obj).toPromise().then(res => {
+      return { result: true, code: 1, message: 'Password was successfully updated.' }
+    }).catch(err => {
+
+      return { result: false, code: 0, message: 'Unknown Error' }
     });
   }
 
@@ -178,8 +197,7 @@ export class AccountService {
     console.log('logging out');
     this.http.get('/api/accounts/logout').toPromise().then(
       res => {
-        console.log(res);
-        window.location.reload();
+        this.router.navigate(['']);
       })
       .catch(err => console.log(err)
       );
