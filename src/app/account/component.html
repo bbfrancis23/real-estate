@@ -1,7 +1,7 @@
 <media-view-port>
   <media><img src="assets/img/home-for-sale.jpg"  ></media>
   <content>
-    <mat-card *ngIf="account.rank >= 1">
+    <mat-card *ngIf="account?.rank >= 1">
       <mat-card-title>Profile Info</mat-card-title>
       <mat-card-content>
         <div class="container">
@@ -87,7 +87,7 @@
 
             </td>
             <td>Rank:</td>
-            <td >{{account.rank}}</td>
+            <td >{{account?.rank}}</td>
           </tr>
 
         </table>
@@ -100,7 +100,7 @@
       </div>
       </mat-card-content>
     </mat-card>
-    <mat-card *ngIf="account.rank < 1">
+    <mat-card *ngIf="account?.rank < 1">
       <mat-card-title>Complete Profile</mat-card-title>
       <mat-card-content>
     <mat-horizontal-stepper linear="false" #stepper="matHorizontalStepper" [selectedIndex]="accountService.account.name ? accountService.account.phone ? accountService.account.address ? accountService.account.img ? 4 : 3 : 2 : 1 : 0">

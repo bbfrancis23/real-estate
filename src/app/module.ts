@@ -4,7 +4,8 @@ import { MatAutocompleteModule, MatProgressSpinnerModule, MatButtonModule, MatCa
 import { BrowserModule } from '@angular/platform-browser';
 import { AeoModule } from './aeo/module';
 import { AccountModule } from './account/module';
-import { AgentModule } from './agent/module'
+import { AgentModule } from './agent/module';
+import { RealEstateClientModule } from './real-estate-client/module'
 import { AccountDialog } from './account/dialog/component';
 import { AppComponent } from './component';
 import { AppService } from './service';
@@ -39,11 +40,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    RealEstateClientModule,
     MatAutocompleteModule, MatProgressSpinnerModule, MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatTooltipModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
-
   ],
   entryComponents: [AccountDialog, SettingsDialog],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' }, AccountService, AppService, MilieuService],

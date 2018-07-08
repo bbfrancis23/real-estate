@@ -40,7 +40,11 @@ export class AccountService {
       this.account = res;
       this.account.authenticated = true;
       this.changeAccount(this.account);
-      if (this.account.type === 'Agent') router.navigate(['agent'])
+      if (this.account.type === 'Agent') {
+        router.navigate(['agent'])
+      } else if (this.account.type === 'Client') {
+        router.navigate(['account']);
+      }
     }).catch(err => console.log(err))
   }
 
